@@ -1,0 +1,11 @@
+Abhineet - Registration
+
+Jaydeep - Login
+
+Aditya - Dashboard
+
+Suraj - Portfolio
+
+Rajashekar - Update stocks by admin & add to cart by user
+
+Rituparna - Order page
