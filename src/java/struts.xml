@@ -6,8 +6,16 @@
     <include file="example.xml"/>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <action name="reportstock" class="com.trading.ot.actions.StockAction" method="StockReportAction">
-            <result name="REPORTSTOCK">/addashboard.jsp</result>
+        <action name="registeruser" class="com.trading.ot.actions.UserAction" method="addUsers">
+            <result name="REGISTER">/pages-login.jsp</result>
         </action>
+        <action name="loginuser" class="com.trading.ot.actions.UserAction" method="checkValidUser">
+            <result name="USER">/admin-dashboard.jsp</result>
+        </action>
+        
+        <action name="reportstock" class="com.trading.ot.actions.StockAction" method="StockReportAction">
+            <result name="REPORTSTOCK">/admin-dashboard.jsp</result>
+        </action>
+        
     </package>
 </struts>
