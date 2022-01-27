@@ -46,7 +46,7 @@ public class UserAction {
             setCtr(getAdmin().registerUser(getName(), getEmailId(), getPhoneNumber(), getDob(), getPassword(), getAddress()));
             if (getCtr() > 0) {
                
-                setMsg("Registration Successfull");
+                setMsg("Registration Successfully");
             } else {
                 setMsg("Some error");
             }
@@ -59,18 +59,20 @@ public class UserAction {
     
     public String checkValidUser()
     {
-        URL url;
-        URLConnection connection;
+        //URL url;
+        //URLConnection connection;
         
         
         setAdmin(new Admin());
         try {
             setCtr(getAdmin().checkValidUser(getEmailId(), getPassword()));
             if (getCtr() > 0) {
-               url=new URL("http://localhost:8010/OnlineTradingProject/dashboard.jsp");
-               connection=url.openConnection();
-               connection.setDoOutput(true);
-                //setMsg("Login Successfull");
+               //url=new URL("http://localhost:8010/OnlineTradingProject/dashboard.jsp");
+               //connection=url.openConnection();
+               //connection.setDoOutput(true);
+               //String url="http://localhost:8010/OnlineTradingProject/admin-dashboard.jsp";
+               //java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+                setMsg("Login Successfull");
             } else {
                 setMsg("Some error");
             }
