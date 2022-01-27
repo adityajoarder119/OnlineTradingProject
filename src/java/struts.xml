@@ -7,7 +7,7 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <action name="reportstock" class="com.trading.ot.actions.StockAction" method="StockReportAction">
-            <result name="REPORTSTOCK">/dashboard.jsp</result>
+            <result name="REPORTSTOCK">/addashboard.jsp</result>
         </action>
     </package>
 </struts>
