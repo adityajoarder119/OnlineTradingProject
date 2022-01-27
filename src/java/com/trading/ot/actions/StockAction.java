@@ -17,7 +17,7 @@ import com.trading.ot.dao.Admin;
  *
  * @author adity
  */
-public class StockAction {
+public class StockAction extends ActionSupport{
       private ResultSet rs = null;
     private Stocks product = null;
     private List<Stocks> stockList = null;

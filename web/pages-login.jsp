@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <html lang="en">
 
 <head>
@@ -89,6 +90,13 @@
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="pages-register.jsp">Create an account</a></p>
                     </div>
+                       <s:if test="validUser==true">
+                        
+                    </s:if>
+                    <s:else>
+                       <span style="color: red;"><s:property value="msg" /></span>
+                    </s:else>
+                       
                   </form>
                 </div>
               </div>
@@ -109,10 +117,30 @@
 
     </div>
   </main><!-- End #main -->
+  
+    
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+     <script>
+           $(document).ready(function() {
+               function disableBack() {
+                   window.history.forward()
+               }
+               window.onload = disableBack();
+               window.onpageshow = function(e) {
+                   if (e.persisted)
+                       disableBack();
+               }
+           });
+       </script>
+
+    <script src=
+           "https://code.jquery.com/jquery-3.6.0.min.js" 
+           integrity=
+   "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+           crossorigin="anonymous"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.min.js"></script>

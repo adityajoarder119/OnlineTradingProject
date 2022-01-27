@@ -4,19 +4,29 @@
  * and open the template in the editor.
  */
 package com.trading.ot.actions;
-
+import com.opensymphony.xwork2.ActionSupport;
 import com.trading.ot.beans.User;
 import com.trading.ot.dao.Admin;
-import java.net.URL;
-import java.net.URLConnection;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Map;
+import javax.servlet.http.HttpSession;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
+
 
 /**
  *
  * @author ritup
  */
-public class UserAction {
+public class UserAction extends ActionSupport implements SessionAware{
+    private static final long serialVersionUID = 4821216272008282533L;
+    private SessionMap<String, Object> sessionMap;
+    @Override
+    public void setSession(Map<String, Object> map) {
+        sessionMap = (SessionMap)map;
+    }
     private int userId;
     private String name;
     private String emailId;
@@ -24,7 +34,7 @@ public class UserAction {
     private String dob;
     private String password;
     private String address;
-    private String validUser;
+    private boolean validUser;
     private int status;
     
     
@@ -48,7 +58,9 @@ public class UserAction {
                
                 setMsg("Registration Successfully");
             } else {
+                
                 setMsg("Some error");
+                return "ERROR";
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,32 +69,68 @@ public class UserAction {
         
     }
     
-    public String checkValidUser()
+    public String checkValidUser() 
     {
         //URL url;
         //URLConnection connection;
-        
-        
         setAdmin(new Admin());
-        try {
-            setCtr(getAdmin().checkValidUser(getEmailId(), getPassword()));
-            if (getCtr() > 0) {
+        try {    
+            user=getAdmin().checkValidUser(getEmailId(), getPassword());
+            int status=user.getStatus();
+            String name=user.getName();
+            
+            if (user.isValidUser()==true) {
                //url=new URL("http://localhost:8010/OnlineTradingProject/dashboard.jsp");
                //connection=url.openConnection();
                //connection.setDoOutput(true);
                //String url="http://localhost:8010/OnlineTradingProject/admin-dashboard.jsp";
                //java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
-                setMsg("Login Successfull");
+               if(status==0)
+               {
+                   setMsg("Login successful");
+                   sessionMap.put("login","true");
+                   sessionMap.put("name",name);
+                   return "USER";
+               }
+               if(status==1)
+               {
+                   setMsg("Login successful");
+                   sessionMap.put("login","true");
+                   sessionMap.put("name",name);
+                   return "ADMINUSER";
+               }
+                
             } else {
-                setMsg("Some error");
+                setMsg("Incorrect username or password!!");
+                return "ERRORLOGIN";
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "USER";
-        
+        return null;  
     }
 
+    public String logout()
+    {
+        if(sessionMap!=null)
+        {
+            sessionMap.invalidate();
+        }
+        return "LOGOUT";
+    }
+    
+    public String sessionout()
+    {
+        HttpSession session=ServletActionContext.getRequest().getSession(false);
+        if(session == null || session.getAttribute("login")==null)
+        {
+            return "LOGOUT1";
+        }
+        else
+        {
+            return "PASS";
+        }
+    }
     /**
      * @return the userId
      */
@@ -179,20 +227,6 @@ public class UserAction {
      */
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    /**
-     * @return the validUser
-     */
-    public String getValidUser() {
-        return validUser;
-    }
-
-    /**
-     * @param validUser the validUser to set
-     */
-    public void setValidUser(String validUser) {
-        this.validUser = validUser;
     }
 
     /**
@@ -320,5 +354,29 @@ public class UserAction {
     public void setSubmitType(String submitType) {
         this.submitType = submitType;
     }
+
+    /**
+     * @return the validUser
+     */
+    public boolean isValidUser() {
+        return validUser;
+    }
+
+    /**
+     * @param validUser the validUser to set
+     */
+    public void setValidUser(boolean validUser) {
+        this.validUser = validUser;
+    }
+
+    /**
+     * @return the session
+     */
+
+    /**
+     * @param session the session to set
+     */
+    
+
     
 }

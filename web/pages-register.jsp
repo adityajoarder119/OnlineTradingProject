@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -116,6 +115,13 @@
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="pages-login.jsp">Log in</a></p>
                     </div>
+                    
+                     <s:if test="ctr>0">
+                        <span style="color: green;"><s:property value="msg" /></span>
+                    </s:if>
+                    <s:else>
+                        <span style="color: red;"><s:property value="msg" /></span>
+                    </s:else>
                   </form>
 
                 </div>

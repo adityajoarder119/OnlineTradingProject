@@ -7,15 +7,24 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         <action name="registeruser" class="com.trading.ot.actions.UserAction" method="addUsers">
-            <result name="REGISTER">/pages-login.jsp</result>
+             <result name="REGISTER">/pages-login.jsp</result>
+             <result name="ERROR">/pages-register.jsp</result>
         </action>
         <action name="loginuser" class="com.trading.ot.actions.UserAction" method="checkValidUser">
-            <result name="USER">/admin-dashboard.jsp</result>
+            <result name="USER">/user-dashboard.jsp</result>
+            <result name="ADMINUSER">/admin-dashboard.jsp</result>
+            <result name="ERRORLOGIN">/pages-login.jsp</result>
         </action>
         
         <action name="reportstock" class="com.trading.ot.actions.StockAction" method="StockReportAction">
             <result name="REPORTSTOCK">/admin-dashboard.jsp</result>
         </action>
-        
+         <action name="logout" class="com.trading.ot.actions.UserAction" method="logout">
+            <result name="LOGOUT">/logout.jsp</result>
+        </action>
+        <action name="checksession" class="com.trading.ot.actions.UserAction" method="sessionout">
+            <result name="LOGOUT1">/logout.jsp</result>
+             <result name="PASS">/admin-dashboard.jsp</result>
+        </action>
     </package>
 </struts>

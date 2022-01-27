@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>Dashboard - NiceAdmin Bootstrap Template</title>
+        <title>Admin Dashboard</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
@@ -202,7 +202,7 @@
                             </li>
 
                             <li class="dropdown-footer">
-                                <a href="#">Show all messages</a>
+                                <a href="checksession">Show all messages</a>
                             </li>
 
                         </ul><!-- End Messages Dropdown Items -->
@@ -213,12 +213,12 @@
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                            <span class="d-none d-md-block dropdown-toggle ps-2"><s:property value="#session.name" /></span>
                         </a><!-- End Profile Iamge Icon -->
 
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
-                                <h6>Kevin Anderson</h6>
+                                <h6><s:property value="#session.name" /></h6>
                                 <span>Web Designer</span>
                             </li>
                             <li>
@@ -256,7 +256,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                <a class="dropdown-item d-flex align-items-center" href="logout">
                                     <i class="bi bi-box-arrow-right"></i>
                                     <span>Sign Out</span>
                                 </a>
@@ -304,20 +304,6 @@
                         <span>Contact</span>
                     </a>
                 </li><!-- End Contact Page Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-register.jsp">
-                        <i class="bi bi-card-list"></i>
-                        <span>Register</span>
-                    </a>
-                </li><!-- End Register Page Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-login.jsp">
-                        <i class="bi bi-box-arrow-in-right"></i>
-                        <span>Login</span>
-                    </a>
-                </li><!-- End Login Page Nav -->
 
             </ul>
 
@@ -518,6 +504,8 @@
 
         </main><!-- End #main -->
 
+        
+         
         <!-- ======= Footer ======= -->
         <footer id="footer" class="footer">
             <div class="copyright">
@@ -534,6 +522,24 @@
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+         <script>
+           $(document).ready(function() {
+               function disableBack() {
+                   window.history.forward()
+               }
+               window.onload = disableBack();
+               window.onpageshow = function(e) {
+                   if (e.persisted)
+                       disableBack();
+               }
+           });
+       </script>
+
+    <script src=
+           "https://code.jquery.com/jquery-3.6.0.min.js" 
+           integrity=
+   "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+           crossorigin="anonymous"></script>
         <!-- Vendor JS Files -->
         <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

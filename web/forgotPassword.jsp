@@ -1,9 +1,3 @@
-<%-- 
-    Document   : forgotPassword
-    Created on : 25 Jan, 2022, 12:33:12 PM
-    Author     : Suraj Kumar
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

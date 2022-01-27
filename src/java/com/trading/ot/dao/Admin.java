@@ -49,13 +49,15 @@ public class Admin {
         }
     }
 
-    public int checkValidUser(String emailId, String password) throws SQLException, Exception {
+    public User checkValidUser(String emailId, String password) throws SQLException, Exception {
         ResultSet rs = null;
+        User user=new User();
         Connection con = null;
-        int c=0;
+        boolean valid=true;
         try {
             con = ConnectionManager.getConnection();
             String sql = "SELECT * FROM user WHERE emailId=? and password=?";
+            System.out.println("Got the connection.........................." + con);
             PreparedStatement ps = con.prepareStatement(sql);
             System.out.println("emailId = " + emailId);
             ps.setString(1, emailId);
@@ -64,22 +66,31 @@ public class Admin {
 
             rs = ps.executeQuery();
             if (rs.next()) {
-                
-                return c+1;               
+                user.setName(rs.getString("name"));
+                user.setEmailId(rs.getString("emailID"));
+                user.setPhoneNumber(rs.getString("phoneNumber"));
+                user.setDob(rs.getString("dob"));
+                user.setPassword(rs.getString("password"));
+                user.setAddress(rs.getString("address"));
+                user.setStatus(rs.getInt("status"));
+                user.setValidUser(valid);                  
             }
             else
             {
-                return c;
+                valid = false;
+                user.setValidUser(valid);
+                
             }
             
         } catch (Exception e) {
             e.printStackTrace();
-            return c;
         } finally {
             if (con != null) {
                 con.close();
             }
         }
+        return user;
+      
     }
    public List reportStock() throws SQLException, Exception {
         ResultSet rs = null;
