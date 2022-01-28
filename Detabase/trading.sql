@@ -98,7 +98,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Abhineet','abh@gmail.com','1234567890','0','kuchbhi','spj',0);
+INSERT INTO `user` VALUES (1,'Jay','jdas@gmail.com','1234567890','22','1234','falakata',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
