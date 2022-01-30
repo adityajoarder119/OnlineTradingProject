@@ -300,7 +300,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.jsp">
                                     <i class="bi bi-question-circle"></i>
                                     <span>Need Help?</span>
                                 </a>
@@ -330,7 +330,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="admin-dashboard.html">
+                    <a class="nav-link collapsed" href="admin-dashboard.jsp">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -352,14 +352,14 @@
                 </li><!-- End Profile Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-faq.html">
+                    <a class="nav-link collapsed" href="pages-faq.jsp">
                         <i class="bi bi-question-circle"></i>
                         <span>F.A.Q</span>
                     </a>
                 </li><!-- End F.A.Q Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-contact.html">
+                    <a class="nav-link collapsed" href="pages-contact.jsp">
                         <i class="bi bi-envelope"></i>
                         <span>Contact</span>
                     </a>
@@ -375,7 +375,7 @@
                 <h1>Dashboard</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="admin-dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="admin-dashboard.jsp">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </nav>

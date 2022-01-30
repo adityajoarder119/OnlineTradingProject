@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>Admin Dashboard</title>
+        <title>Index page</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
@@ -78,28 +78,10 @@
                                 <hr class="dropdown-divider">
                             </li>
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                    <i class="bi bi-person"></i>
-                                    <span>My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                       
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                    <i class="bi bi-gear"></i>
-                                    <span>Account Settings</span>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.jsp">
                                     <i class="bi bi-question-circle"></i>
                                     <span>Need Help?</span>
                                 </a>
@@ -129,7 +111,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="admin-dashboard.html">
+                    <a class="nav-link " href="index.jsp">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -152,14 +134,14 @@
                 </li><!-- End Login Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-faq.html">
+                    <a class="nav-link collapsed" href="pages-faq.jsp">
                         <i class="bi bi-question-circle"></i>
                         <span>F.A.Q</span>
                     </a>
                 </li><!-- End F.A.Q Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-contact.html">
+                    <a class="nav-link collapsed" href="pages-contact.jsp">
                         <i class="bi bi-envelope"></i>
                         <span>Contact</span>
                     </a>
@@ -187,69 +169,6 @@
                     <!-- MAIN columns -->
 
                     <div class="row">
-
-                        <!-- Sales Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card sales-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Total Orders</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-cart"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>145</h6>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div><!-- End Sales Card -->
-
-                        <!-- Revenue Card -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card revenue-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Total Revenue Circulating</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-currency-dollar"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>$3,264</h6>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div><!-- End Revenue Card -->
-
-                        <!-- Customers Card -->
-                        <div class="col-xxl-4 col-xl-12">
-
-                            <div class="card info-card customers-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Total No of Customers</h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-people"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6>1244</h6>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div><!-- End Customers Card -->
 
                         <!-- Reports -->
                         <div class="col-12">
@@ -324,7 +243,7 @@
                             <div class="card recent-sales">
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportstock"><button  type="button" style="cursor: pointer;">Refresh</button></a></span></h5>
+                                    <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportstockindex"><button  type="button" style="cursor: pointer;">Refresh</button></a></span></h5>
                                     <s:if test="noData==false">
                                         <table class="table table-borderless datatable">
                                             <thead>
