@@ -70,6 +70,47 @@ public class Admin {
             }
         }
     }
+    
+    
+    public int updateOtpPassword(String newotp, String newpassword, String confirmpassword, String emailId) throws SQLException, Exception {
+
+        Connection con = ConnectionManager.getConnection();
+        ResultSet rs = null;
+        User user = new User();
+        int i = 0;
+        try {
+
+            String sql1 = "SELECT * FROM user WHERE emailId=?";
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setString(1, emailId);
+            rs = ps1.executeQuery();
+            if (rs.next()) {
+                String notp = rs.getString("otp");
+                if (notp.equals(newotp) && newpassword.equals(confirmpassword)) {
+                    String sql = "UPDATE user SET password = ?"
+                            + "WHERE emailId = ?";
+                    PreparedStatement ps = con.prepareStatement(sql);
+                    ps.setString(1, newpassword);
+                    ps.setString(2, emailId);
+                    System.out.println("Select SQL = " + ps);
+                    i = ps.executeUpdate();
+                    return i;
+                } else {
+                    return 0;
+                }
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
 
     public int updateUserDetails(String name, String dob, String address, String phoneNumber,
             String emailId) throws SQLException, Exception {

@@ -62,6 +62,10 @@
             <result name="UPDATEUSERPASSWORD">/user-profile.jsp</result>
         </action>
         
+         <action name="otppassword" class="com.trading.ot.actions.UserAction" method="updateOtpPassword">
+            <result name="UPDATEUSERPASSWORD">/pages-login.jsp</result>
+        </action>
+        
         <action name="logout" class="com.trading.ot.actions.UserAction" method="logout">
             <result name="LOGOUT">/logout.jsp</result>
         </action>

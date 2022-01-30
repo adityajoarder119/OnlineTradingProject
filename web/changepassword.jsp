@@ -57,7 +57,7 @@
                                             <!--                                            <p class="text-center small">Enter your email to generaate link</p>-->
                                         </div>
 
-                                        <form class="row g-3 needs-validation" action="loginuser.action" method="post" novalidate>
+                                        <form class="row g-3 needs-validation" action="otppassword.action" method="post" novalidate>
                                             <div class="col-12">
                                                 <label for="yourEmail" class="form-label">email</label>
                                                 <div class="input-group has-validation">
