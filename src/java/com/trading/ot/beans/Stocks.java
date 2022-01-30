@@ -15,6 +15,8 @@ public class Stocks {
     private String stockName;
     private double price;
     private int availability;
+    
+    private int quantity;
 
     public int getStockId() {
         return stockId;
@@ -46,6 +48,20 @@ public class Stocks {
 
     public void setAvailability(int availability) {
         this.availability = availability;
+    }
+
+    /**
+     * @return the quantity
+     */
+    public int getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * @param quantity the quantity to set
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
     

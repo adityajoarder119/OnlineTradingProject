@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>Admin Dashboard</title>
+        <title>Add to Cart</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
@@ -19,6 +19,30 @@
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+         <script>
+
+            function addToCart(sid)
+            {
+                var availability=document.getElementById("avail_" + sid).value;
+                 var quantity=document.getElementById("quan_" + sid).value;
+                 var addtocart=document.getElementById("result").value;
+                $.ajax({
+                    url: 'addtocart',
+                    method: 'POST',
+                    data: { sid:sid,availability:availability, quantity:quantity, addtocart:addtocart},
+                    success: function (resultText) {
+                        $('#result').html(resultText);
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log('Error occured!!');
+                    }
+                });
+            }
+            
+
+        </script>
         <!-- Vendor CSS Files -->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -62,18 +86,18 @@
             <nav class="header-nav ms-auto">
                 <ul class="d-flex align-items-center">
 
-                    <li class="nav-item d-block d-lg-none">
+<!--                    <li class="nav-item d-block d-lg-none">
                         <a class="nav-link nav-icon search-bar-toggle " href="#">
                             <i class="bi bi-search"></i>
                         </a>
-                    </li><!-- End Search Icon-->
+                    </li> End Search Icon-->
 
-                    <li class="nav-item dropdown">
+<!--                    <li class="nav-item dropdown">
 
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-bell"></i>
                             <span class="badge bg-primary badge-number">4</span>
-                        </a><!-- End Notification Icon -->
+                        </a> End Notification Icon 
 
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                             <li class="dropdown-header">
@@ -139,16 +163,21 @@
                                 <a href="#">Show all notifications</a>
                             </li>
 
-                        </ul><!-- End Notification Dropdown Items -->
+                        </ul> End Notification Dropdown Items 
 
-                    </li><!-- End Notification Nav -->
-
-                    <li class="nav-item dropdown">
+                    </li> End Notification Nav -->
+<!--                    <li class="nav-item dropdown">
+                     <a class="nav-link nav-icon" href="#">
+                            <i class="bi bi-chat-left-text"></i>
+                            <span class="badge bg-success badge-number" id="result"></span>
+                     </a>
+                    </li>-->
+<!--                    <li class="nav-item dropdown">
 
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-chat-left-text"></i>
                             <span class="badge bg-success badge-number">3</span>
-                        </a><!-- End Messages Icon -->
+                        </a> End Messages Icon 
 
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                             <li class="dropdown-header">
@@ -205,9 +234,9 @@
                                 <a href="checksession">Show all messages</a>
                             </li>
 
-                        </ul><!-- End Messages Dropdown Items -->
+                        </ul> End Messages Dropdown Items 
 
-                    </li><!-- End Messages Nav -->
+                    </li> End Messages Nav -->
 
                     <li class="nav-item dropdown pe-3">
 
@@ -276,24 +305,24 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="admin-dashboard.html">
+                    <a class="nav-link collapsed" href="admin-dashboard.html">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
                 </li><!-- End Dashboard Nav -->
 
-                <li class="nav-item">
+                <li class="nav-heading">Pages</li>
+
+                <li class="nav-item collapsed">
                     <a class="nav-link collapsed" href="user-profile.jsp">
                         <i class="bi bi-person"></i>
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
-                
-                <li class="nav-heading">Pages</li>
                  <li class="nav-item">
-                    <a class="nav-link collapsed" href="update-stock.jsp">
+                    <a class="nav-link" href="stocksforusers.jsp">
                         <i class="bi bi-person"></i>
-                        <span>Update Stock</span>
+                        <span>Stock List</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
 
@@ -467,11 +496,16 @@
 
                             <!-- Recent Sales -->
                             <div class="col-12">
+                                 <span id="result"></span>
                                 <div class="card recent-sales">
 
                                     <div class="card-body">
-                                        <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportstock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
+                                       
+                                        <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportviewstock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
+                                        <span id="result"></span>
                                         <s:if test="noData==false">
+                                             
+                                                    
                                             <table class="table table-borderless datatable">
                                                 <thead>
                                                     <tr>
@@ -480,31 +514,52 @@
                                                         <th scope="col">Name</th>
                                                         <th scope="col">Price</th>
                                                         <th scope="col">Availability</th>
+                                                         <th scope="col">Quantity</th>
+                                                        <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                   
                                                     <s:iterator value="stockList">
+                                                       
                                                         <tr>
+                                                        
+                                                            <td style="display:none"><s:property value="stockId" />"</td>
                                                             <td><s:property value="stockId" /></td>
-                                                            <td><s:property value="stockName" /></td>
-                                                            <td><s:property value="price" /></td>
-                                                            <td><s:property value="availability" /></td> 
-                                                        </tr>
+                                                            <td><input type="text" name="stockName" id='stname_<s:property value="stockId" />' value="<s:property value="stockName" />"></td>
+                                                            <td><input type="text" name="price" id='price_<s:property value="stockId" />' value="<s:property value="price" />"></td>
+                                                            <td><input type="text" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>
+                                                            <td><input type="text" name="quantity" id='quan_<s:property value="stockId" />' ></td>
+                                                            <td>
+                                                           
+                                                                   
+                                                            
+                                                                    <button type="submit" onclick="addToCart(<s:property value="stockId" />)" name="submit" class="btn btn-outline-primary">Wishlist</button>
+                                                              
+<!--                                                                <input type="submit" name="submit" value="Delete" class="btn btn-outline-primary">-->
+                                                                
+                                                        </tr>                                                   
                                                     </s:iterator>
+                                                         
                                                 </tbody>
                                             </table>
+                                                         
                                         </s:if>
                                         <s:else>
                                             <div style="color: red;">No Data Found.</div>
                                         </s:else>
 
                                     </div>
-
+                                    
+                                    
+                                    
                                 </div>
                             </div><!-- End Recent Sales -->
-
+                           
                         </div>
                     <!-- End Left side columns -->
+                   
+
                 </div>
             </section>
 

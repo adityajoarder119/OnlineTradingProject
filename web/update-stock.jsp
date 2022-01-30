@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>Admin Dashboard</title>
+        <title>Stock Update</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
@@ -19,6 +19,60 @@
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+         <script>
+
+            function updateStock(sid)
+            {
+
+                var stockName = document.getElementById("stname_" + sid).value;
+                var price= document.getElementById("price_" + sid).value;
+                var availability=document.getElementById("avail_" + sid).value;
+                $.ajax({
+                    url: 'updatestock',
+                    method: 'POST',
+                    data: {stockId: sid,stockName:stockName, price: price, availability:availability},
+                    success: function (resultText) {
+                        $('#result').html(resultText);
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log('Error occured!!');
+                    }
+                });
+            }
+            function deleteStock(sid)
+            {
+
+                $.ajax({
+                    url: 'deletestock',
+                    method: 'POST',
+                    data: {stockId: sid},
+                    success: function (resultText) {
+                        $('#result').html(resultText);
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log('Error occured!!');
+                    }
+                });
+            }
+            function updateStockList()
+            {
+                 var csvFilePath=document.getElementById("csvFilePath").value;
+                $.ajax({
+                    url: 'updatecsv',
+                    method: 'POST',
+                    data: {csvFilePath: csvFilePath},
+                    success: function (resultText) {
+                        $('#result1').html(resultText);
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log('Error occured!!');
+                    }
+                });
+            }
+
+        </script>
         <!-- Vendor CSS Files -->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -276,22 +330,22 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="admin-dashboard.html">
+                    <a class="nav-link collapsed" href="admin-dashboard.html">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
                 </li><!-- End Dashboard Nav -->
 
-                <li class="nav-item">
+                <li class="nav-heading">Pages</li>
+
+                <li class="nav-item collapsed">
                     <a class="nav-link collapsed" href="user-profile.jsp">
                         <i class="bi bi-person"></i>
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
-                
-                <li class="nav-heading">Pages</li>
                  <li class="nav-item">
-                    <a class="nav-link collapsed" href="update-stock.jsp">
+                    <a class="nav-link" href="update-stock.jsp">
                         <i class="bi bi-person"></i>
                         <span>Update Stock</span>
                     </a>
@@ -470,8 +524,12 @@
                                 <div class="card recent-sales">
 
                                     <div class="card-body">
-                                        <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportstock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
+                  
+                                        <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportupdatestock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
+                                        <span id="result"></span>
                                         <s:if test="noData==false">
+                                             
+                                                    
                                             <table class="table table-borderless datatable">
                                                 <thead>
                                                     <tr>
@@ -480,31 +538,66 @@
                                                         <th scope="col">Name</th>
                                                         <th scope="col">Price</th>
                                                         <th scope="col">Availability</th>
+                                                        <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    
                                                     <s:iterator value="stockList">
+                                                       
                                                         <tr>
+                                                        
+                                                            <td style="display:none"><s:property value="stockId" />"</td>
                                                             <td><s:property value="stockId" /></td>
-                                                            <td><s:property value="stockName" /></td>
-                                                            <td><s:property value="price" /></td>
-                                                            <td><s:property value="availability" /></td> 
-                                                        </tr>
+                                                            <td><input type="text" name="stockName" id='stname_<s:property value="stockId" />' value="<s:property value="stockName" />"></td>
+                                                            <td><input type="text" name="price" id='price_<s:property value="stockId" />' value="<s:property value="price" />"></td>
+                                                            <td><input type="text" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>
+                                                          
+                                                            <td>
+                                                           
+                                                                    <button type="submit" onclick="updateStock(<s:property value="stockId" />)" name="submit" class="btn btn-outline-primary">Update</button>
+                                                            
+                                                                    <button type="submit" onclick="deleteStock(<s:property value="stockId" />)" name="submit" class="btn btn-outline-primary">Delete</button>
+                                                              
+<!--                                                                <input type="submit" name="submit" value="Delete" class="btn btn-outline-primary">-->
+                                                                
+                                                        </tr>                                                   
                                                     </s:iterator>
+                                                         
                                                 </tbody>
                                             </table>
+                                                         
                                         </s:if>
                                         <s:else>
                                             <div style="color: red;">No Data Found.</div>
                                         </s:else>
 
                                     </div>
-
+                                    
+                                    
+                                    
                                 </div>
                             </div><!-- End Recent Sales -->
-
+                            <div style="margin:auto">
+                                
+                                               <s:if test="ctr>0">
+                                                  
+                                                    <span style="color: red;"><s:property value="msg" /></span>
+                                                </s:if>
+                                                <s:else>
+                                                    <span style="color: red;"><s:property value="msg" /></span>
+                                                    
+                                                </s:else>
+                               
+                                    <span id="result1"></span>
+                                    <input type="text" id="csvFilePath" name="csvFilePath">
+                                    <button type="submit" onclick="updateStockList()" class="btn btn-outline-primary">Update</button>
+                            
+                            </div>
                         </div>
                     <!-- End Left side columns -->
+                   
+
                 </div>
             </section>
 
