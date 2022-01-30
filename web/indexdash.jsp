@@ -1,3 +1,9 @@
+<%-- 
+    Document   : indexdash
+    Created on : 31 Jan, 2022, 2:26:16 AM
+    Author     : adity
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
@@ -111,7 +117,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="reportstockindex">
+                    <a class="nav-link " href="index.jsp">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -153,7 +159,133 @@
 
         <main id="main" class="main">
 
-            <img src="assets/img/Exa-Trade.png" alt="">
+            <div class="pagetitle">
+                <h1>Dashboard</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="admin-dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </nav>
+            </div><!-- End Page Title -->
+
+            <section class="section dashboard">
+                <div class="row">
+
+                    <!-- MAIN columns -->
+
+                    <div class="row">
+
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Reports <span>/Today</span></h5>
+
+                                    <!-- Line Chart -->
+                                    <div id="reportsChart"></div>
+
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new ApexCharts(document.querySelector("#reportsChart"), {
+                                                series: [{
+                                                        name: 'Sales',
+                                                        data: [31, 40, 28, 51, 42, 82, 56],
+                                                    }, {
+                                                        name: 'Revenue',
+                                                        data: [11, 32, 45, 32, 34, 52, 41]
+                                                    }, {
+                                                        name: 'Customers',
+                                                        data: [15, 11, 32, 18, 9, 24, 11]
+                                                    }],
+                                                chart: {
+                                                    height: 350,
+                                                    type: 'area',
+                                                    toolbar: {
+                                                        show: false
+                                                    },
+                                                },
+                                                markers: {
+                                                    size: 4
+                                                },
+                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                                                fill: {
+                                                    type: "gradient",
+                                                    gradient: {
+                                                        shadeIntensity: 1,
+                                                        opacityFrom: 0.3,
+                                                        opacityTo: 0.4,
+                                                        stops: [0, 90, 100]
+                                                    }
+                                                },
+                                                dataLabels: {
+                                                    enabled: false
+                                                },
+                                                stroke: {
+                                                    curve: 'smooth',
+                                                    width: 2
+                                                },
+                                                xaxis: {
+                                                    type: 'datetime',
+                                                    categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                                                },
+                                                tooltip: {
+                                                    x: {
+                                                        format: 'dd/MM/yy HH:mm'
+                                                    },
+                                                }
+                                            }).render();
+                                        });
+                                    </script>
+                                    <!-- End Line Chart -->
+
+                                </div>
+
+                            </div>
+                        </div><!-- End Reports -->
+
+                        <!-- Recent Sales -->
+                        <div class="col-12">
+                            <div class="card recent-sales">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportstockindex"><button  type="button" style="cursor: pointer;">Refresh</button></a></span></h5>
+                                    <s:if test="noData==false">
+                                        <table class="table table-borderless datatable">
+                                            <thead>
+                                                <tr>
+
+                                                    <th scope="col">Stock ID</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Availability</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <s:iterator value="stockList">
+                                                    <tr>
+                                                        <td><s:property value="stockId" /></td>
+                                                        <td><s:property value="stockName" /></td>
+                                                        <td><s:property value="price" /></td>
+                                                        <td><s:property value="availability" /></td> 
+                                                    </tr>
+                                                </s:iterator>
+                                            </tbody>
+                                        </table>
+                                    </s:if>
+                                    <s:else>
+                                        <div style="color: red;">No Data Found.</div>
+                                    </s:else>
+
+                                </div>
+
+                            </div>
+                        </div><!-- End Recent Sales -->
+
+                    </div>
+                    <!-- End Left side columns -->
+                </div>
+            </section>
 
         </main><!-- End #main -->
 

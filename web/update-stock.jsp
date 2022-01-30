@@ -94,7 +94,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
-                <a href="admin-dashboard.html" class="logo d-flex align-items-center">
+                <a href="admin-dashboard.jsp" class="logo d-flex align-items-center">
                     <img src="assets/img/logo.png" alt="">
                     <span class="d-none d-lg-block">Exa-Trade</span>
                 </a>
@@ -117,151 +117,14 @@
                         </a>
                     </li><!-- End Search Icon-->
 
-                    <li class="nav-item dropdown">
+                   
 
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-bell"></i>
-                            <span class="badge bg-primary badge-number">4</span>
-                        </a><!-- End Notification Icon -->
-
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                            <li class="dropdown-header">
-                                You have 4 new notifications
-                                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li class="notification-item">
-                                <i class="bi bi-exclamation-circle text-warning"></i>
-                                <div>
-                                    <h4>Lorem Ipsum</h4>
-                                    <p>Quae dolorem earum veritatis oditseno</p>
-                                    <p>30 min. ago</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li class="notification-item">
-                                <i class="bi bi-x-circle text-danger"></i>
-                                <div>
-                                    <h4>Atque rerum nesciunt</h4>
-                                    <p>Quae dolorem earum veritatis oditseno</p>
-                                    <p>1 hr. ago</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li class="notification-item">
-                                <i class="bi bi-check-circle text-success"></i>
-                                <div>
-                                    <h4>Sit rerum fuga</h4>
-                                    <p>Quae dolorem earum veritatis oditseno</p>
-                                    <p>2 hrs. ago</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li class="notification-item">
-                                <i class="bi bi-info-circle text-primary"></i>
-                                <div>
-                                    <h4>Dicta reprehenderit</h4>
-                                    <p>Quae dolorem earum veritatis oditseno</p>
-                                    <p>4 hrs. ago</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li class="dropdown-footer">
-                                <a href="#">Show all notifications</a>
-                            </li>
-
-                        </ul><!-- End Notification Dropdown Items -->
-
-                    </li><!-- End Notification Nav -->
-
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-chat-left-text"></i>
-                            <span class="badge bg-success badge-number">3</span>
-                        </a><!-- End Messages Icon -->
-
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-                            <li class="dropdown-header">
-                                You have 3 new messages
-                                <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li class="message-item">
-                                <a href="#">
-                                    <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
-                                    <div>
-                                        <h4>Maria Hudson</h4>
-                                        <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                        <p>4 hrs. ago</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li class="message-item">
-                                <a href="#">
-                                    <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
-                                    <div>
-                                        <h4>Anna Nelson</h4>
-                                        <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                        <p>6 hrs. ago</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li class="message-item">
-                                <a href="#">
-                                    <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
-                                    <div>
-                                        <h4>David Muldon</h4>
-                                        <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                                        <p>8 hrs. ago</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
-                            <li class="dropdown-footer">
-                                <a href="checksession">Show all messages</a>
-                            </li>
-
-                        </ul><!-- End Messages Dropdown Items -->
-
-                    </li><!-- End Messages Nav -->
+                    
 
                     <li class="nav-item dropdown pe-3">
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                            
                             <span class="d-none d-md-block dropdown-toggle ps-2"><s:property value="#session.name" /></span>
                         </a><!-- End Profile Iamge Icon -->
 
@@ -325,7 +188,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="admin-dashboard.html">
+                    <a class="nav-link collapsed" href="admin-dashboard.jsp">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -347,14 +210,14 @@
                 </li><!-- End Profile Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-faq.html">
+                    <a class="nav-link collapsed" href="pages-faq.jsp">
                         <i class="bi bi-question-circle"></i>
                         <span>F.A.Q</span>
                     </a>
                 </li><!-- End F.A.Q Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-contact.html">
+                    <a class="nav-link collapsed" href="pages-contact.jsp">
                         <i class="bi bi-envelope"></i>
                         <span>Contact</span>
                     </a>
@@ -382,137 +245,6 @@
                     <!-- MAIN columns -->
                     
                         <div class="row">
-
-                            <!-- Sales Card -->
-                            <div class="col-xxl-4 col-md-6">
-                                <div class="card info-card sales-card">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Orders</h5>
-
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-cart"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>145</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End Sales Card -->
-
-                            <!-- Revenue Card -->
-                            <div class="col-xxl-4 col-md-6">
-                                <div class="card info-card revenue-card">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Revenue Circulating</h5>
-
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-currency-dollar"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>$3,264</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div><!-- End Revenue Card -->
-
-                            <!-- Customers Card -->
-                            <div class="col-xxl-4 col-xl-12">
-
-                                <div class="card info-card customers-card">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total No of Customers</h5>
-
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-people"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>1244</h6>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div><!-- End Customers Card -->
-
-                            <!-- Reports -->
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                                        <!-- Line Chart -->
-                                        <div id="reportsChart"></div>
-
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", () => {
-                                                new ApexCharts(document.querySelector("#reportsChart"), {
-                                                    series: [{
-                                                            name: 'Sales',
-                                                            data: [31, 40, 28, 51, 42, 82, 56],
-                                                        }, {
-                                                            name: 'Revenue',
-                                                            data: [11, 32, 45, 32, 34, 52, 41]
-                                                        }, {
-                                                            name: 'Customers',
-                                                            data: [15, 11, 32, 18, 9, 24, 11]
-                                                        }],
-                                                    chart: {
-                                                        height: 350,
-                                                        type: 'area',
-                                                        toolbar: {
-                                                            show: false
-                                                        },
-                                                    },
-                                                    markers: {
-                                                        size: 4
-                                                    },
-                                                    colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                                    fill: {
-                                                        type: "gradient",
-                                                        gradient: {
-                                                            shadeIntensity: 1,
-                                                            opacityFrom: 0.3,
-                                                            opacityTo: 0.4,
-                                                            stops: [0, 90, 100]
-                                                        }
-                                                    },
-                                                    dataLabels: {
-                                                        enabled: false
-                                                    },
-                                                    stroke: {
-                                                        curve: 'smooth',
-                                                        width: 2
-                                                    },
-                                                    xaxis: {
-                                                        type: 'datetime',
-                                                        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                                                    },
-                                                    tooltip: {
-                                                        x: {
-                                                            format: 'dd/MM/yy HH:mm'
-                                                        },
-                                                    }
-                                                }).render();
-                                            });
-                                        </script>
-                                        <!-- End Line Chart -->
-
-                                    </div>
-
-                                </div>
-                            </div><!-- End Reports -->
 
                             <!-- Recent Sales -->
                             <div class="col-12">

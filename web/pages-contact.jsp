@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>Index page</title>
+        <title>Contact page</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
@@ -65,7 +65,7 @@
                     <li class="nav-item dropdown pe-3">
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                            
                             <span class="d-none d-md-block dropdown-toggle ps-2"><s:property value="#session.name" /></span>
                         </a><!-- End Profile Iamge Icon -->
 
@@ -79,7 +79,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.jsp">
                                     <i class="bi bi-person"></i>
                                     <span>My Profile</span>
                                 </a>
@@ -89,7 +89,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.jsp">
                                     <i class="bi bi-gear"></i>
                                     <span>Account Settings</span>
                                 </a>
@@ -99,7 +99,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.jsp">
                                     <i class="bi bi-question-circle"></i>
                                     <span>Need Help?</span>
                                 </a>
@@ -163,7 +163,7 @@
               <div class="info-box card">
                 <i class="bi bi-geo-alt"></i>
                 <h3>Address</h3>
-                <p>A108 Adam Street,<br>New York, NY 535022</p>
+                <p>Sector 5,<br>kolkata,535022</p>
               </div>
             </div>
             <div class="col-lg-6">
@@ -176,8 +176,8 @@
             <div class="col-lg-6">
               <div class="info-box card">
                 <i class="bi bi-envelope"></i>
-                <h3>Email Us</h3>
-                <p>info@example.com<br>contact@example.com</p>
+                <h3>Email Us</h3>s
+                <p>exatrade1@gmail.com</p>
               </div>
             </div>
             <div class="col-lg-6">

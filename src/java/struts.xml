@@ -29,7 +29,7 @@
         
         <action name="reportstockindex" class="com.trading.ot.actions.StockAction" method="StockReportAction">
              <result name="LOGOUT1">/logout.jsp</result>
-            <result name="REPORTSTOCK">/index.jsp</result>
+            <result name="REPORTSTOCK">/indexdash.jsp</result>
         </action>
         
         <action name="reportupdatestock" class="com.trading.ot.actions.StockAction" method="StockUpdateAction">

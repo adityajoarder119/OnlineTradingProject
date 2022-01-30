@@ -55,12 +55,7 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        <!-- =======================================================
-        * Template Name: NiceAdmin - v2.2.1
-        * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-        * Author: BootstrapMade.com
-        * License: https://bootstrapmade.com/license/
-        ======================================================== -->
+        
     </head>
 
     <body>
@@ -89,7 +84,7 @@
                     <li class="nav-item dropdown pe-3">
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                            
                             <span class="d-none d-md-block dropdown-toggle ps-2"><s:property value="#session.name" /></span>
                         </a><!-- End Profile Iamge Icon -->
 
