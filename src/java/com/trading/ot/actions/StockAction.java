@@ -11,13 +11,26 @@ import java.util.ArrayList;
 import java.util.List;
 import com.trading.ot.beans.Stocks;
 import com.trading.ot.dao.Admin;
+import java.util.Map;
+import javax.servlet.http.HttpSession;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author adity
  */
-public class StockAction extends ActionSupport {
+public class StockAction extends ActionSupport implements SessionAware{
 
+    private static long serialVersionUID = 4821216272008282533L;
+    private SessionMap<String, Object> sessionMap;
+    @Override
+    public void setSession(Map<String, Object> map) {
+        setSessionMap((SessionMap<String, Object>) (SessionMap) map);
+    }
+    
+    
     private ResultSet rs = null;
     private Stocks product = null;
     private List<Stocks> stockList = null;
@@ -37,8 +50,11 @@ public class StockAction extends ActionSupport {
     private int addtocart;
 
     public String StockReportAction() {
-
-        try {
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+            try {
             setStockList(new ArrayList<>());
             setStockList(getAdmin().reportStock());
 
@@ -53,11 +69,18 @@ public class StockAction extends ActionSupport {
             e.printStackTrace();
         }
         return "REPORTSTOCK";
+        }
+
+        
     }
 
     public String StockUpdateAction() {
-
-        try {
+        
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+            try {
             setStockList(new ArrayList<>());
             setStockList(getAdmin().reportStock());
 
@@ -72,11 +95,18 @@ public class StockAction extends ActionSupport {
             e.printStackTrace();
         }
         return "REPORTSTOCK";
+        }
+
+        
     }
 
     public String updateStock() {
         Admin dao = new Admin();
-        try {
+         HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+             try {
             int i = dao.updateStockDetails(getStockId(), getStockName(), getPrice(), getAvailability());
             if (i > 0) {
                 setMsg("Stocks updated successfully");
@@ -89,11 +119,17 @@ public class StockAction extends ActionSupport {
         }
 
         return "UPDATESTOCK";
+        }
+       
     }
 
     public String updateStockList() {
         Admin dao = new Admin();
-        try {
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+            try {
             int i = dao.updateStockLists(getCsvFilePath());
             if (i > 0) {
                 setMsg("Stocks updated successfully");
@@ -106,11 +142,18 @@ public class StockAction extends ActionSupport {
         }
 
         return "UPDATESTOCKLIST";
+        }
+        
     }
 
     public String deleteStock() {
         Admin dao = new Admin();
-        try {
+        
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+            try {
             int isDeleted = dao.deleteStock(getStockId());
             if (isDeleted > 0) {
                 setMsg("Stocks updated successfully");
@@ -121,11 +164,16 @@ public class StockAction extends ActionSupport {
             e.printStackTrace();
         }
         return "DELETESTOCK";
+        }
+        
     }
 
     public String StockAddToCartAction() {
-
-        try {
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+             try {
             setStockList(new ArrayList<>());
             setStockList(getAdmin().reportStock());
 
@@ -140,11 +188,19 @@ public class StockAction extends ActionSupport {
             e.printStackTrace();
         }
         return "REPORTSTOCK";
+        }
+
+       
     }
 
     public String addToCart() {
         Admin dao = new Admin();
-        try {
+        
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+             try {
             int i = dao.addToCart(getStockId(), getAvailability(), getQuantity(), getAddtocart());
             if (i > 0) {
                 setAddtocart(i);
@@ -157,6 +213,8 @@ public class StockAction extends ActionSupport {
         }
 
         return "ADDTOCART";
+        }
+       
     }
 
     /**
@@ -354,4 +412,30 @@ public class StockAction extends ActionSupport {
     public void setAddtocart(int addtocart) {
         this.addtocart = addtocart;
     }
+    
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    /**
+     * @param aSerialVersionUID the serialVersionUID to set
+     */
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
+
+    /**
+     * @return the sessionMap
+     */
+    public SessionMap<String, Object> getSessionMap() {
+        return sessionMap;
+    }
+
+    /**
+     * @param sessionMap the sessionMap to set
+     */
+    public void setSessionMap(SessionMap<String, Object> sessionMap) {
+        this.sessionMap = sessionMap;
+    }
+
 }

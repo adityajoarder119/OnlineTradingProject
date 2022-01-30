@@ -21,6 +21,20 @@ import org.apache.struts2.interceptor.SessionAware;
  */
 public class UserAction extends ActionSupport implements SessionAware {
 
+    /**
+     * @return the confirmpassword
+     */
+    public String getConfirmpassword() {
+        return confirmpassword;
+    }
+
+    /**
+     * @param confirmpassword the confirmpassword to set
+     */
+    public void setConfirmpassword(String confirmpassword) {
+        this.confirmpassword = confirmpassword;
+    }
+
     private static long serialVersionUID = 4821216272008282533L;
     private SessionMap<String, Object> sessionMap;
     @Override
@@ -42,14 +56,12 @@ public class UserAction extends ActionSupport implements SessionAware {
     private String generatedOTP;
     private String receiverEmail;
     private String newotp;
-  
     
     
     private String curpassword;
     private String newpassword;
     private String renewpassword;
     private String confirmpassword;
-    
     
     
     private ResultSet rs = null;
@@ -91,36 +103,36 @@ public class UserAction extends ActionSupport implements SessionAware {
         //URLConnection connection;
         setAdmin(new Admin());
         try {    
-            setUser(getAdmin().checkValidUser(getEmailId(), getPassword()));
-            int status=getUser().getStatus();
-            String name=getUser().getName();
-            String address=getUser().getAddress();
-            String phoneNumber=getUser().getPhoneNumber();
-            String emailId=getUser().getEmailId();
-            String dob=getUser().getDob();
+            user=getAdmin().checkValidUser(getEmailId(), getPassword());
+            int status=user.getStatus();
+            String name=user.getName();
+            String address=user.getAddress();
+            String phoneNumber=user.getPhoneNumber();
+            String emailId=user.getEmailId();
+            String dob=user.getDob();
             
-            if (getUser().isValidUser()==true) {
+            if (user.isValidUser()==true) {
                
                if(status==0)
                {
                    setMsg("Login successful");
-                    getSessionMap().put("login","true");
-                    getSessionMap().put("address",address);
-                    getSessionMap().put("emailId",emailId);
-                    getSessionMap().put("phoneNumber",phoneNumber);
-                    getSessionMap().put("dob",dob);
-                    getSessionMap().put("name",name);
+                   sessionMap.put("login","true");
+                   sessionMap.put("address",address);
+                   sessionMap.put("emailId",emailId);
+                   sessionMap.put("phoneNumber",phoneNumber);
+                   sessionMap.put("dob",dob);
+                   sessionMap.put("name",name);
                    return "USER";
                }
                if(status==1)
                {
                    setMsg("Login successful");
-                    getSessionMap().put("login","true");
-                    getSessionMap().put("name",name);
-                    getSessionMap().put("address",address);
-                    getSessionMap().put("emailId",emailId);
-                    getSessionMap().put("phoneNumber",phoneNumber);
-                    getSessionMap().put("dob",dob);
+                   sessionMap.put("login","true");
+                   sessionMap.put("name",name);
+                   sessionMap.put("address",address);
+                   sessionMap.put("emailId",emailId);
+                   sessionMap.put("phoneNumber",phoneNumber);
+                   sessionMap.put("dob",dob);
                    return "ADMINUSER";
                }
                 
@@ -133,7 +145,21 @@ public class UserAction extends ActionSupport implements SessionAware {
         }
         return null;  
     }
-    
+    public String updateOtpPassword() {
+        Admin dao = new Admin();
+        try {
+            int i = dao.updateOtpPassword(getNewotp(), getNewpassword(), getConfirmpassword(), getEmailId());
+            if (i > 0) {
+                msg = "Password Updated Successfuly";
+            } else {
+                msg = "error";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "UPDATEUSERPASSWORD";
+    }
     
     public String forgetPassword() {
        String from = "ExaTrade1@gmail.com";
@@ -165,51 +191,50 @@ public class UserAction extends ActionSupport implements SessionAware {
     
      public String updateUser() {
         Admin dao = new Admin();
-        try {
-            int i = dao.updateUserDetails(getName(), getDob(), getAddress(), getPhoneNumber(), getEmailId());
+        
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } 
+        else 
+        {
+            try {
+            int i = dao.updateUserDetails(name, dob, address, phoneNumber, emailId);
             if (i > 0) {
-                setMsg("Record Updated Successfuly");
-            } else {
-                setMsg("error");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return "UPDATEUSER";
-    }
-     
-     public String updateOtpPassword() {
-        Admin dao = new Admin();
-        try {
-            int i = dao.updateOtpPassword(getNewotp(), getNewpassword(), getConfirmpassword(), getEmailId());
-            if (i > 0) {
-                msg = "Password Updated Successfuly";
+                msg = "Record Updated Successfuly";
             } else {
                 msg = "error";
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        return "UPDATEUSER";
         }
 
-        return "UPDATEUSERPASSWORD";
     }
     
     
     public String updateUserPassword() {
         Admin dao = new Admin();
-        try {
-            int i = dao.updateUserPassword(getCurpassword(), getNewpassword(), getRenewpassword(), getEmailId());
-            if (i > 0) {
-                setMsg("Password Updated Successfuly");
-            } else {
-                setMsg("error");
+        
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+            try {
+                int i = dao.updateUserPassword(getCurpassword(), getNewpassword(), getRenewpassword(), getEmailId());
+                if (i > 0) {
+                    msg = "Password Updated Successfuly";
+                } else {
+                    msg = "error";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+             return "UPDATEUSERPASSWORD";
         }
-
-        return "UPDATEUSERPASSWORD";
+       
     }
     
   
@@ -598,8 +623,6 @@ public class UserAction extends ActionSupport implements SessionAware {
         this.renewpassword = renewpassword;
     }
 
-    
-
     /**
      * @return the newotp
      */
@@ -612,20 +635,6 @@ public class UserAction extends ActionSupport implements SessionAware {
      */
     public void setNewotp(String newotp) {
         this.newotp = newotp;
-    }
-
-    /**
-     * @return the confirmpassword
-     */
-    public String getConfirmpassword() {
-        return confirmpassword;
-    }
-
-    /**
-     * @param confirmpassword the confirmpassword to set
-     */
-    public void setConfirmpassword(String confirmpassword) {
-        this.confirmpassword = confirmpassword;
     }
 
     /**
