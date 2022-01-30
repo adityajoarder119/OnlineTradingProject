@@ -49,27 +49,27 @@
                     method: 'POST',
                     data: {stockId: sid},
                     success: function (resultText) {
-                        $('#result').html(resultText);
-                    },
-                    error: function (jqXHR, exception) {
-                        console.log('Error occured!!');
-                    }
-                });
-            }
-            function updateStockList()
-            {
-                 var csvFilePath=document.getElementById("csvFilePath").value;
-                $.ajax({
-                    url: 'updatecsv',
-                    method: 'POST',
-                    data: {csvFilePath: csvFilePath},
-                    success: function (resultText) {
                         $('#result1').html(resultText);
                     },
                     error: function (jqXHR, exception) {
                         console.log('Error occured!!');
                     }
                 });
+            }
+            async function updateStockList()
+            {
+                let formData = new FormData();           
+                formData.append("csvFilePath", csvFilePath.files[0]);
+                console.log(formData);
+                
+                await fetch('updatecsv', {
+                    method: "POST", 
+                    body: formData
+                  }); 
+                  var msg='The stock table has been uploaded successfully.';
+                  $('#result2').html(msg);
+                
+
             }
 
         </script>
@@ -85,12 +85,7 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        <!-- =======================================================
-        * Template Name: NiceAdmin - v2.2.1
-        * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-        * Author: BootstrapMade.com
-        * License: https://bootstrapmade.com/license/
-        ======================================================== -->
+        
     </head>
 
     <body>
@@ -300,7 +295,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.jsp">
+                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
                                     <i class="bi bi-question-circle"></i>
                                     <span>Need Help?</span>
                                 </a>
@@ -330,7 +325,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="admin-dashboard.jsp">
+                    <a class="nav-link collapsed" href="admin-dashboard.html">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -352,14 +347,14 @@
                 </li><!-- End Profile Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-faq.jsp">
+                    <a class="nav-link collapsed" href="pages-faq.html">
                         <i class="bi bi-question-circle"></i>
                         <span>F.A.Q</span>
                     </a>
                 </li><!-- End F.A.Q Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-contact.jsp">
+                    <a class="nav-link collapsed" href="pages-contact.html">
                         <i class="bi bi-envelope"></i>
                         <span>Contact</span>
                     </a>
@@ -375,7 +370,7 @@
                 <h1>Dashboard</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="admin-dashboard.jsp">Home</a></li>
+                        <li class="breadcrumb-item"><a href="admin-dashboard.html">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </nav>
@@ -527,6 +522,7 @@
                   
                                         <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportupdatestock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
                                         <span id="result"></span>
+                                         <span id="result1"></span>
                                         <s:if test="noData==false">
                                              
                                                     
@@ -578,19 +574,14 @@
                                     
                                 </div>
                             </div><!-- End Recent Sales -->
+                             
                             <div style="margin:auto">
-                                
-                                               <s:if test="ctr>0">
-                                                  
-                                                    <span style="color: red;"><s:property value="msg" /></span>
-                                                </s:if>
-                                                <s:else>
-                                                    <span style="color: red;"><s:property value="msg" /></span>
-                                                    
-                                                </s:else>
-                               
-                                    <span id="result1"></span>
-                                    <input type="text" id="csvFilePath" name="csvFilePath">
+                                <span style="color:red; font-size: 14px;" id="result2"></span><br>
+                                            
+                                   
+                                    
+                                    
+                                    <input type="file" id="csvFilePath" name="csvFilePath">
                                     <button type="submit" onclick="updateStockList()" class="btn btn-outline-primary">Update</button>
                             
                             </div>
