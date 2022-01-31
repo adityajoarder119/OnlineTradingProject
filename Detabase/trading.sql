@@ -57,7 +57,7 @@ CREATE TABLE `stocks` (
   `price` double NOT NULL,
   `availability` int NOT NULL,
   PRIMARY KEY (`stockId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `stocks` (
 
 LOCK TABLES `stocks` WRITE;
 /*!40000 ALTER TABLE `stocks` DISABLE KEYS */;
-INSERT INTO `stocks` VALUES (1,'Exavalu',100,50),(2,'CloudKaptan',500,100),(3,'TCS',1000,100),(4,'Wipro',850,200);
+INSERT INTO `stocks` VALUES (1,'Exavalu',100,58),(2,'CloudKaptan',500,100),(3,'TCS',1000,100),(4,'Wipro',850,200),(5,'Elijah',66853.92,100),(6,'Phillip',84421.95,250),(7,'Kenzie',69914.63,180),(8,'Regina',59682.39,1000),(9,'Irene',51795.67,300),(10,'Lucy',49056.65,200),(11,'Lily',57882.21,345),(12,'Noah',17978.68,878),(13,'Cedrick',98680.42,8799),(14,'Fred',26522.86,134);
 /*!40000 ALTER TABLE `stocks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,10 +86,11 @@ CREATE TABLE `user` (
   `password` varchar(45) NOT NULL,
   `address` varchar(200) NOT NULL,
   `status` int NOT NULL DEFAULT '0',
+  `otp` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`userId`),
   UNIQUE KEY `emailId_UNIQUE` (`emailId`),
   UNIQUE KEY `phoneNumber_UNIQUE` (`phoneNumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +99,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Jay','jdas@gmail.com','1234567890','22','1234','falakata',2);
+INSERT INTO `user` VALUES (1,'Abhineet','abh@gmail.com','1234567890','0','kuchbhi','spj',0,NULL),(2,'Aditys Joarder','adityajoarder119@gmail.com','8972041619','2022-01-05','1234','asdasd',1,'8010'),(3,'adi j','sdg@asd.com','4569871235','2022-01-05','123','bvcfgdfg',0,NULL),(4,'ritu','rituparnabhattacharya0@gmail.com','1234568975','0','1234','fhfhf',0,'1498'),(6,'Aditys Joar','adityajoarder01@gmail.com','8972041614','2022-01-05','4568','asdasd',0,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -111,4 +112,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-26 15:53:17
+-- Dump completed on 2022-01-30 14:43:35
