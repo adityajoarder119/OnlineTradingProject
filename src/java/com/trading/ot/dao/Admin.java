@@ -467,5 +467,56 @@ public class Admin {
         }
 
     }
+    
+    public List reportUser() throws SQLException, Exception {
+        ResultSet rs = null;
+        Connection con = null;
+        List<User> userList = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM trading.user";
+            con = ConnectionManager.getConnection();
+            System.out.println("Connection is " + con);
+            PreparedStatement ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getInt("userId"));
+                user.setName(rs.getString("name"));
+                user.setEmailId(rs.getString("emailId"));
+                user.setPhoneNumber(rs.getString("phoneNumber"));
+                user.setStatus(rs.getInt("status"));
+                userList.add(user);
+            }
+            return userList;
+        } catch (SQLException e) {
+            return null;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+    
+    public int promoteUserDetails(int userId, String name, String emailId, String phoneNumber, String dob, String password, String address, int status) throws SQLException, Exception {
+
+        Connection con = ConnectionManager.getConnection();
+        int i = 0;
+        try {
+            String sql = "UPDATE user SET status = 1 WHERE userId = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, userId);
+            System.out.println("Select SQL = " + ps);
+            i = ps.executeUpdate();
+            return i;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
 
 }

@@ -8,6 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.trading.ot.beans.User;
 import com.trading.ot.dao.Admin;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
@@ -96,7 +97,6 @@ public class UserAction extends ActionSupport implements SessionAware {
 
     }
     
-    
     public String checkValidUser() 
     {
         //URL url;
@@ -145,6 +145,7 @@ public class UserAction extends ActionSupport implements SessionAware {
         }
         return null;  
     }
+    
     public String updateOtpPassword() {
         Admin dao = new Admin();
         try {
@@ -253,6 +254,44 @@ public class UserAction extends ActionSupport implements SessionAware {
         } else {
             return "PASS";
         }
+    }
+    
+    
+    public String reportUserAction() {
+        setAdmin(new Admin());
+        try {
+            setUserList(new ArrayList<>());
+            setUserList(getAdmin().reportUser());
+
+            if (!userList.isEmpty()) {
+                setNoData(false);
+                System.out.println("User retrieve = " + getUserList().size());
+                System.out.println("setting nodata=false");
+            } else {
+                setNoData(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "REPORTUSER";
+    }
+    
+    
+    public String promoteUser() {
+        Admin dao = new Admin();
+        try {
+            int i = dao.promoteUserDetails(getUserId(), getName(), getEmailId(), getPhoneNumber(), getDob(), getPassword(), getAddress(), getStatus());
+            if (i > 0) {
+                setMsg("User promoted successfully");
+            } else {
+                setMsg("error");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "PROMOTEUSER";
     }
   
     

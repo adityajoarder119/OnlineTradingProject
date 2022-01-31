@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>Stock Update</title>
+        <title>Promote User</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
@@ -19,60 +19,6 @@
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-         <script>
-
-            function updateStock(sid)
-            {
-
-                var stockName = document.getElementById("stname_" + sid).value;
-                var price= document.getElementById("price_" + sid).value;
-                var availability=document.getElementById("avail_" + sid).value;
-                $.ajax({
-                    url: 'updatestock',
-                    method: 'POST',
-                    data: {stockId: sid,stockName:stockName, price: price, availability:availability},
-                    success: function (resultText) {
-                        $('#result').html(resultText);
-                    },
-                    error: function (jqXHR, exception) {
-                        console.log('Error occured!!');
-                    }
-                });
-            }
-            function deleteStock(sid)
-            {
-
-                $.ajax({
-                    url: 'deletestock',
-                    method: 'POST',
-                    data: {stockId: sid},
-                    success: function (resultText) {
-                        $('#result1').html(resultText);
-                    },
-                    error: function (jqXHR, exception) {
-                        console.log('Error occured!!');
-                    }
-                });
-            }
-            async function updateStockList()
-            {
-                let formData = new FormData();           
-                formData.append("csvFilePath", csvFilePath.files[0]);
-                console.log(formData);
-                
-                await fetch('updatecsv', {
-                    method: "POST", 
-                    body: formData
-                  }); 
-                  var msg='The stock table has been uploaded successfully.';
-                  $('#result2').html(msg);
-                
-
-            }
-
-        </script>
         <!-- Vendor CSS Files -->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -81,11 +27,34 @@
         <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
         <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
         <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+        
+        <script>
+            function promoteUser(uid)
+            {
+
+                $.ajax({
+                    url: 'promoteuser',
+                    method: 'POST',
+                    data: {userId: uid},
+                    success: function (resultText) {
+                        $('#result1').html(resultText);
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log('Error occured!!');
+                    }
+                });
+            }
+            </script>
 
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        
+        <!-- =======================================================
+        * Template Name: NiceAdmin - v2.2.1
+        * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+        * Author: BootstrapMade.com
+        * License: https://bootstrapmade.com/license/
+        ======================================================== -->
     </head>
 
     <body>
@@ -94,7 +63,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
-                <a href="admin-dashboard.jsp" class="logo d-flex align-items-center">
+                <a href="admin-dashboard.html" class="logo d-flex align-items-center">
                     <img src="assets/img/logo.png" alt="">
                     <span class="d-none d-lg-block">Exa-Trade</span>
                 </a>
@@ -117,8 +86,6 @@
                         </a>
                     </li><!-- End Search Icon-->
 
-                   
-
                     
 
                     <li class="nav-item dropdown pe-3">
@@ -131,7 +98,7 @@
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                             <li class="dropdown-header">
                                 <h6><s:property value="#session.name" /></h6>
-                                <span>Web Designer</span>
+                                
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -193,23 +160,8 @@
                         <span>Dashboard</span>
                     </a>
                 </li><!-- End Dashboard Nav -->
-
-                <li class="nav-heading">Pages</li>
-
-                <li class="nav-item collapsed">
-                    <a class="nav-link collapsed" href="user-profile.jsp">
-                        <i class="bi bi-person"></i>
-                        <span>Profile</span>
-                    </a>
-                </li><!-- End Profile Page Nav -->
-                 <li class="nav-item">
-                    <a class="nav-link" href="update-stock.jsp">
-                        <i class="bi bi-person"></i>
-                        <span>Update Stock</span>
-                    </a>
-                </li><!-- End Profile Page Nav -->
                 
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link " href="userPromotion.jsp">
                         <i class="ri-user-3-line"></i>
                         <span>User List</span>
@@ -217,14 +169,29 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-faq.jsp">
+                    <a class="nav-link collapsed" href="user-profile.jsp">
+                        <i class="bi bi-person"></i>
+                        <span>Profile</span>
+                    </a>
+                </li><!-- End Profile Page Nav -->
+                
+                <li class="nav-heading">Pages</li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="update-stock.jsp">
+                        <i class="bi bi-bar-chart"></i>
+                        <span>Update Stock</span>
+                    </a>
+                </li><!-- End Profile Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-faq.html">
                         <i class="bi bi-question-circle"></i>
                         <span>F.A.Q</span>
                     </a>
                 </li><!-- End F.A.Q Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-contact.jsp">
+                    <a class="nav-link collapsed" href="pages-contact.html">
                         <i class="bi bi-envelope"></i>
                         <span>Contact</span>
                     </a>
@@ -240,8 +207,8 @@
                 <h1>Dashboard</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="admin-dashboard.html">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="admin-dashboard.jsp">Home</a></li>
+                        <li class="breadcrumb-item active">User Promotion</li>
                     </ol>
                 </nav>
             </div><!-- End Page Title -->
@@ -253,81 +220,53 @@
                     
                         <div class="row">
 
+                            
+
                             <!-- Recent Sales -->
                             <div class="col-12">
                                 <div class="card recent-sales">
 
                                     <div class="card-body">
-                  
-                                        <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportupdatestock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
-                                        <span id="result"></span>
-                                         <span id="result1"></span>
+                                        <h5 class="card-title">User<span>  |  </span><span><a href="reportuser"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
                                         <s:if test="noData==false">
-                                             
-                                                    
                                             <table class="table table-borderless datatable">
                                                 <thead>
                                                     <tr>
-                                                        
-                                                        <th scope="col">Stock ID</th>
+                                                        <th scope="col">User ID</th>
                                                         <th scope="col">Name</th>
-                                                        <th scope="col">Price</th>
-                                                        <th scope="col">Availability</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Phone Number</th>
+<!--                                                        <th scope="col">Status</th>-->
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    
-                                                    <s:iterator value="stockList">
-                                                       
+                                                    <s:iterator value="userList">
                                                         <tr>
-                                                        
-                                                            <td style="display:none"><s:property value="stockId" />"</td>
-                                                            <td><s:property value="stockId" /></td>
-                                                            <td><input type="text" name="stockName" id='stname_<s:property value="stockId" />' value="<s:property value="stockName" />"></td>
-                                                            <td><input type="text" name="price" id='price_<s:property value="stockId" />' value="<s:property value="price" />"></td>
-                                                            <td><input type="text" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>
-                                                          
+                                                            <td><s:property value="userId" /></td>
+                                                            <td><s:property value="name" /></td>
+                                                            <td><s:property value="emailId" /></td>
+                                                            <td><s:property value="phoneNumber" /></td>
+<!--                                                            <td contenteditable='true'><s:property value="status" /></td>-->
                                                             <td>
-                                                           
-                                                                    <button type="submit" onclick="updateStock(<s:property value="stockId" />)" name="submit" class="btn btn-outline-primary">Update</button>
-                                                            
-                                                                    <button type="submit" onclick="deleteStock(<s:property value="stockId" />)" name="submit" class="btn btn-outline-primary">Delete</button>
-                                                              
-<!--                                                                <input type="submit" name="submit" value="Delete" class="btn btn-outline-primary">-->
-                                                                
-                                                        </tr>                                                   
+                                                                <button type="submit" onclick="promoteUser(<s:property value="userId" />)" name="submit" class="btn btn-outline-primary">Promote User</button>
+                                                            </td>
+                                                        </tr>
                                                     </s:iterator>
-                                                         
                                                 </tbody>
                                             </table>
-                                                         
                                         </s:if>
                                         <s:else>
                                             <div style="color: red;">No Data Found.</div>
                                         </s:else>
 
                                     </div>
-                                    
-                                    
-                                    
+
                                 </div>
                             </div><!-- End Recent Sales -->
-                             
-                            <div style="margin:auto">
-                                <span style="color:red; font-size: 14px;" id="result2"></span><br>
-                                            
-                                   
-                                    
-                                    
-                                    <input type="file" id="csvFilePath" name="csvFilePath">
-                                    <button type="submit" onclick="updateStockList()" class="btn btn-outline-primary">Update</button>
-                            
-                            </div>
+
                         </div>
                     <!-- End Left side columns -->
-                   
-
                 </div>
             </section>
 

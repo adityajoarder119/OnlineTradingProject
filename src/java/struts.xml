@@ -86,5 +86,14 @@
             <result name="PASS">/admin-dashboard.jsp</result>
         </action>
         
+         <action name="reportuser" class="com.trading.ot.actions.UserAction" method="reportUserAction">
+            <result name="REPORTUSER">/userPromotion.jsp</result>
+        </action>
+        
+        <action name="promoteuser" class="com.trading.ot.actions.UserAction" method="promoteUser">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="PROMOTEUSER">/success-user.jsp</result>
+        </action>
+        
     </package>
 </struts>

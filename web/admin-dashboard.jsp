@@ -149,6 +149,13 @@
                         <span>Update Stock</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
+                
+                 <li class="nav-item">
+                    <a class="nav-link collapsed" href="userPromotion.jsp">
+                        <i class="ri-user-3-line"></i>
+                        <span>User List</span>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="pages-faq.jsp">
