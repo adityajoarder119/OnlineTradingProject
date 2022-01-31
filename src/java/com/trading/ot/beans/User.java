@@ -18,8 +18,9 @@ public class User {
     private String dob;
     private String password;
     private String address;
-    private String validUser;
     private int status;
+    private boolean validUser;
+    private String otp;
 
     /**
      * @return the userId
@@ -120,20 +121,6 @@ public class User {
     }
 
     /**
-     * @return the validUser
-     */
-    public String getValidUser() {
-        return validUser;
-    }
-
-    /**
-     * @param validUser the validUser to set
-     */
-    public void setValidUser(String validUser) {
-        this.validUser = validUser;
-    }
-
-    /**
      * @return the status
      */
     public int getStatus() {
@@ -145,6 +132,34 @@ public class User {
      */
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    /**
+     * @return the validUser
+     */
+    public boolean isValidUser() {
+        return validUser;
+    }
+
+    /**
+     * @param validUser the validUser to set
+     */
+    public void setValidUser(boolean validUser) {
+        this.validUser = validUser;
+    }
+
+    /**
+     * @return the otp
+     */
+    public String getOtp() {
+        return otp;
+    }
+
+    /**
+     * @param otp the otp to set
+     */
+    public void setOtp(String otp) {
+        this.otp = otp;
     }
 
     
