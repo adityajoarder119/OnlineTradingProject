@@ -1,0 +1,11 @@
+Abhineet - Login & Registration(backend)
+
+Jaydeep - Frontend(Login,registration,Cart),Unit Testing
+
+Aditya - All Dashboards (frontend & backend),Forget password(Email varifications)
+
+Suraj - Portfolio(backend & frontend)
+
+Rajashekar - Checking Validations And correcting them in all pages
+
+Rituparna - Order(frontend & backend),cart(backend),Stocks Update(frontend & backend)
