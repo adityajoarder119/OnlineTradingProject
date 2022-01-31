@@ -22,16 +22,20 @@
              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
          <script>
-
+//            
             function addToCart(sid)
             {
+                var stockName=document.getElementById("stname_" + sid).value;
                 var availability=document.getElementById("avail_" + sid).value;
+                var price=document.getElementById("price_" + sid).value;
                  var quantity=document.getElementById("quan_" + sid).value;
-                 var addtocart=document.getElementById("result").value;
+                 console.log(sid);
+                 console.log(stockName);
+                 console.log(quantity);
                 $.ajax({
                     url: 'addtocart',
                     method: 'POST',
-                    data: { sid:sid,availability:availability, quantity:quantity, addtocart:addtocart},
+                    data: { stockId:sid, stockName:stockName, availability:availability,price:price, quantity:quantity},
                     success: function (resultText) {
                         $('#result').html(resultText);
                     },
@@ -55,7 +59,12 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        
+        <!-- =======================================================
+        * Template Name: NiceAdmin - v2.2.1
+        * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+        * Author: BootstrapMade.com
+        * License: https://bootstrapmade.com/license/
+        ======================================================== -->
     </head>
 
     <body>
@@ -80,11 +89,18 @@
 
             <nav class="header-nav ms-auto">
                 <ul class="d-flex align-items-center">
-
+                    
+                   <li class="nav-item dropdown">
+                        <a class="nav-link nav-icon" href="viewCart.jsp">
+                            <i class="bi bi-bell"></i>
+                            <span id="result" class="badge bg-primary badge-number"></span>
+                        </a>
+                    </li>
                     <li class="nav-item dropdown pe-3">
+                        
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            
+                            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
                             <span class="d-none d-md-block dropdown-toggle ps-2"><s:property value="#session.name" /></span>
                         </a><!-- End Profile Iamge Icon -->
 
@@ -153,6 +169,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li><!-- End Dashboard Nav -->
+                
 
                 <li class="nav-heading">Pages</li>
 
@@ -162,6 +179,7 @@
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
+                
                  <li class="nav-item">
                     <a class="nav-link" href="stocksforusers.jsp">
                         <i class="bi bi-person"></i>
@@ -339,7 +357,7 @@
 
                             <!-- Recent Sales -->
                             <div class="col-12">
-                                 <span id="result"></span>
+                            
                                 <div class="card recent-sales">
 
                                     <div class="card-body">
@@ -374,13 +392,10 @@
                                                             <td><input type="text" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>
                                                             <td><input type="text" name="quantity" id='quan_<s:property value="stockId" />' ></td>
                                                             <td>
-                                                           
-                                                                   
-                                                            
                                                                     <button type="submit" onclick="addToCart(<s:property value="stockId" />)" name="submit" class="btn btn-outline-primary">Wishlist</button>
                                                               
 <!--                                                                <input type="submit" name="submit" value="Delete" class="btn btn-outline-primary">-->
-                                                                
+                     
                                                         </tr>                                                   
                                                     </s:iterator>
                                                          

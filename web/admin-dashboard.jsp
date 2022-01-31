@@ -61,12 +61,12 @@
                         </a>
                     </li><!-- End Search Icon-->
 
-                   
+
 
                     <li class="nav-item dropdown pe-3">
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            
+
                             <span class="d-none d-md-block dropdown-toggle ps-2"><s:property value="#session.name" /></span>
                         </a><!-- End Profile Iamge Icon -->
 
@@ -141,16 +141,16 @@
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
-                
+
                 <li class="nav-heading">Pages</li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="update-stock.jsp">
                         <i class="bi bi-person"></i>
                         <span>Update Stock</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
-                
-                 <li class="nav-item">
+
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="userPromotion.jsp">
                         <i class="ri-user-3-line"></i>
                         <span>User List</span>
@@ -174,7 +174,7 @@
             </ul>
 
         </aside><!-- End Sidebar-->
-        
+
         <!-- ======= Main ======= -->
         <main id="main" class="main">
 
@@ -192,187 +192,143 @@
                 <div class="row">
 
                     <!-- MAIN columns -->
-                    
-                        <div class="row">
 
-                            <!-- Sales Card -->
-                            <div class="col-xxl-4 col-md-6">
-                                <div class="card info-card sales-card">
+                    <div class="row">
 
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Orders</h5>
+                        <!-- Sales Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
 
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-cart"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>145</h6>
-                                            </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Orders</h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cart"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>145</h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Sales Card -->
+
+                        <!-- Revenue Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card revenue-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Revenue Circulating</h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-currency-dollar"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>$3,264</h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Revenue Card -->
+
+                        <!-- Customers Card -->
+                        <div class="col-xxl-4 col-xl-12">
+
+                            <div class="card info-card customers-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Total No of Customers</h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>1244</h6>
+
                                         </div>
                                     </div>
 
                                 </div>
-                            </div><!-- End Sales Card -->
+                            </div>
 
-                            <!-- Revenue Card -->
-                            <div class="col-xxl-4 col-md-6">
-                                <div class="card info-card revenue-card">
+                        </div><!-- End Customers Card -->
 
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Revenue Circulating</h5>
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Reports <span>/Today</span></h5>
 
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-currency-dollar"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>$3,264</h6>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!-- Line Chart -->
+                                    <div id="reportsChart card">
+                                    <div class="card-header border-transparent">
 
-                                </div>
-                            </div><!-- End Revenue Card -->
-
-                            <!-- Customers Card -->
-                            <div class="col-xxl-4 col-xl-12">
-
-                                <div class="card info-card customers-card">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total No of Customers</h5>
-
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-people"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>1244</h6>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div><!-- End Customers Card -->
-
-                            <!-- Reports -->
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                                        <!-- Line Chart -->
-                                        <div id="reportsChart"></div>
-
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", () => {
-                                                new ApexCharts(document.querySelector("#reportsChart"), {
-                                                    series: [{
-                                                            name: 'Sales',
-                                                            data: [30, 40, 28, 51, 42, 82, 56],
-                                                        }, {
-                                                            name: 'Revenue',
-                                                            data: [11, 32, 45, 32, 34, 52, 41]
-                                                        }, {
-                                                            name: 'Customers',
-                                                            data: [15, 11, 32, 18, 9, 24, 11]
-                                                        }],
-                                                    chart: {
-                                                        height: 350,
-                                                        type: 'area',
-                                                        toolbar: {
-                                                            show: false
-                                                        },
-                                                    },
-                                                    markers: {
-                                                        size: 4
-                                                    },
-                                                    colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                                    fill: {
-                                                        type: "gradient",
-                                                        gradient: {
-                                                            shadeIntensity: 1,
-                                                            opacityFrom: 0.3,
-                                                            opacityTo: 0.4,
-                                                            stops: [0, 90, 100]
-                                                        }
-                                                    },
-                                                    dataLabels: {
-                                                        enabled: false
-                                                    },
-                                                    stroke: {
-                                                        curve: 'smooth',
-                                                        width: 2
-                                                    },
-                                                    xaxis: {
-                                                        type: 'datetime',
-                                                        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                                                    },
-                                                    tooltip: {
-                                                        x: {
-                                                            format: 'dd/MM/yy HH:mm'
-                                                        },
-                                                    }
-                                                }).render();
-                                            });
-                                        </script>
-                                        <!-- End Line Chart -->
+                                   <canvas class="my-4 w-100" id="myPieChart" width="900" height="380"></canvas>
 
                                     </div>
 
+
+                                    <!-- End Line Chart -->
+
                                 </div>
-                            </div><!-- End Reports -->
+                                    </div>
+                                    
 
-                            <!-- Recent Sales -->
-                            <div class="col-12">
-                                <div class="card recent-sales">
+                            </div>
+                        </div><!-- End Reports -->
 
-                                    <div class="card-body">
-                                        <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportstock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
-                                        <s:if test="noData==false">
-                                            <table class="table table-borderless datatable">
-                                                <thead>
+                        <!-- Recent Sales -->
+                        <div class="col-12">
+                            <div class="card recent-sales">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportstock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
+                                    <s:if test="noData==false">
+                                        <table class="table table-borderless datatable">
+                                            <thead>
+                                                <tr>
+
+                                                    <th scope="col">Stock ID</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Availability</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <s:iterator value="stockList">
                                                     <tr>
-                                                        
-                                                        <th scope="col">Stock ID</th>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Price</th>
-                                                        <th scope="col">Availability</th>
+                                                        <td><s:property value="stockId" /></td>
+                                                        <td><s:property value="stockName" /></td>
+                                                        <td><s:property value="price" /></td>
+                                                        <td><s:property value="availability" /></td> 
                                                     </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <s:iterator value="stockList">
-                                                        <tr>
-                                                            <td><s:property value="stockId" /></td>
-                                                            <td><s:property value="stockName" /></td>
-                                                            <td><s:property value="price" /></td>
-                                                            <td><s:property value="availability" /></td> 
-                                                        </tr>
-                                                    </s:iterator>
-                                                </tbody>
-                                            </table>
-                                        </s:if>
-                                        <s:else>
-                                            <div style="color: red;">No Data Found.</div>
-                                        </s:else>
-
-                                    </div>
+                                                </s:iterator>
+                                            </tbody>
+                                        </table>
+                                    </s:if>
+                                    <s:else>
+                                        <div style="color: red;">No Data Found.</div>
+                                    </s:else>
 
                                 </div>
-                            </div><!-- End Recent Sales -->
 
-                        </div>
+                            </div>
+                        </div><!-- End Recent Sales -->
+
+                    </div>
                     <!-- End Left side columns -->
                 </div>
             </section>
 
         </main><!-- End #main -->
 
-        
-         
+
+
         <!-- ======= Footer ======= -->
         <footer id="footer" class="footer">
             <div class="copyright">
@@ -389,24 +345,24 @@
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-         <script>
-           $(document).ready(function() {
-               function disableBack() {
-                   window.history.forward()
-               }
-               window.onload = disableBack();
-               window.onpageshow = function(e) {
-                   if (e.persisted)
-                       disableBack();
-               }
-           });
-       </script>
+        <script>
+            $(document).ready(function () {
+            function disableBack() {
+            window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function (e) {
+            if (e.persisted)
+                    disableBack();
+            }
+            });
+        </script>
 
-    <script src=
-           "https://code.jquery.com/jquery-3.6.0.min.js" 
-           integrity=
-   "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
-           crossorigin="anonymous"></script>
+        <script src=
+                "https://code.jquery.com/jquery-3.6.0.min.js" 
+                integrity=
+                "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous"></script>
         <!-- Vendor JS Files -->
         <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -419,6 +375,66 @@
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
+        <script>
+            (function () {
+
+            'use strict'
+
+                    feather.replace({'aria-hidden': 'true'})
+
+                    var items = <s:property value='%{sessionMap.get("typeList")}' />
+
+            // Graphs
+
+            var ctx = document.getElementById('myPieChart')
+
+                    // eslint-disable-next-line no-unused-vars
+
+                    var myPieChart = new Chart(ctx, {
+
+                    type: 'bar',
+                            data: {
+
+                            labels: [
+
+                                    'Exavalu',
+                                    'CloudKaptan',
+                                    'TCS'
+                                    'Wipro',
+                                    'Elijah',
+                                    'Phillip',
+                                    'Kenzie',
+                                    'Regina',
+                                    'Irene',
+                                    'Lucy',
+                                    'Lily',
+                                    'Noah',
+                                    'Cedrick',
+                                    'Fred'
+
+
+
+
+                            ],
+                                    datasets: [{
+
+                                    data: [
+
+                                            items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13]
+
+                                    ],
+                                            lineTension: 0,
+                                            backgroundColor: ['black','black','black','black','black','black','black','black','black','black','black','black','black','black'],
+                                            pointBackgroundColor: '#007bff'
+
+                                    }]
+
+                            },
+                    })
+
+            })()
+
+        </script>
 
     </body>
 

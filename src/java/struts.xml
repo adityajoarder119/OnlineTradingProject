@@ -32,6 +32,11 @@
             <result name="REPORTSTOCK">/indexdash.jsp</result>
         </action>
         
+        <action name="reportstockuser" class="com.trading.ot.actions.StockAction" method="StockReportAction">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="REPORTSTOCK">/user-dashboard.jsp</result>
+        </action>
+        
         <action name="reportupdatestock" class="com.trading.ot.actions.StockAction" method="StockUpdateAction">
              <result name="LOGOUT1">/logout.jsp</result>
             <result name="REPORTSTOCK">/update-stock.jsp</result>
@@ -47,9 +52,9 @@
             <result name="UPDATESTOCK">/success-stock.jsp</result>
         </action>
         
-        <action name="addtocart" class="com.trading.ot.actions.StockAction" method="addToCart">
+         <action name="addtocart" class="com.trading.ot.actions.StockAction" method="addToCart">
              <result name="LOGOUT1">/logout.jsp</result>
-            <result name="ADDTOCART">/ordered-quantity.jsp</result>
+            <result name="ADDTOCART">/cart-quantity.jsp</result>
         </action>
         
         <action name="updatecsv" class="com.trading.ot.actions.StockAction" method="updateStockList">
@@ -73,6 +78,11 @@
             <result name="UPDATEUSERPASSWORD">/user-profile.jsp</result>
         </action>
         
+        <action name="buystock" class="com.trading.ot.actions.StockAction" method="buyStock">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="BUYSTOCK">/success-buy.jsp</result>
+        </action>
+        
          <action name="otppassword" class="com.trading.ot.actions.UserAction" method="updateOtpPassword">
             <result name="UPDATEUSERPASSWORD">/pages-login.jsp</result>
         </action>
@@ -94,6 +104,8 @@
              <result name="LOGOUT1">/logout.jsp</result>
             <result name="PROMOTEUSER">/success-user.jsp</result>
         </action>
+        
+        
         
     </package>
 </struts>

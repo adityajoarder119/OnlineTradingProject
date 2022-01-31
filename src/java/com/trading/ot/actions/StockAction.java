@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import com.trading.ot.beans.Stocks;
 import com.trading.ot.dao.Admin;
+import javax.servlet.http.HttpSession;
+import org.apache.struts2.ServletActionContext;
 
 
 /**
@@ -116,6 +118,9 @@ public class StockAction extends ActionSupport{
     private String csvFilePath;
     private int quantity;
     private int addtocart;
+    
+    private double totalPrice;
+
 
     public String StockReportAction()  {
       
@@ -137,6 +142,107 @@ public class StockAction extends ActionSupport{
         return "REPORTSTOCK";
     }
     
+    public String StockAddToCartAction() {
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+             try {
+            setStockList(new ArrayList<>());
+            setStockList(getAdmin().reportStock());
+
+            if (!stockList.isEmpty()) {
+                setNoData(false);
+                System.out.println("Stocks retrieve = " + getStockList().size());
+                System.out.println("setting nodata=false");
+            } else {
+                setNoData(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "REPORTSTOCK";
+        }
+
+       
+    }
+
+    public String addToCart() {
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else {
+             try {
+                 
+                 if (getAvailability() >= getQuantity() && getQuantity()>0) 
+                 {
+                    if (session.getAttribute("cart") == null) 
+                    {
+                        double TotalPrice=getQuantity()*getPrice();
+                        ArrayList cart = new ArrayList();
+                        Stocks stocks = new Stocks();
+                        stocks.setStockId(getStockId());
+                        stocks.setStockName(getStockName());
+                        stocks.setAvailability(getAvailability());
+                        stocks.setQuantity(getQuantity());
+                        stocks.setTotalPrice(TotalPrice);
+                        session.setAttribute("stocks",stocks);
+                        cart.add(stocks);
+                        session.setAttribute("cart",cart); 
+                        System.out.println("Items in cart="+cart.size());
+                        
+
+                    } else 
+                    {
+                        double TotalPrice=getQuantity()*getPrice();
+                        ArrayList cart= (ArrayList) session.getAttribute("cart");
+                        Stocks stocks = new Stocks();
+                        stocks.setStockId(getStockId());
+                        stocks.setStockName(getStockName());
+                        stocks.setAvailability(getAvailability());
+                        stocks.setQuantity(getQuantity());
+                        stocks.setTotalPrice(TotalPrice);
+                        session.setAttribute("stocks",stocks);
+                        cart.add(stocks);
+                        session.setAttribute("cart",cart);  
+                        System.out.println(cart);
+                        System.out.println("Items in cart="+cart.size());
+                    }
+             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "ADDTOCART";
+        }
+       
+    }
+    
+    public String buyStock()
+    {
+         Admin dao = new Admin();
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } 
+        else {
+            try {
+            int isBuy = dao.buyStock(getStockId(),getAvailability(),getQuantity());
+            if (isBuy > 0) {
+                setMsg("bought successfully");
+            } else {
+                setMsg("Some error");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+            
+        }
+        
+        return "BUYSTOCK";
+    }
     
     public String StockUpdateAction()  {
       
@@ -158,25 +264,7 @@ public class StockAction extends ActionSupport{
         return "REPORTSTOCK";
     }
     
-    public String StockAddToCartAction()  {
-      
-        try {
-            setStockList(new ArrayList<>());
-            setStockList(getAdmin().reportStock());
-            
-
-            if (!stockList.isEmpty() ) {
-                setNoData(false);
-                System.out.println("Stocks retrieve = "+getStockList().size());
-                System.out.println("setting nodata=false");
-            } else {
-                setNoData(true);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "REPORTSTOCK";
-    }
+    
     
     public String updateStock()
     {
@@ -196,25 +284,7 @@ public class StockAction extends ActionSupport{
         return "UPDATESTOCK";
     }
     
-    public String addToCart()
-    {
-        Admin dao=new Admin();
-        try{
-            int i=dao.addToCart(getStockId(),getAvailability(), getQuantity(), getAddtocart());
-            if (i > 0) {
-                    setAddtocart(i);
-                } else {
-                    setMsg("error");
-                }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        
-        
-        return "ADDTOCART";
-    }
+  
     public String updateStockList()
     {
         Admin dao=new Admin();
@@ -358,6 +428,20 @@ public class StockAction extends ActionSupport{
      */
     public void setAddtocart(int addtocart) {
         this.addtocart = addtocart;
+    }
+
+    /**
+     * @return the totalPrice
+     */
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    /**
+     * @param totalPrice the totalPrice to set
+     */
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
     
 }

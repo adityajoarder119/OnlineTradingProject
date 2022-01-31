@@ -269,31 +269,6 @@ public class Admin {
         }
     }
 
-    public int addToCart(int stockId, int availability, int quantity, int addtocart) {
-        int c = 0;
-        if (availability >= quantity) {
-            ArrayList cart = new ArrayList();
-            if (addtocart > 0) {
-                Stocks stocks = new Stocks();
-                stocks.setStockId(stockId);
-                stocks.setAvailability(availability);
-                stocks.setQuantity(quantity);
-                cart.add(stocks);
-                c = cart.size();
-                c = c + addtocart;
-            } else {
-                Stocks stocks = new Stocks();
-                stocks.setStockId(stockId);
-                stocks.setAvailability(availability);
-                stocks.setQuantity(quantity);
-                cart.add(stocks);
-                c = cart.size();
-            }
-
-        }
-        return c;
-    }
-
     public int updateOtp(String otp, String emailId) throws Exception {
         int i = 0;
         Connection con = null;
@@ -519,4 +494,77 @@ public class Admin {
         }
     }
 
+    public List<Integer> showChart() throws SQLException, Exception {
+        
+        ResultSet rs = null;
+
+        Connection con = null;
+
+        List<Integer> itemsList = new ArrayList<>();
+        
+         try {
+
+            String sql = "SELECT stockName,price FROM stocks;";
+
+            con = ConnectionManager.getConnection();
+
+            System.out.println("Connection is " + con);
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                itemsList.add(rs.getInt("price"));
+
+            }
+
+            return itemsList;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return null;
+
+        } finally {
+
+            if (con != null) {
+
+                con.close();
+
+            }
+
+        }
+    
+    }
+    
+    public int buyStock(int stockId, int availability, int quanity )  throws SQLException, Exception
+    {
+        int i=0;
+        
+        
+        Connection con = ConnectionManager.getConnection();
+        ResultSet rs = null;
+        Stocks stock = new Stocks();
+        availability=availability-quanity;
+           try {
+            con = ConnectionManager.getConnection();
+            String sql = "UPDATE trading.stocks SET availability=? WHERE stockId=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,  availability);
+            ps.setInt(2, stockId);
+            System.out.println("SQL for insert=" + ps);
+            i = ps.executeUpdate();
+            return i;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return i;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
 }
