@@ -6,8 +6,85 @@
     <include file="example.xml"/>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        <action name="reportstock" class="com.trading.ot.actions.StockAction" method="StockReportAction">
-            <result name="REPORTSTOCK">/addashboard.jsp</result>
+        <action name="registeruser" class="com.trading.ot.actions.UserAction" method="addUsers">
+            <result name="REGISTER">/pages-login.jsp</result>
+            <result name="ERROR">/pages-register.jsp</result>
         </action>
+        
+        <action name="loginuser" class="com.trading.ot.actions.UserAction" method="checkValidUser">
+            <result name="USER">/user-dashboard.jsp</result>
+            <result name="ADMINUSER">/admin-dashboard.jsp</result>
+            <result name="ERRORLOGIN">/pages-login.jsp</result>
+        </action>
+        
+        <action name="forgetpass" class="com.trading.ot.actions.UserAction" method="forgetPassword">
+            <result name="CHANGEPASS">/changepassword.jsp</result>
+            <result name="ERRORLOGIN">/pages-login.jsp</result>
+        </action>
+        
+        <action name="reportstock" class="com.trading.ot.actions.StockAction" method="StockReportAction">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="REPORTSTOCK">/admin-dashboard.jsp</result>
+        </action>
+        
+        <action name="reportstockindex" class="com.trading.ot.actions.StockAction" method="StockReportAction">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="REPORTSTOCK">/indexdash.jsp</result>
+        </action>
+        
+        <action name="reportupdatestock" class="com.trading.ot.actions.StockAction" method="StockUpdateAction">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="REPORTSTOCK">/update-stock.jsp</result>
+        </action>
+        
+        <action name="reportviewstock" class="com.trading.ot.actions.StockAction" method="StockAddToCartAction">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="REPORTSTOCK">/stocksforusers.jsp</result>
+        </action>
+        
+        <action name="updatestock" class="com.trading.ot.actions.StockAction" method="updateStock">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="UPDATESTOCK">/success-stock.jsp</result>
+        </action>
+        
+        <action name="addtocart" class="com.trading.ot.actions.StockAction" method="addToCart">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="ADDTOCART">/ordered-quantity.jsp</result>
+        </action>
+        
+        <action name="updatecsv" class="com.trading.ot.actions.StockAction" method="updateStockList">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="UPDATESTOCKLIST">/success-stock.jsp</result>
+        </action>
+        
+        <action name="deletestock" class="com.trading.ot.actions.StockAction" method="deleteStock">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="DELETESTOCK">/success-stock.jsp</result>
+        </action>
+        
+       
+        <action name="updateuser" class="com.trading.ot.actions.UserAction" method="updateUser">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="UPDATEUSER">/user-profile.jsp</result>
+        </action>
+        
+        <action name="changepassword" class="com.trading.ot.actions.UserAction" method="updateUserPassword">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="UPDATEUSERPASSWORD">/user-profile.jsp</result>
+        </action>
+        
+         <action name="otppassword" class="com.trading.ot.actions.UserAction" method="updateOtpPassword">
+            <result name="UPDATEUSERPASSWORD">/pages-login.jsp</result>
+        </action>
+        
+        <action name="logout" class="com.trading.ot.actions.UserAction" method="logout">
+            <result name="LOGOUT">/logout.jsp</result>
+        </action>
+        
+        <action name="checksession" class="com.trading.ot.actions.UserAction" method="sessionout">
+            <result name="LOGOUT1">/logout.jsp</result>
+            <result name="PASS">/admin-dashboard.jsp</result>
+        </action>
+        
     </package>
 </struts>
