@@ -375,6 +375,7 @@
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script>
             (function () {
 
@@ -392,7 +393,7 @@
 
                     var myPieChart = new Chart(ctx, {
 
-                    type: 'bar',
+                    type: 'pie',
                             data: {
 
                             labels: [
