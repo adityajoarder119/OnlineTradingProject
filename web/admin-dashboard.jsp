@@ -268,7 +268,8 @@
                                     <div id="reportsChart card">
                                     <div class="card-header border-transparent">
 
-                                   <canvas class="my-4 w-100" id="myPieChart" width="900" height="380"></canvas>
+                                   <!--<canvas class="my-4 w-100" id="myPieChart" width="900" height="380"></canvas>-->
+                                   <jsp:include page="chart.jsp"></jsp:include>
 
                                     </div>
 
