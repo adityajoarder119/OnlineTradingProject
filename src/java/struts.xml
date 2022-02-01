@@ -105,7 +105,23 @@
             <result name="PROMOTEUSER">/success-user.jsp</result>
         </action>
         
+        <action name="showorderlist" class="com.trading.ot.actions.StockAction" method="StockOrderAction">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="REPORTORDERSTOCK">/user-portfolio.jsp</result>
+        </action>
         
+        <action name="removecart" class="com.trading.ot.actions.StockAction" method="deleteWishlist">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="REMOVEWISHLIST">/success-remove.jsp</result>
+        </action>
+          <action name="sellstock" class="com.trading.ot.actions.StockAction" method="sellStock">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="SELLSTOCK">/success-sell.jsp</result>
+        </action>
         
+        <action name="showwishlist" class="com.trading.ot.actions.StockAction" method="wishList">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="WISHLIST">/viewCart.jsp</result>
+        </action>
     </package>
 </struts>

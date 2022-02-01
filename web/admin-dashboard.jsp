@@ -258,22 +258,7 @@
 
                         </div><!-- End Customers Card -->
 
-                        <!-- Reports -->
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                                    <!-- Line Chart -->
-                                    <div id="reportsChart card">
-                                    <div class="card-header border-transparent">
-
-                                   <!--<canvas class="my-4 w-100" id="myPieChart" width="900" height="380"></canvas>-->
-                                   <jsp:include page="chart.jsp"></jsp:include>
-
-                                    </div>
-
-
+                        
                                     <!-- End Line Chart -->
 
                                 </div>

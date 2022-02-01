@@ -25,19 +25,24 @@
 //            
             function addToCart(sid)
             {
+                var userId=document.getElementById("userId").value;
                 var stockName=document.getElementById("stname_" + sid).value;
                 var availability=document.getElementById("avail_" + sid).value;
                 var price=document.getElementById("price_" + sid).value;
                  var quantity=document.getElementById("quan_" + sid).value;
+                 console.log(userId);
                  console.log(sid);
                  console.log(stockName);
                  console.log(quantity);
                 $.ajax({
                     url: 'addtocart',
                     method: 'POST',
-                    data: { stockId:sid, stockName:stockName, availability:availability,price:price, quantity:quantity},
+                    data: {userId:userId, stockId:sid, stockName:stockName, availability:availability,price:price, quantity:quantity},
                     success: function (resultText) {
                         $('#result').html(resultText);
+                        var msg='The stock has successfully added to cart';
+                        $('#result2').html(msg);
+ 
                     },
                     error: function (jqXHR, exception) {
                         console.log('Error occured!!');
@@ -45,7 +50,6 @@
                 });
             }
             
-
         </script>
         <!-- Vendor CSS Files -->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -164,12 +168,11 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="user-dashboard.jsp">
+                    <a class="nav-link collapsed" href="user-dashboard.html">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
                 </li><!-- End Dashboard Nav -->
-                
 
                 <li class="nav-heading">Pages</li>
 
@@ -179,7 +182,6 @@
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
-                
                  <li class="nav-item">
                     <a class="nav-link" href="stocksforusers.jsp">
                         <i class="bi bi-person"></i>
@@ -211,7 +213,7 @@
                 <h1>Dashboard</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="user-dashboard.jsp">Home</a></li>
+                        <li class="breadcrumb-item"><a href="user-dashboard.html">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </nav>
@@ -357,13 +359,14 @@
 
                             <!-- Recent Sales -->
                             <div class="col-12">
-                            
+<!--                                <span id="result1"></span>-->
                                 <div class="card recent-sales">
 
                                     <div class="card-body">
                                        
                                         <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportviewstock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
                                         <span id="result"></span>
+                                         <span style="color:red" id="result2"></span>
                                         <s:if test="noData==false">
                                              
                                                     
@@ -387,6 +390,7 @@
                                                         
                                                             <td style="display:none"><s:property value="stockId" />"</td>
                                                             <td><s:property value="stockId" /></td>
+                                                            <td style="display:none"><input type="text" name="userId" id='userId' value="<s:property value="#session.userId" />"></td>
                                                             <td><input type="text" name="stockName" id='stname_<s:property value="stockId" />' value="<s:property value="stockName" />"></td>
                                                             <td><input type="text" name="price" id='price_<s:property value="stockId" />' value="<s:property value="price" />"></td>
                                                             <td><input type="text" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>

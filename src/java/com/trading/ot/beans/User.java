@@ -21,6 +21,8 @@ public class User {
     private int status;
     private boolean validUser;
     private String otp;
+   
+
 
     /**
      * @return the userId

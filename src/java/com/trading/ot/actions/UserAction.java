@@ -107,9 +107,7 @@ public class UserAction extends ActionSupport implements SessionAware {
             String phoneNumber = getUser().getPhoneNumber();
             String emailId = getUser().getEmailId();
             String dob = getUser().getDob();
-            Admin admin2 = new Admin();
-            typeList = admin2.showChart();
-            System.out.println(typeList);
+            System.out.println(getTypeList());
             if (getUser().isValidUser() == true) {
 
                 if (status == 0) {
@@ -120,7 +118,6 @@ public class UserAction extends ActionSupport implements SessionAware {
                     getSessionMap().put("phoneNumber", phoneNumber);
                     getSessionMap().put("dob", dob);
                     getSessionMap().put("name", name);
-                    getSessionMap().put("typeList", typeList);
                     return "USER";
                 }
                 if (status == 1) {

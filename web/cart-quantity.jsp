@@ -13,8 +13,9 @@
     </head>
     <body>
 
-                                               
-      <span style="color: white;"><s:property value="#session.cart.size()" /></span>
-                                               
+                                       
+         <span style="color: white;"><s:property value="addtocart" /></span>
+  
+       
     </body>
 </html>

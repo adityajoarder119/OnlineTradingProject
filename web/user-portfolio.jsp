@@ -40,42 +40,22 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script>
              
-            function buy(sid)
+            function sell(oid)
             {
-                console.log(sid);
-                var id=document.getElementById("oid").value;
-                var userId=document.getElementById("userId").value;
-                var stockName = document.getElementById("stname_" + sid).value;
-                var quantity= document.getElementById("qty_" + sid).value;
-                var totalPrice=document.getElementById("tprice_" + sid).value;
-                var availability=document.getElementById("avail_" + sid).value;
+                var stockId=document.getElementById("stid").value;
+                console.log(stockId);
+                var stockName = document.getElementById("stname_" + oid).value;
+                var quantity= document.getElementById("qty_" + oid).value;
+                var sellQuantity=document.getElementById("sqty_" + oid).value;
+                var totalPrice=document.getElementById("tprice_" + oid).value;
+       
                 $.ajax({
-                    url: 'buystock',
+                    url: 'sellstock',
                     method: 'POST',
-                    data: {id:id,stockId: sid,stockName:stockName,availability:availability,quantity: quantity,userId:userId, totalPrice:totalPrice},
+                    data: {orderId:oid,stockId: stockId,stockName:stockName,quantityOrdered:quantity,sellQuantity:sellQuantity,totalPrice: totalPrice},
                     success: function (resultText) {
                         $('#result').html(resultText);
-                       
-                    },
-                    error: function (jqXHR, exception) {
-                        console.log('Error occured!!');
-                    }
-                });
-            }
-            function removecart()
-            {
-               
-                var id=document.getElementById("oid").value;
-                 console.log(id);
-                 var userId=document.getElementById("userId").value;
-                 console.log(userId);
-                $.ajax({
-                    url: 'removecart',
-                    method: 'POST',
-                    data: {id:id,userId:userId},
-                    success: function (resultText) {
-                        $('#result1').html(resultText);
-                        
+                     
                     },
                     error: function (jqXHR, exception) {
                         console.log('Error occured!!');
@@ -238,7 +218,7 @@
                 </li><!-- End Error 404 Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="user-portfolio.jsp">
+                    <a class="nav-link collapsed" href="pages-blank.html">
                         <i class="bi bi-gift"></i>
                         <span>Purchase List</span>
                     </a>
@@ -251,11 +231,11 @@
         <main id="main" class="main">
 
             <div class="pagetitle">
-                <h1>Shopping Cart</h1>
+                <h1>Your Stocks</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="admin-dashboard.html">Home</a></li>
-                        <li class="breadcrumb-item active">Shopping Cart</li>
+                        <li class="breadcrumb-item"><a href="user-dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item active">Your Stocks</li>
                     </ol>
                 </nav>
             </div><!-- End Page Title -->
@@ -265,7 +245,7 @@
 
                     <!-- Left side columns -->
                     <div class="col-lg-8">
-                        <div class="row">
+<!--                        <div class="row">
 <style type="text/css">
                                     .button-save {
                                         background-color: green;
@@ -276,39 +256,44 @@
                                         color: white;
                                         margin-left: 30%;
                                     }
-                                </style>
-                                <a href="showwishlist.action?userId=<s:property value="#session.userId"/>"><button class="button-productshow" type="button">Show Cart</button></a>
+                                </style>-->
+                                <a href="showorderlist.action?userId=<s:property value="#session.userId"/>"><button class="button-productshow" type="button">Show updated stocks</button></a>
                                 <span id="result"></span>
-                                 <span id="result1"></span>
-                                  
-                                <table id="cart_tab" class="table table-bordered table-striped table-hover">
+                                
+                                 <table class="table table-borderless">
                                   <s:if test="noData==false">
+                                      <thead>      
                                 <tr>
-                                    <th>stock name</th>
-                                    <th>quantity</th>
-                                    <th>Availability</th>
+                                    <th>Stock Name</th>
+                                    <th>Quantity Ordered</th>
+                                    <th>Date </th>
                                     <th> Total price</th>
-                                    
-                                    <th>Action           </th>
+                                    <th>Sell Quantity</th>
+                                    <th>Action</th>
                                </tr>
-                                <s:iterator value="wishList">
-                                    <tr id="cart_tr">
+                                </thead>
+                              <tbody>
+                                <s:iterator value="orderList">
+                                    <tr id="buy_tr">
                                         <td style="display:none"><input type="text" id='userId' value='<s:property value="#session.userId" />' readonly></td>
-                                        <td style="display:none"><input type="text" id='oid' value='<s:property value="id" />' readonly></td>
-                                        <td><input type="text" id='stname_<s:property value="stockId" />' value='<s:property value="stockName" />' readonly></td>
-                                        <td><input type="text" id='qty_<s:property value="stockId" />' value='<s:property value="quantity" />' readonly></td>
-                                      <td><input type="text" id='avail_<s:property value="stockId" />' value='<s:property value="availability" />' readonly></td>
-                                        <td><input type="text" id='tprice_<s:property value="stockId" />' value='<s:property value="totalPrice" />' readonly></td>
+                                        <td style="display:none"><input type="text" id='stid' value='<s:property value="stockId" />' readonly></td>
+                                      
+                                        <td><input type="text" id='stname_<s:property value="orderId" />' value='<s:property value="stockName" />' readonly></td>
+                                        <td><input type="text" id='qty_<s:property value="orderId" />' value='<s:property value="quantityOrdered" />' readonly></td>
+                                        <td><input type="text" id='avail_<s:property value="orderId" />' value='<s:property value="orderDate" />' readonly></td>
+                                        <td><input type="text" id='tprice_<s:property value="orderId" />' value='<s:property value="totalPrice" />' readonly></td>
+                                        <td><input type="text" id='sqty_<s:property value="orderId" />' value=''></td>
+                                        
                                   
-                                     <td style="display:inline-block"><button type="submit" onclick="buy(<s:property value="stockId" />)" class="btn btn-outline-primary">Buy</button>
-                                         <button type="submit" onclick="removecart()" class="btn btn-outline-primary">Remove</button>
+                                     <td style="display:inline-block"><button type="submit" onclick="sell(<s:property value="orderId" />)" class="btn btn-outline-primary">Sell</button>
+                                       
                                      </td>
                                      <!-- comment -->
                                     </tr>
                                 
 
                                   </s:iterator>
-
+                              </tbody>
                             </table>
                                     </s:if>
                                         <s:else>

@@ -5,16 +5,20 @@
  */
 package com.trading.ot.dao;
 
+import com.trading.ot.beans.StockOrdered;
 import com.trading.ot.core.ConnectionManager;
 import com.trading.ot.beans.Stocks;
 import com.trading.ot.beans.User;
+import com.trading.ot.beans.wishlist;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
@@ -70,47 +74,6 @@ public class Admin {
             }
         }
     }
-    
-    
-    public int updateOtpPassword(String newotp, String newpassword, String confirmpassword, String emailId) throws SQLException, Exception {
-
-        Connection con = ConnectionManager.getConnection();
-        ResultSet rs = null;
-        User user = new User();
-        int i = 0;
-        try {
-
-            String sql1 = "SELECT * FROM user WHERE emailId=?";
-            PreparedStatement ps1 = con.prepareStatement(sql1);
-            ps1.setString(1, emailId);
-            rs = ps1.executeQuery();
-            if (rs.next()) {
-                String notp = rs.getString("otp");
-                if (notp.equals(newotp) && newpassword.equals(confirmpassword)) {
-                    String sql = "UPDATE user SET password = ?"
-                            + "WHERE emailId = ?";
-                    PreparedStatement ps = con.prepareStatement(sql);
-                    ps.setString(1, newpassword);
-                    ps.setString(2, emailId);
-                    System.out.println("Select SQL = " + ps);
-                    i = ps.executeUpdate();
-                    return i;
-                } else {
-                    return 0;
-                }
-            } else {
-                return 0;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        } finally {
-            if (con != null) {
-                con.close();
-            }
-        }
-    }
-
 
     public int updateUserDetails(String name, String dob, String address, String phoneNumber,
             String emailId) throws SQLException, Exception {
@@ -140,6 +103,7 @@ public class Admin {
         }
     }
 
+  
     public int updateStockDetails(int stockId, String stockName, double price, int availability) throws SQLException, Exception {
 
         Connection con = ConnectionManager.getConnection();
@@ -291,6 +255,45 @@ public class Admin {
         }
     }
 
+    public int updateOtpPassword(String newotp, String newpassword, String confirmpassword, String emailId) throws SQLException, Exception {
+
+        Connection con = ConnectionManager.getConnection();
+        ResultSet rs = null;
+        User user = new User();
+        int i = 0;
+        try {
+
+            String sql1 = "SELECT * FROM user WHERE emailId=?";
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setString(1, emailId);
+            rs = ps1.executeQuery();
+            if (rs.next()) {
+                String notp = rs.getString("otp");
+                if (notp.equals(newotp) && newpassword.equals(confirmpassword)) {
+                    String sql = "UPDATE user SET password = ?"
+                            + "WHERE emailId = ?";
+                    PreparedStatement ps = con.prepareStatement(sql);
+                    ps.setString(1, newpassword);
+                    ps.setString(2, emailId);
+                    System.out.println("Select SQL = " + ps);
+                    i = ps.executeUpdate();
+                    return i;
+                } else {
+                    return 0;
+                }
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
     public User checkValidUser(String emailId, String password) throws SQLException, Exception {
         ResultSet rs = null;
         User user = new User();
@@ -308,6 +311,7 @@ public class Admin {
 
             rs = ps.executeQuery();
             if (rs.next()) {
+                user.setUserId(rs.getInt("userId")); //here you need to change
                 user.setName(rs.getString("name"));
                 user.setEmailId(rs.getString("emailID"));
                 user.setPhoneNumber(rs.getString("phoneNumber"));
@@ -411,6 +415,205 @@ public class Admin {
         return generatedOTP;
     }
 
+    public int addToCart(int userId, int stockId, int availability, int quantity, double totalPrice) throws SQLException {
+        int i = 0;
+        Connection con = null;
+
+        try {
+            con = ConnectionManager.getConnection();
+            String sql = "INSERT INTO trading.wishlist(userId,stockId,availability,quantity,totalPrice) VALUES (?,?,?,?,?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userId);
+            ps.setInt(2, stockId);
+            ps.setInt(3, availability);
+            ps.setInt(4, quantity);
+            ps.setDouble(5, totalPrice);
+
+            System.out.println("SQL for insert=" + ps);
+            i = ps.executeUpdate();
+            return i;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return i;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    public int buyStock(int id, int stockId, int availability, int quanity, int userId, double totalPrice) throws SQLException, Exception {
+        int i = 0;
+
+        Connection con = ConnectionManager.getConnection();
+        ResultSet rs = null;
+        Stocks stock = new Stocks();
+        availability = availability - quanity;
+        try {
+            con = ConnectionManager.getConnection();
+            String sql = "UPDATE trading.stocks SET availability=? WHERE stockId=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, availability);
+            ps.setInt(2, stockId);
+            int j = ps.executeUpdate();
+            System.out.println("SQL for insert=" + ps);
+            if (j > 0) {
+                Date date = new Date();
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+                String orderDate = formatter.format(date);
+                String sql1 = "INSERT INTO trading.stockordered(userId,stockId,quantityOrdered,orderDate,totalPrice) VALUES(?,?,?,?,?)";
+                PreparedStatement ps1 = con.prepareStatement(sql1);
+                ps1.setInt(1, userId);
+                ps1.setInt(2, stockId);
+                ps1.setInt(3, quanity);
+                ps1.setString(4, orderDate);
+                ps1.setDouble(5, totalPrice);
+                int k = ps1.executeUpdate();
+                if (k > 0) {
+                    String sql2 = "DELETE FROM wishlist where id=?";
+                    PreparedStatement ps2 = con.prepareStatement(sql2);
+                    ps2.setInt(1, id);
+                    i = ps2.executeUpdate();
+                }
+                return i;
+            } else {
+                return i;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return i;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    public int sellStock(int userId, int orderId, int stockId, int quantityOrdered, int sellQuantity, double totalPrice) throws SQLException, Exception {
+        int i = 0;
+
+        Connection con = ConnectionManager.getConnection();
+        ResultSet rs = null;
+        StockOrdered stockordered = new StockOrdered();
+        try {
+            con = ConnectionManager.getConnection();
+            if (sellQuantity == quantityOrdered) {
+                String sql = "DELETE FROM stockordered WHERE orderId=?";
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setInt(1, orderId);
+                int j = ps.executeUpdate();
+                System.out.println("SQL for insert=" + ps);
+                System.out.println(j);
+                if (j > 0) {
+                    String sql1 = "SELECT * FROM trading.stocks WHERE stockId=?";
+                    PreparedStatement ps1 = con.prepareStatement(sql1);
+                    ps1.setInt(1, stockId);
+                    rs = ps1.executeQuery();
+                    System.out.println("SQL for select=" + ps1);
+                    if (rs.next()) {
+                        String sql2 = "UPDATE trading.stocks SET availability=? WHERE stockId=?";
+                        PreparedStatement ps2 = con.prepareStatement(sql2);
+                        int avail = rs.getInt("availability");
+                        int availability = avail + sellQuantity;
+                        ps2.setInt(1, availability);
+                        ps2.setInt(2, stockId);
+                        System.out.println("SQL for update=" + ps2);
+                        i = ps2.executeUpdate();
+
+                    }
+
+                }
+                return i;
+            } else {
+                String sql = "UPDATE stockordered SET quantityOrdered=?, totalPrice=? WHERE orderId=?";
+                PreparedStatement ps = con.prepareStatement(sql);
+                int quanord = quantityOrdered - sellQuantity;
+                System.out.println(quanord);
+                double tprice = ((totalPrice)) - (((totalPrice) / (quantityOrdered)) * sellQuantity);
+                ps.setInt(1, quanord);
+                ps.setDouble(2, tprice);
+                ps.setInt(3, orderId);
+                int j = ps.executeUpdate();
+                System.out.println("SQL for insert=" + ps);
+                if (j > 0) {
+                    String sql1 = "SELECT * FROM trading.stocks WHERE stockId=?";
+                    PreparedStatement ps1 = con.prepareStatement(sql1);
+                    ps1.setInt(1, stockId);
+                    rs = ps1.executeQuery();
+                    System.out.println("SQL for select=" + ps1);
+                    if (rs.next()) {
+                        String sql2 = "UPDATE trading.stocks SET availability=? WHERE stockId=?";
+                        PreparedStatement ps2 = con.prepareStatement(sql2);
+                        int avail = rs.getInt("availability");
+                        int availability = avail + sellQuantity;
+                        ps2.setInt(1, availability);
+                        ps2.setInt(2, stockId);
+                        System.out.println("SQL for update=" + ps2);
+                        i = ps2.executeUpdate();
+
+                    }
+
+                }
+                return i;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return i;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+
+    }
+
+    public int deleteWishlist(int id, int userId) throws SQLException {
+        int i = 0;
+        Connection con = ConnectionManager.getConnection();
+        try {
+            String sql = "DELETE FROM wishlist WHERE id =? and userId = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.setInt(2, userId);
+            i = ps.executeUpdate();
+            return i;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    public int counterCart(int userId) throws SQLException {
+        int c = 0;
+        ResultSet rs = null;
+        Connection con = ConnectionManager.getConnection();
+        try {
+            String sql = "SELECT * FROM wishlist WHERE userId = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                c = c + 1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return c;
+
+    }
+
     public static void send(String from, String password, String to, String sub, String msg) {
         //Get properties object    
         Properties props = new Properties();
@@ -443,6 +646,95 @@ public class Admin {
 
     }
     
+     public List wishList(int userId) throws SQLException {
+        Connection con = ConnectionManager.getConnection();
+        ResultSet rs = null;
+        List<wishlist> wishList = new ArrayList<>();
+        int i = 0;
+        try {
+
+            String sql = "SELECT * FROM wishlist where userId=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+
+                String sql1 = "SELECT * FROM stocks where stockId=?";
+                PreparedStatement ps1 = con.prepareStatement(sql1);
+                int stockId = rs.getInt("stockId");
+                ps1.setInt(1, stockId);
+                ResultSet rs1 = ps1.executeQuery();
+                if (rs1.next()) {
+                    wishlist wishlist = new wishlist();
+                    wishlist.setId(rs.getInt("id"));
+                    wishlist.setUserId(rs.getInt("userId"));
+                    wishlist.setStockId(rs.getInt("stockId"));
+                    wishlist.setStockName(rs1.getString("stockName"));
+                    wishlist.setQuantity(rs.getInt("quantity"));
+                    wishlist.setAvailability(rs.getInt("availability"));
+                    wishlist.setTotalPrice(rs.getDouble("totalPrice"));
+                    wishList.add(wishlist);
+
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        System.out.println(wishList);
+        return wishList;
+
+    }
+
+    public List orderList(int userId) throws SQLException {
+        Connection con = ConnectionManager.getConnection();
+        ResultSet rs = null;
+        List<StockOrdered> orderList = new ArrayList<>();
+        int i = 0;
+        try {
+
+            String sql = "SELECT * FROM stockordered where userId=?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+
+                String sql1 = "SELECT * FROM stocks where stockId=?";
+                PreparedStatement ps1 = con.prepareStatement(sql1);
+                int stockId = rs.getInt("stockId");
+                ps1.setInt(1, stockId);
+                ResultSet rs1 = ps1.executeQuery();
+                if (rs1.next()) {
+                    StockOrdered stockordered = new StockOrdered();
+                    stockordered.setOrderId(rs.getInt("orderId"));
+                    stockordered.setUserId(rs.getInt("userId"));
+                    stockordered.setStockId(rs.getInt("stockId"));
+                    stockordered.setStockName(rs1.getString("stockName"));
+                    stockordered.setQuantityOrdered(rs.getInt("quantityOrdered"));
+                    stockordered.setOrderDate(rs.getString("orderDate"));
+
+                    stockordered.setTotalPrice(rs.getDouble("totalPrice"));
+                    orderList.add(stockordered);
+
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        System.out.println(orderList);
+        return orderList;
+
+    }
+    
     public List reportUser() throws SQLException, Exception {
         ResultSet rs = null;
         Connection con = null;
@@ -472,14 +764,14 @@ public class Admin {
         }
     }
     
-    public int promoteUserDetails(int userId, String name, String emailId, String phoneNumber, String dob, String password, String address, int status) throws SQLException, Exception {
+     public int promoteUserDetails(int userId, String name, String emailId, String phoneNumber, String dob, String password, String address, int status) throws SQLException, Exception {
 
         Connection con = ConnectionManager.getConnection();
         int i = 0;
         try {
             String sql = "UPDATE user SET status = 1 WHERE userId = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setInt(1, userId);
             System.out.println("Select SQL = " + ps);
             i = ps.executeUpdate();
@@ -494,77 +786,4 @@ public class Admin {
         }
     }
 
-    public List<Integer> showChart() throws SQLException, Exception {
-        
-        ResultSet rs = null;
-
-        Connection con = null;
-
-        List<Integer> itemsList = new ArrayList<>();
-        
-         try {
-
-            String sql = "SELECT stockName,price FROM stocks;";
-
-            con = ConnectionManager.getConnection();
-
-            System.out.println("Connection is " + con);
-
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-
-                itemsList.add(rs.getInt("price"));
-
-            }
-
-            return itemsList;
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-            return null;
-
-        } finally {
-
-            if (con != null) {
-
-                con.close();
-
-            }
-
-        }
-    
-    }
-    
-    public int buyStock(int stockId, int availability, int quanity )  throws SQLException, Exception
-    {
-        int i=0;
-        
-        
-        Connection con = ConnectionManager.getConnection();
-        ResultSet rs = null;
-        Stocks stock = new Stocks();
-        availability=availability-quanity;
-           try {
-            con = ConnectionManager.getConnection();
-            String sql = "UPDATE trading.stocks SET availability=? WHERE stockId=?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,  availability);
-            ps.setInt(2, stockId);
-            System.out.println("SQL for insert=" + ps);
-            i = ps.executeUpdate();
-            return i;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return i;
-        } finally {
-            if (con != null) {
-                con.close();
-            }
-        }
-    }
 }
