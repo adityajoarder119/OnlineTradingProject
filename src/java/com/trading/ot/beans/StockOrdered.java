@@ -7,9 +7,8 @@ package com.trading.ot.beans;
 
 /**
  *
- * @author Suraj Kumar
- */
-public class StockOrdered {
+ * @author adity
+ */public class StockOrdered {
 
     /**
      * @return the sellQuantity
@@ -52,12 +51,13 @@ public class StockOrdered {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
-
+    
+    
     private int orderId;
     private int userId;
     private int stockId;
-    private int quantityOrdered;
     private String orderDate;
+    private int quantityOrdered;
     private double totalPrice;
     private String stockName;
     private int sellQuantity;
@@ -118,6 +118,8 @@ public class StockOrdered {
         this.orderDate = orderDate;
     }
 
+
+
     /**
      * @return the quantityOrdered
      */
@@ -132,4 +134,8 @@ public class StockOrdered {
         this.quantityOrdered = quantityOrdered;
     }
 
+   
+    
+    
+    
 }

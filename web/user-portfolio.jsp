@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <title>View Cart</title>
+        <title>Portfolio</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
 
@@ -31,38 +31,33 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        <!-- =======================================================
-        * Template Name: NiceAdmin - v2.2.1
-        * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-        * Author: BootstrapMade.com
-        * License: https://bootstrapmade.com/license/
-        ======================================================== -->
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-         <script>
-             
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
             function sell(oid)
             {
-                var stockId=document.getElementById("stid").value;
+                var stockId = document.getElementById("stid").value;
                 console.log(stockId);
                 var stockName = document.getElementById("stname_" + oid).value;
-                var quantity= document.getElementById("qty_" + oid).value;
-                var sellQuantity=document.getElementById("sqty_" + oid).value;
-                var totalPrice=document.getElementById("tprice_" + oid).value;
-       
+                var quantity = document.getElementById("qty_" + oid).value;
+                var sellQuantity = document.getElementById("sqty_" + oid).value;
+                var totalPrice = document.getElementById("tprice_" + oid).value;
+
                 $.ajax({
                     url: 'sellstock',
                     method: 'POST',
-                    data: {orderId:oid,stockId: stockId,stockName:stockName,quantityOrdered:quantity,sellQuantity:sellQuantity,totalPrice: totalPrice},
+                    data: {orderId: oid, stockId: stockId, stockName: stockName, quantityOrdered: quantity, sellQuantity: sellQuantity, totalPrice: totalPrice},
                     success: function (resultText) {
                         $('#result').html(resultText);
-                     
+
                     },
                     error: function (jqXHR, exception) {
                         console.log('Error occured!!');
                     }
                 });
             }
-           </script>
+        </script>
     </head>
 
     <body>
@@ -93,36 +88,20 @@
                             <i class="bi bi-search"></i>
                         </a>
                     </li><!-- End Search Icon-->
-
                     <li class="nav-item dropdown">
-
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-bell"></i>
-                            <span class="badge bg-primary badge-number"></span>
-                        </a><!-- End Notification Icon -->
-
-                    </li><!-- End Notification Nav -->
-
-
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link nav-icon" href="user-portfolio.jsp">
                             <i class="bi bi-gift"></i>
-                            <span class="badge bg-primary badge-number"></span>
-                        </a><!-- End gift Icon -->
-                    </li><!-- End gift Nav -->
+                            <span id="result" class="badge bg-primary badge-number"></span>
+                        </a>
+                    </li>
+
 
                     <li class="nav-item dropdown">
-
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link nav-icon" href="viewCart.jsp">
                             <i class="bi bi-cart-plus"></i>
-                            <span class="badge bg-primary badge-number"></span>
-                        </a><!-- End AddToCart Icon -->
-
-                    </li><!-- End AddToCart Nav -->
-
-
-
+                            <span id="result" class="badge bg-primary badge-number"></span>
+                        </a>
+                    </li>
 
 
                     <li class="nav-item dropdown pe-3">
@@ -204,25 +183,25 @@
                     <a class="nav-link collapsed" href="user-profile.jsp">
                         <i class="bi bi-person"></i><span>User Profile</span></i>
                     </a>
-                    
-                    
-                   
+
+
+
                 </li><!-- End Components Nav -->
-      
-                   
+
+
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-error-404.html">
+                    <a class="nav-link collapsed" href="viewCart.jsp">
                         <i class="bi bi-cart-check"></i>
                         <span>Wishlist</span>
                     </a>
-                </li><!-- End Error 404 Page Nav -->
+                </li><!-- End wishlist Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-blank.html">
+                    <a class="nav-link collapsed" href="user-portfolio.jsp">
                         <i class="bi bi-gift"></i>
-                        <span>Purchase List</span>
+                        <span>Portfolio</span>
                     </a>
-                </li><!-- End Blank Page Nav -->
+                </li><!-- End portfolio Page Nav -->
 
             </ul>
 
@@ -245,63 +224,63 @@
 
                     <!-- Left side columns -->
                     <div class="col-lg-8">
-<!--                        <div class="row">
-<style type="text/css">
-                                    .button-save {
-                                        background-color: green;
-                                        color: white;
-                                    }
-                                    .button-productshow {
-                                        background-color: #000000;
-                                        color: white;
-                                        margin-left: 30%;
-                                    }
-                                </style>-->
-                                <a href="showorderlist.action?userId=<s:property value="#session.userId"/>"><button class="button-productshow" type="button">Show updated stocks</button></a>
-                                <span id="result"></span>
-                                
-                                 <table class="table table-borderless">
-                                  <s:if test="noData==false">
-                                      <thead>      
-                                <tr>
-                                    <th>Stock Name</th>
-                                    <th>Quantity Ordered</th>
-                                    <th>Date </th>
-                                    <th> Total price</th>
-                                    <th>Sell Quantity</th>
-                                    <th>Action</th>
-                               </tr>
-                                </thead>
-                              <tbody>
-                                <s:iterator value="orderList">
-                                    <tr id="buy_tr">
-                                        <td style="display:none"><input type="text" id='userId' value='<s:property value="#session.userId" />' readonly></td>
-                                        <td style="display:none"><input type="text" id='stid' value='<s:property value="stockId" />' readonly></td>
-                                      
-                                        <td><input type="text" id='stname_<s:property value="orderId" />' value='<s:property value="stockName" />' readonly></td>
-                                        <td><input type="text" id='qty_<s:property value="orderId" />' value='<s:property value="quantityOrdered" />' readonly></td>
-                                        <td><input type="text" id='avail_<s:property value="orderId" />' value='<s:property value="orderDate" />' readonly></td>
-                                        <td><input type="text" id='tprice_<s:property value="orderId" />' value='<s:property value="totalPrice" />' readonly></td>
-                                        <td><input type="text" id='sqty_<s:property value="orderId" />' value=''></td>
-                                        
-                                  
-                                     <td style="display:inline-block"><button type="submit" onclick="sell(<s:property value="orderId" />)" class="btn btn-outline-primary">Sell</button>
-                                       
-                                     </td>
-                                     <!-- comment -->
+                        <!--                        <div class="row">
+                        <style type="text/css">
+                                                            .button-save {
+                                                                background-color: green;
+                                                                color: white;
+                                                            }
+                                                            .button-productshow {
+                                                                background-color: #000000;
+                                                                color: white;
+                                                                margin-left: 30%;
+                                                            }
+                                                        </style>-->
+                        <a href="showorderlist.action?userId=<s:property value="#session.userId"/>"><button class="button-productshow" type="button">Show updated stocks</button></a>
+                        <span id="result"></span>
+
+                        <table class="table table-borderless">
+                            <s:if test="noData==false">
+                                <thead>      
+                                    <tr>
+                                        <th>Stock Name</th>
+                                        <th>Quantity Ordered</th>
+                                        <th>Date </th>
+                                        <th> Total price</th>
+                                        <th>Sell Quantity</th>
+                                        <th>Action</th>
                                     </tr>
-                                
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="orderList">
+                                        <tr id="buy_tr">
+                                            <td style="display:none"><input type="text" id='userId' value='<s:property value="#session.userId" />' readonly></td>
+                                            <td style="display:none"><input type="text" id='stid' value='<s:property value="stockId" />' readonly></td>
 
-                                  </s:iterator>
-                              </tbody>
+                                            <td><input type="text" id='stname_<s:property value="orderId" />' value='<s:property value="stockName" />' readonly></td>
+                                            <td><input type="text" id='qty_<s:property value="orderId" />' value='<s:property value="quantityOrdered" />' readonly></td>
+                                            <td><input type="text" id='avail_<s:property value="orderId" />' value='<s:property value="orderDate" />' readonly></td>
+                                            <td><input type="text" id='tprice_<s:property value="orderId" />' value='<s:property value="totalPrice" />' readonly></td>
+                                            <td><input type="text" id='sqty_<s:property value="orderId" />' value=''></td>
+
+
+                                            <td style="display:inline-block"><button type="submit" onclick="sell(<s:property value="orderId" />)" class="btn btn-outline-primary">Sell</button>
+
+                                            </td>
+                                            <!-- comment -->
+                                        </tr>
+
+
+                                    </s:iterator>
+                                </tbody>
                             </table>
-                                    </s:if>
-                                        <s:else>
-                                            <div style="color: red;">No Data Found.</div>
-                                        </s:else>
-                        </div>
-
+                        </s:if>
+                        <s:else>
+                            <div style="color: red;">No Data Found.</div>
+                        </s:else>
                     </div>
+
+                </div>
                 </div><!-- End Shopping Cart table -->
 
                 <div></div>

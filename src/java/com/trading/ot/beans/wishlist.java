@@ -7,7 +7,7 @@ package com.trading.ot.beans;
 
 /**
  *
- * @author ritup
+ * @author adity
  */
 public class wishlist {
 

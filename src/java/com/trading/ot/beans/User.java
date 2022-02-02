@@ -7,7 +7,7 @@ package com.trading.ot.beans;
 
 /**
  *
- * @author Suraj Kumar
+ * @author adity
  */
 public class User {
 
@@ -21,8 +21,6 @@ public class User {
     private int status;
     private boolean validUser;
     private String otp;
-   
-
 
     /**
      * @return the userId

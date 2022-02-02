@@ -4,21 +4,18 @@
  * and open the template in the editor.
  */
 package com.trading.ot.beans;
-
 /**
  *
- * @author Suraj Kumar
+ * @author adity
  */
 public class Stocks {
     
     private int stockId;
     private String stockName;
     private double price;
-    private int availability;
+    private int availability;  
     private int quantity;
     private double totalPrice;
-    
-   
 
     public int getStockId() {
         return stockId;

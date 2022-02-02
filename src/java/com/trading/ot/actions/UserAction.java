@@ -68,7 +68,6 @@ public class UserAction extends ActionSupport implements SessionAware {
     private User user = null;
     private List<User> userList = null;
     private boolean noData = false;
-    private List<Integer> typeList = null;
 
     private String msg = "";
     private Admin admin = null;
@@ -102,17 +101,19 @@ public class UserAction extends ActionSupport implements SessionAware {
         try {
             setUser(getAdmin().checkValidUser(getEmailId(), getPassword()));
             int status = getUser().getStatus();
+            int userId = getUser().getUserId();
             String name = getUser().getName();
             String address = getUser().getAddress();
             String phoneNumber = getUser().getPhoneNumber();
             String emailId = getUser().getEmailId();
             String dob = getUser().getDob();
-            System.out.println(getTypeList());
+
             if (getUser().isValidUser() == true) {
 
                 if (status == 0) {
                     setMsg("Login successful");
                     getSessionMap().put("login", "true");
+                    getSessionMap().put("userId", userId);
                     getSessionMap().put("address", address);
                     getSessionMap().put("emailId", emailId);
                     getSessionMap().put("phoneNumber", phoneNumber);
@@ -174,7 +175,6 @@ public class UserAction extends ActionSupport implements SessionAware {
                 getAdmin().updateOtp(otp, email);
                 getAdmin().send(from, password, email, "OTP", otp);
                 return "CHANGEPASS";
-
             } else {
                 setMsg("Incorrect username or password!!");
                 return "ERRORLOGIN";
@@ -192,6 +192,11 @@ public class UserAction extends ActionSupport implements SessionAware {
             return "LOGOUT1";
         } else {
             try {
+                getSessionMap().put("address", getAddress());
+                getSessionMap().put("emailId", getEmailId());
+                getSessionMap().put("phoneNumber", getPhoneNumber());
+                getSessionMap().put("dob", getDob());
+                getSessionMap().put("name", getName());
                 int i = dao.updateUserDetails(getName(), getDob(), getAddress(), getPhoneNumber(), getEmailId());
                 if (i > 0) {
                     setMsg("Record Updated Successfuly");
@@ -643,20 +648,6 @@ public class UserAction extends ActionSupport implements SessionAware {
      */
     public void setNewotp(String newotp) {
         this.newotp = newotp;
-    }
-
-    /**
-     * @return the typeList
-     */
-    public List<Integer> getTypeList() {
-        return typeList;
-    }
-
-    /**
-     * @param typeList the typeList to set
-     */
-    public void setTypeList(List<Integer> typeList) {
-        this.typeList = typeList;
     }
 
     /**

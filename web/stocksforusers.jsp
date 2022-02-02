@@ -19,37 +19,37 @@
         <link href="https://fonts.gstatic.com" rel="preconnect">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-         <script>
+        <script>
 //            
             function addToCart(sid)
             {
-                var userId=document.getElementById("userId").value;
-                var stockName=document.getElementById("stname_" + sid).value;
-                var availability=document.getElementById("avail_" + sid).value;
-                var price=document.getElementById("price_" + sid).value;
-                 var quantity=document.getElementById("quan_" + sid).value;
-                 console.log(userId);
-                 console.log(sid);
-                 console.log(stockName);
-                 console.log(quantity);
+                var userId = document.getElementById("userId").value;
+                var stockName = document.getElementById("stname_" + sid).value;
+                var availability = document.getElementById("avail_" + sid).value;
+                var price = document.getElementById("price_" + sid).value;
+                var quantity = document.getElementById("quan_" + sid).value;
+                console.log(userId);
+                console.log(sid);
+                console.log(stockName);
+                console.log(quantity);
                 $.ajax({
                     url: 'addtocart',
                     method: 'POST',
-                    data: {userId:userId, stockId:sid, stockName:stockName, availability:availability,price:price, quantity:quantity},
+                    data: {userId: userId, stockId: sid, stockName: stockName, availability: availability, price: price, quantity: quantity},
                     success: function (resultText) {
                         $('#result').html(resultText);
-                        var msg='The stock has successfully added to cart';
+                        var msg = 'The stock has successfully added to cart';
                         $('#result2').html(msg);
- 
+
                     },
                     error: function (jqXHR, exception) {
                         console.log('Error occured!!');
                     }
                 });
             }
-            
+
         </script>
         <!-- Vendor CSS Files -->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -93,18 +93,18 @@
 
             <nav class="header-nav ms-auto">
                 <ul class="d-flex align-items-center">
-                    
-                   <li class="nav-item dropdown">
+
+                    <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="viewCart.jsp">
-                            <i class="bi bi-bell"></i>
+                            <i class="bi bi-cart-plus"></i>
                             <span id="result" class="badge bg-primary badge-number"></span>
                         </a>
                     </li>
                     <li class="nav-item dropdown pe-3">
-                        
+
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+
                             <span class="d-none d-md-block dropdown-toggle ps-2"><s:property value="#session.name" /></span>
                         </a><!-- End Profile Iamge Icon -->
 
@@ -182,7 +182,7 @@
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="stocksforusers.jsp">
                         <i class="bi bi-person"></i>
                         <span>Stock List</span>
@@ -190,19 +190,18 @@
                 </li><!-- End Profile Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-faq.jsp">
-                        <i class="bi bi-question-circle"></i>
-                        <span>F.A.Q</span>
+                    <a class="nav-link collapsed" href="viewCart.jsp">
+                        <i class="bi bi-cart-check"></i>
+                        <span>Wishlist</span>
                     </a>
-                </li><!-- End F.A.Q Page Nav -->
+                </li><!-- End wishlist Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-contact.jsp">
-                        <i class="bi bi-envelope"></i>
-                        <span>Contact</span>
+                    <a class="nav-link collapsed" href="user-portfolio.jsp">
+                        <i class="bi bi-gift"></i>
+                        <span>Portfolio</span>
                     </a>
-                </li><!-- End Contact Page Nav -->
-
+                </li><!-- End portfolio Page Nav -->
             </ul>
 
         </aside><!-- End Sidebar-->
@@ -223,212 +222,212 @@
                 <div class="row">
 
                     <!-- MAIN columns -->
-                    
-                        <div class="row">
 
-                            <!-- Sales Card -->
-                            <div class="col-xxl-4 col-md-6">
-                                <div class="card info-card sales-card">
+                    <div class="row">
 
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Orders</h5>
+                        <!-- Sales Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
 
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-cart"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>145</h6>
-                                            </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Orders</h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cart"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>145</h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Sales Card -->
+
+                        <!-- Revenue Card -->
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card revenue-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Revenue Circulating</h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-currency-dollar"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>$3,264</h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!-- End Revenue Card -->
+
+                        <!-- Customers Card -->
+                        <div class="col-xxl-4 col-xl-12">
+
+                            <div class="card info-card customers-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Total No of Customers</h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>1244</h6>
+
                                         </div>
                                     </div>
 
                                 </div>
-                            </div><!-- End Sales Card -->
+                            </div>
 
-                            <!-- Revenue Card -->
-                            <div class="col-xxl-4 col-md-6">
-                                <div class="card info-card revenue-card">
+                        </div><!-- End Customers Card -->
 
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total Revenue Circulating</h5>
+                        <!-- Reports -->
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Reports <span>/Today</span></h5>
 
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-currency-dollar"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>$3,264</h6>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!-- Line Chart -->
+                                    <div id="reportsChart"></div>
 
-                                </div>
-                            </div><!-- End Revenue Card -->
-
-                            <!-- Customers Card -->
-                            <div class="col-xxl-4 col-xl-12">
-
-                                <div class="card info-card customers-card">
-
-                                    <div class="card-body">
-                                        <h5 class="card-title">Total No of Customers</h5>
-
-                                        <div class="d-flex align-items-center">
-                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                                <i class="bi bi-people"></i>
-                                            </div>
-                                            <div class="ps-3">
-                                                <h6>1244</h6>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div><!-- End Customers Card -->
-
-                            <!-- Reports -->
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                                        <!-- Line Chart -->
-                                        <div id="reportsChart"></div>
-
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", () => {
-                                                new ApexCharts(document.querySelector("#reportsChart"), {
-                                                    series: [{
-                                                            name: 'Sales',
-                                                            data: [31, 40, 28, 51, 42, 82, 56],
-                                                        }, {
-                                                            name: 'Revenue',
-                                                            data: [11, 32, 45, 32, 34, 52, 41]
-                                                        }, {
-                                                            name: 'Customers',
-                                                            data: [15, 11, 32, 18, 9, 24, 11]
-                                                        }],
-                                                    chart: {
-                                                        height: 350,
-                                                        type: 'area',
-                                                        toolbar: {
-                                                            show: false
-                                                        },
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            new ApexCharts(document.querySelector("#reportsChart"), {
+                                                series: [{
+                                                        name: 'Sales',
+                                                        data: [31, 40, 28, 51, 42, 82, 56],
+                                                    }, {
+                                                        name: 'Revenue',
+                                                        data: [11, 32, 45, 32, 34, 52, 41]
+                                                    }, {
+                                                        name: 'Customers',
+                                                        data: [15, 11, 32, 18, 9, 24, 11]
+                                                    }],
+                                                chart: {
+                                                    height: 350,
+                                                    type: 'area',
+                                                    toolbar: {
+                                                        show: false
                                                     },
-                                                    markers: {
-                                                        size: 4
-                                                    },
-                                                    colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                                                    fill: {
-                                                        type: "gradient",
-                                                        gradient: {
-                                                            shadeIntensity: 1,
-                                                            opacityFrom: 0.3,
-                                                            opacityTo: 0.4,
-                                                            stops: [0, 90, 100]
-                                                        }
-                                                    },
-                                                    dataLabels: {
-                                                        enabled: false
-                                                    },
-                                                    stroke: {
-                                                        curve: 'smooth',
-                                                        width: 2
-                                                    },
-                                                    xaxis: {
-                                                        type: 'datetime',
-                                                        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                                                    },
-                                                    tooltip: {
-                                                        x: {
-                                                            format: 'dd/MM/yy HH:mm'
-                                                        },
+                                                },
+                                                markers: {
+                                                    size: 4
+                                                },
+                                                colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                                                fill: {
+                                                    type: "gradient",
+                                                    gradient: {
+                                                        shadeIntensity: 1,
+                                                        opacityFrom: 0.3,
+                                                        opacityTo: 0.4,
+                                                        stops: [0, 90, 100]
                                                     }
-                                                }).render();
-                                            });
-                                        </script>
-                                        <!-- End Line Chart -->
-
-                                    </div>
+                                                },
+                                                dataLabels: {
+                                                    enabled: false
+                                                },
+                                                stroke: {
+                                                    curve: 'smooth',
+                                                    width: 2
+                                                },
+                                                xaxis: {
+                                                    type: 'datetime',
+                                                    categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                                                },
+                                                tooltip: {
+                                                    x: {
+                                                        format: 'dd/MM/yy HH:mm'
+                                                    },
+                                                }
+                                            }).render();
+                                        });
+                                    </script>
+                                    <!-- End Line Chart -->
 
                                 </div>
-                            </div><!-- End Reports -->
 
-                            <!-- Recent Sales -->
-                            <div class="col-12">
-<!--                                <span id="result1"></span>-->
-                                <div class="card recent-sales">
+                            </div>
+                        </div><!-- End Reports -->
 
-                                    <div class="card-body">
-                                       
-                                        <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportviewstock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
-                                        <span id="result"></span>
-                                         <span style="color:red" id="result2"></span>
-                                        <s:if test="noData==false">
-                                             
-                                                    
-                                            <table class="table table-borderless datatable">
-                                                <thead>
+                        <!-- Recent Sales -->
+                        <div class="col-12">
+                            <!--                                <span id="result1"></span>-->
+                            <div class="card recent-sales">
+
+                                <div class="card-body">
+
+                                    <h5 class="card-title">Stocks<span>  |  </span><span><a href="reportviewstock"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
+                                    <span id="result"></span>
+                                    <span style="color:red" id="result2"></span>
+                                    <s:if test="noData==false">
+
+
+                                        <table class="table table-borderless datatable">
+                                            <thead>
+                                                <tr>
+
+                                                    <th scope="col">Stock ID</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Availability</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <s:iterator value="stockList">
+
                                                     <tr>
-                                                        
-                                                        <th scope="col">Stock ID</th>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Price</th>
-                                                        <th scope="col">Availability</th>
-                                                         <th scope="col">Quantity</th>
-                                                        <th scope="col">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                   
-                                                    <s:iterator value="stockList">
-                                                       
-                                                        <tr>
-                                                        
-                                                            <td style="display:none"><s:property value="stockId" />"</td>
-                                                            <td><s:property value="stockId" /></td>
-                                                            <td style="display:none"><input type="text" name="userId" id='userId' value="<s:property value="#session.userId" />"></td>
-                                                            <td><input type="text" name="stockName" id='stname_<s:property value="stockId" />' value="<s:property value="stockName" />"></td>
-                                                            <td><input type="text" name="price" id='price_<s:property value="stockId" />' value="<s:property value="price" />"></td>
-                                                            <td><input type="text" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>
-                                                            <td><input type="text" name="quantity" id='quan_<s:property value="stockId" />' ></td>
-                                                            <td>
-                                                                    <button type="submit" onclick="addToCart(<s:property value="stockId" />)" name="submit" class="btn btn-outline-primary">Wishlist</button>
-                                                              
-<!--                                                                <input type="submit" name="submit" value="Delete" class="btn btn-outline-primary">-->
-                     
-                                                        </tr>                                                   
-                                                    </s:iterator>
-                                                         
-                                                </tbody>
-                                            </table>
-                                                         
-                                        </s:if>
-                                        <s:else>
-                                            <div style="color: red;">No Data Found.</div>
-                                        </s:else>
 
-                                    </div>
-                                    
-                                    
-                                    
+                                                        <td style="display:none"><s:property value="stockId" />"</td>
+                                                        <td><s:property value="stockId" /></td>
+                                                        <td style="display:none"><input type="text" name="userId" id='userId' value="<s:property value="#session.userId" />"></td>
+                                                        <td><input type="text" name="stockName" id='stname_<s:property value="stockId" />' value="<s:property value="stockName" />"></td>
+                                                        <td><input type="text" name="price" id='price_<s:property value="stockId" />' value="<s:property value="price" />"></td>
+                                                        <td><input type="text" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>
+                                                        <td><input type="text" name="quantity" id='quan_<s:property value="stockId" />' ></td>
+                                                        <td>
+                                                            <button type="submit" onclick="addToCart(<s:property value="stockId" />)" name="submit" class="btn btn-outline-primary">Wishlist</button>
+
+                                                            <!--                                                                <input type="submit" name="submit" value="Delete" class="btn btn-outline-primary">-->
+
+                                                    </tr>                                                   
+                                                </s:iterator>
+
+                                            </tbody>
+                                        </table>
+
+                                    </s:if>
+                                    <s:else>
+                                        <div style="color: red;">No Data Found.</div>
+                                    </s:else>
+
                                 </div>
-                            </div><!-- End Recent Sales -->
-                           
-                        </div>
+
+
+
+                            </div>
+                        </div><!-- End Recent Sales -->
+
+                    </div>
                     <!-- End Left side columns -->
-                   
+
 
                 </div>
             </section>
 
         </main><!-- End #main -->
 
-        
-         
+
+
         <!-- ======= Footer ======= -->
         <footer id="footer" class="footer">
             <div class="copyright">
@@ -445,24 +444,24 @@
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-         <script>
-           $(document).ready(function() {
-               function disableBack() {
-                   window.history.forward()
-               }
-               window.onload = disableBack();
-               window.onpageshow = function(e) {
-                   if (e.persisted)
-                       disableBack();
-               }
-           });
-       </script>
+        <script>
+            $(document).ready(function () {
+                function disableBack() {
+                    window.history.forward()
+                }
+                window.onload = disableBack();
+                window.onpageshow = function (e) {
+                    if (e.persisted)
+                        disableBack();
+                }
+            });
+        </script>
 
-    <script src=
-           "https://code.jquery.com/jquery-3.6.0.min.js" 
-           integrity=
-   "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
-           crossorigin="anonymous"></script>
+        <script src=
+                "https://code.jquery.com/jquery-3.6.0.min.js" 
+                integrity=
+                "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous"></script>
         <!-- Vendor JS Files -->
         <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

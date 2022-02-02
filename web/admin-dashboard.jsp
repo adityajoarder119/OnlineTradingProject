@@ -14,6 +14,7 @@
         <!-- Favicons -->
         <link href="assets/img/favicon.png" rel="icon">
         <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
         <!-- Google Fonts -->
         <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -79,7 +80,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="user-profile.jsp">
+                                <a class="dropdown-item d-flex align-items-center" href="admin-profile.jsp">
                                     <i class="bi bi-person"></i>
                                     <span>My Profile</span>
                                 </a>
@@ -89,21 +90,9 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="user-profile.jsp">
-                                    <i class="bi bi-gear"></i>
-                                    <span>Account Settings</span>
-                                </a>
-                            </li>
-                            <li>
                                 <hr class="dropdown-divider">
                             </li>
-
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.jsp">
-                                    <i class="bi bi-question-circle"></i>
-                                    <span>Need Help?</span>
-                                </a>
-                            </li>
+                            
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -136,7 +125,7 @@
                 </li><!-- End Dashboard Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="user-profile.jsp">
+                    <a class="nav-link collapsed" href="admin-profile.jsp">
                         <i class="bi bi-person"></i>
                         <span>Profile</span>
                     </a>
@@ -153,23 +142,11 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="userPromotion.jsp">
                         <i class="ri-user-3-line"></i>
-                        <span>User List</span>
+                        <span>Promote a user to Admin</span>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-faq.jsp">
-                        <i class="bi bi-question-circle"></i>
-                        <span>F.A.Q</span>
-                    </a>
-                </li><!-- End F.A.Q Page Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-contact.jsp">
-                        <i class="bi bi-envelope"></i>
-                        <span>Contact</span>
-                    </a>
-                </li><!-- End Contact Page Nav -->
+               
 
             </ul>
 
@@ -224,10 +201,10 @@
 
                                     <div class="d-flex align-items-center">
                                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-currency-dollar"></i>
+                                            <i class="fa fa-inr"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>$3,264</h6>
+                                            <h6><i class="fa fa-inr"></i>3,2640000</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -258,15 +235,87 @@
 
                         </div><!-- End Customers Card -->
 
-                        
-                                    <!-- End Line Chart -->
+                        <!-- Reports -->
+                         <div class="col-12">
+              <div class="card">
 
-                                </div>
-                                    </div>
-                                    
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
 
-                            </div>
-                        </div><!-- End Reports -->
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Reports <span>/Today</span></h5>
+
+                  <!-- Line Chart -->
+                  <div id="reportsChart"></div>
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                      new ApexCharts(document.querySelector("#reportsChart"), {
+                        series: [{
+                          name: 'Sales',
+                          data: [31, 40, 28, 51, 42, 82, 56],
+                        }, {
+                          name: 'Revenue',
+                          data: [11, 32, 45, 32, 34, 52, 41]
+                        }, {
+                          name: 'Customers',
+                          data: [15, 11, 32, 18, 9, 24, 11]
+                        }],
+                        chart: {
+                          height: 350,
+                          type: 'area',
+                          toolbar: {
+                            show: false
+                          },
+                        },
+                        markers: {
+                          size: 4
+                        },
+                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                        fill: {
+                          type: "gradient",
+                          gradient: {
+                            shadeIntensity: 1,
+                            opacityFrom: 0.3,
+                            opacityTo: 0.4,
+                            stops: [0, 90, 100]
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false
+                        },
+                        stroke: {
+                          curve: 'smooth',
+                          width: 2
+                        },
+                        xaxis: {
+                          type: 'datetime',
+                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                        },
+                        tooltip: {
+                          x: {
+                            format: 'dd/MM/yy HH:mm'
+                          },
+                        }
+                      }).render();
+                    });
+                  </script>
+                  <!-- End Line Chart -->
+
+                </div>
+
+              </div>
+            </div><!-- End Reports -->
 
                         <!-- Recent Sales -->
                         <div class="col-12">
@@ -321,10 +370,7 @@
                 &copy; Copyright <strong><span>Group-A Exavalu</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+                
                 Designed by Group-A Exavalu
             </div>
         </footer><!-- End Footer -->
@@ -362,66 +408,7 @@
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        <script>
-            (function () {
-
-            'use strict'
-
-                    feather.replace({'aria-hidden': 'true'})
-
-                    var items = <s:property value='%{sessionMap.get("typeList")}' />
-
-            // Graphs
-
-            var ctx = document.getElementById('myPieChart')
-
-                    // eslint-disable-next-line no-unused-vars
-
-                    var myPieChart = new Chart(ctx, {
-
-                    type: 'pie',
-                            data: {
-
-                            labels: [
-
-                                    'Exavalu',
-                                    'CloudKaptan',
-                                    'TCS'
-                                    'Wipro',
-                                    'Elijah',
-                                    'Phillip',
-                                    'Kenzie',
-                                    'Regina',
-                                    'Irene',
-                                    'Lucy',
-                                    'Lily',
-                                    'Noah',
-                                    'Cedrick',
-                                    'Fred'
-
-
-
-
-                            ],
-                                    datasets: [{
-
-                                    data: [
-
-                                            items[0], items[1], items[2], items[3], items[4], items[5], items[6], items[7], items[8], items[9], items[10], items[11], items[12], items[13]
-
-                                    ],
-                                            lineTension: 0,
-                                            backgroundColor: ['black','black','black','black','black','black','black','black','black','black','black','black','black','black'],
-                                            pointBackgroundColor: '#007bff'
-
-                                    }]
-
-                            },
-                    })
-
-            })()
-
-        </script>
+        
 
     </body>
 

@@ -129,11 +129,41 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="pages-contact.jsp">
+                    <a class="nav-link " href="index.jsp">
                         <i class="bi bi-grid"></i>
-                        <span>Contact</span>
+                        <span>Dashboard</span>
                     </a>
                 </li><!-- End Dashboard Nav -->
+
+                <li class="nav-heading">Pages</li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-register.jsp">
+                        <i class="bi bi-card-list"></i>
+                        <span>Register</span>
+                    </a>
+                </li><!-- End Register Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-login.jsp">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Login</span>
+                    </a>
+                </li><!-- End Login Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-faq.jsp">
+                        <i class="bi bi-question-circle"></i>
+                        <span>F.A.Q</span>
+                    </a>
+                </li><!-- End F.A.Q Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-contact.jsp">
+                        <i class="bi bi-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </li><!-- End Contact Page Nav -->
 
             </ul>
 

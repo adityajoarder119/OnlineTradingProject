@@ -31,12 +31,7 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        <!-- =======================================================
-        * Template Name: NiceAdmin - v2.2.1
-        * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-        * Author: BootstrapMade.com
-        * License: https://bootstrapmade.com/license/
-        ======================================================== -->
+        
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script>
              
@@ -91,7 +86,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
-                <a href="admin-dashboard.html" class="logo d-flex align-items-center">
+                <a href="user-dashboard.html" class="logo d-flex align-items-center">
                     <img src="assets/img/logo.png" alt="">
                     <span class="d-none d-lg-block">Exa-Trade</span>
                 </a>
@@ -113,24 +108,17 @@
                             <i class="bi bi-search"></i>
                         </a>
                     </li><!-- End Search Icon-->
-
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-bell"></i>
-                            <span class="badge bg-primary badge-number"></span>
-                        </a><!-- End Notification Icon -->
-
-                    </li><!-- End Notification Nav -->
-
-
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                    
+                    
+                    
+                     <li class="nav-item dropdown">
+                        <a class="nav-link nav-icon" href="user-portfolio.jsp">
                             <i class="bi bi-gift"></i>
-                            <span class="badge bg-primary badge-number"></span>
-                        </a><!-- End gift Icon -->
-                    </li><!-- End gift Nav -->
+                            <span id="result" class="badge bg-primary badge-number"></span>
+                        </a>
+                    </li>
+
+                  
 
                     <li class="nav-item dropdown">
 
@@ -231,18 +219,18 @@
       
                    
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-error-404.html">
+                    <a class="nav-link collapsed" href="viewCart.jsp">
                         <i class="bi bi-cart-check"></i>
                         <span>Wishlist</span>
                     </a>
-                </li><!-- End Error 404 Page Nav -->
+                </li><!-- End wishlist Page Nav -->
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="user-portfolio.jsp">
                         <i class="bi bi-gift"></i>
-                        <span>Purchase List</span>
+                        <span>Portfolio</span>
                     </a>
-                </li><!-- End Blank Page Nav -->
+                </li><!-- End portfolio Page Nav -->
 
             </ul>
 
@@ -277,7 +265,7 @@
                                         margin-left: 30%;
                                     }
                                 </style>
-                                <a href="showwishlist.action?userId=<s:property value="#session.userId"/>"><button class="button-productshow" type="button">Show Cart</button></a>
+                                <a href="showwishlist.action?userId=<s:property value="#session.userId"/>"><button class="button-productshow" type="button">Show Updated Cart</button></a>
                                 <span id="result"></span>
                                  <span id="result1"></span>
                                   

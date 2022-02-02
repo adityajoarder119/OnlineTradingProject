@@ -29,6 +29,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -735,7 +736,7 @@ public class Admin {
 
     }
     
-    public List reportUser() throws SQLException, Exception {
+     public List reportUser() throws SQLException, Exception {
         ResultSet rs = null;
         Connection con = null;
         List<User> userList = new ArrayList<>();
@@ -784,6 +785,14 @@ public class Admin {
                 con.close();
             }
         }
+    }
+     public static void main(String args[]){
+        final Logger logger=Logger.getLogger(Admin.class);
+        logger.debug("This is debug" + "parameter/exception object");
+        logger.info("This is info" + "parameter/exception object");
+        logger.warn("This is warn" + "parameter/exception object");
+        logger.error("This is error" + "parameter/exception object");
+        logger.fatal("This is fatal" + "parameter/exception object");
     }
 
 }

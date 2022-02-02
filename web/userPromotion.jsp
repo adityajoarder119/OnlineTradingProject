@@ -49,12 +49,7 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        <!-- =======================================================
-        * Template Name: NiceAdmin - v2.2.1
-        * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-        * Author: BootstrapMade.com
-        * License: https://bootstrapmade.com/license/
-        ======================================================== -->
+        
     </head>
 
     <body>
@@ -63,7 +58,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
-                <a href="admin-dashboard.html" class="logo d-flex align-items-center">
+                <a href="admin-dashboard.jsp" class="logo d-flex align-items-center">
                     <img src="assets/img/logo.png" alt="">
                     <span class="d-none d-lg-block">Exa-Trade</span>
                 </a>
@@ -164,7 +159,7 @@
                 <li class="nav-item">
                     <a class="nav-link " href="userPromotion.jsp">
                         <i class="ri-user-3-line"></i>
-                        <span>User List</span>
+                        <span>Promote a user to Admin</span>
                     </a>
                 </li>
 
@@ -181,22 +176,7 @@
                         <i class="bi bi-bar-chart"></i>
                         <span>Update Stock</span>
                     </a>
-                </li><!-- End Profile Page Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-faq.html">
-                        <i class="bi bi-question-circle"></i>
-                        <span>F.A.Q</span>
-                    </a>
-                </li><!-- End F.A.Q Page Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-contact.html">
-                        <i class="bi bi-envelope"></i>
-                        <span>Contact</span>
-                    </a>
-                </li><!-- End Contact Page Nav -->
-
+               
             </ul>
 
         </aside><!-- End Sidebar-->
@@ -228,6 +208,8 @@
 
                                     <div class="card-body">
                                         <h5 class="card-title">User<span>  |  </span><span><a href="reportuser"> <button type="button" class="btn btn-outline-primary">Refresh</button></a></span></h5>
+                                        <span id="result"></span>
+                                         <span id="result1"></span>
                                         <s:if test="noData==false">
                                             <table class="table table-borderless datatable">
                                                 <thead>

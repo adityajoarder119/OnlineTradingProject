@@ -6,7 +6,8 @@
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+        <link href="https://unpks.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        
         <title>Index page</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
@@ -30,10 +31,31 @@
 
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
+        <style>
+            #jaydeep{
+                border-radius: 35px;
+                
+            }
+            #statistics{
+                border-radius: 45px;
+            }
+            #team{
+                border-radius: 45px;
+            }
+            #logo{
+                border-radius: 15px;
+            }
+            #logo-img{
+                border-radius : 30px;
+            }
+            #secr{
+                border-radius : 50px;
+            }
+        </style>
 
     </head>
 
-    <body>
+    <body bgcolor="lightblue">
 
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
@@ -65,7 +87,7 @@
                     <li class="nav-item dropdown pe-3">
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            
+
                             <span class="d-none d-md-block dropdown-toggle ps-2"><s:property value="#session.name" /></span>
                         </a><!-- End Profile Iamge Icon -->
 
@@ -78,7 +100,7 @@
                                 <hr class="dropdown-divider">
                             </li>
 
-                       
+
 
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="pages-faq.jsp">
@@ -151,12 +173,157 @@
 
         </aside><!-- End Sidebar-->
 
-        <main id="main" class="main">
+        <main id="main" class="main" >
 
-            <img src="assets/img/Exa-Trade.png" alt="">
-
+<!--            <a href="admin-dashboard.jsp" class="logo d-flex align-items-center" >
+                    <img src="assets/img/logo.png" alt="image logo"   >
+                    <span class="d-none d-lg-block"   >Exa-Trade</span>
+                </a>-->
+<!--            
         </main><!-- End #main -->
+<!--Content-->
+<section id="logo" class="text-gray-600 body-font" style="background-color:#E5E7E9">
+  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col ">
+    <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900" style="font-family: fantasy">The New Face of Financial Research
+        
+      </h1>
+      <p class="mb-8 leading-relaxed">An intuitively designed workspace for delivering powerful market insight</p>
+      <div class="flex justify-center">
+        <!--<button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>-->
+        <!--<button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>-->
+      </div>
+    </div>
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+      <img id="logo-img" class="object-cover object-center rounded responsive" alt="logo" src="assets/img/Exa-Trade.png" width="1100" height="500" >
+    </div>
+  </div>
+    <p></P>
+        <p></P>
+    <p></P>
+    <p></P>
+    <p></P>
+    <p></P>
 
+</section>
+
+<!--after content-->
+<section id="secr" class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto" alt="No img" style="background-color: #EFF0F2;" >
+    <div class="-my-8 divide-y-2 divide-gray-100">
+      <div class="py-8 flex flex-wrap md:flex-nowrap">
+        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+          
+        </div>
+        <div class="md:flex-grow">
+          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2" style=" font-family: fantasy; color: #292B2C">Security Snapshot View</h2>
+          <p class="leading-relaxed">News, fundamentals, and charts accessible through a comprehensive security snapshot. Gain clarity by seeing the entire picture without missing a detail. Includes balance sheets and income statements, SEC filings, press releases, and key corporate information</p>
+          
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</section>
+
+
+<!--Statistic of ExaTrade-->
+<section id="statistics" class="text-gray-600 body-font" style="background-color:#E5E7E9">
+  <div class="container px-5 py-24 mx-auto flex flex-wrap">
+    <div class="flex flex-wrap -mx-4 mt-auto mb-auto lg:w-1/2 sm:w-2/3 content-start sm:pr-10">
+      <div class="w-full sm:p-4 px-4 mb-6">
+        <h1 class="title-font font-medium text-xl mb-2 text-gray-900" style="font-family: Fantasy; color:black " ><a href="pages-register.jsp" style="color:#292B2C">Open Free Tarding Account</a></h1>
+        <div class="leading-relaxed" style="font-family: cursive; color: black" s>Investments at your Fingertips with EXA-TRADE</div>
+      </div>
+        
+      <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+        <h2 class="title-font font-medium text-3xl text-gray-900">2.7K</h2>
+        <p class="leading-relaxed">Users</p> 
+      </div>
+      <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+        <h2 class="title-font font-medium text-3xl text-gray-900">1.8K</h2>
+        <p class="leading-relaxed">Subscribes</p>
+      </div>
+      <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+        <h2 class="title-font font-medium text-3xl text-gray-900">4000+</h2>
+        <p class="leading-relaxed">Products</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!--Our Team-->
+<section id="team" class="text-gray-600 body-font" style="background-color:#E5E7E9">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900" style="font-family:Blippo, fantasy ; color:#1B9D9D " >Our Team</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base" style="font-family: cursive;">The way a team plays as a whole determines its success. You may have the greatest 
+          bunch of individual stars in the world, but if they don’t play together, the club won’t be worth a dime.</p>
+    </div>
+    
+    <div class="flex flex-wrap -m-2">
+        
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img id="jaydeep" src="img/Jaydeep.jpg"  alt="pic of Jay" width="180" height="160" />
+          <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium"  style="font-family: Impact, fantasy"><a href="https://www.linkedin.com/in/jaydeep-das-773756194/">Jaydeep Das</a></h2>
+            <p class="text-gray-500" >Digital Intern,</p> 
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img id="jaydeep" src="img/abhineet (2).jpg" alt="pic of abhineet" width="180" height="160" />
+            <div class="flex-grow">
+                <h2 class="text-gray-900 title-font font-medium" style="font-family: Impact, fantasy"><a href="https://www.linkedin.com/in/abhineet64">Abhineet Mishra</a></h2>
+            <p class="text-gray-500">Digital Intern</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img id="jaydeep" src="img/aditya.jpg" alt="pic of aditya" width="180" height="170" />
+            <div class="flex-grow">
+                <h2 class="text-gray-900 title-font font-medium" style="font-family: Impact, fantasy"><a href="https://www.linkedin.com/in/aditya-joarder-76658aa9">Aditya Joarder</a></h2>
+            <p class="text-gray-500">Digital Intern</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img id="jaydeep" src="img/ritu.png" alt="pic of ritu" width="180" height="160" />
+            <div class="flex-grow">
+                <h2 class="text-gray-900 title-font font-medium" style="font-family: Impact, fantasy"><a href="https://www.linkedin.com/in/rituparna-bhattacharya-144545190/">Rituparna Bhattacharya</a></h2>
+            <p class="text-gray-500">Digital Intern</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img id="jaydeep" src="img/rajshekhar.jpg" alt="pic of abhineet" width="180" height="160" />
+          <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium" style="font-family: Impact, fantasy"><a href="https://www.linkedin.com/in/rajasekhar-gullapalli-7273a1207">Gullapalli Rajshekhar</a></h2>
+            <p class="text-gray-500">Digital Intern</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+          <img id="jaydeep" src="img/suraj.jpg" alt="pic of abhineet" width="180" height="160" />
+          <div class="flex-grow">
+              <h2 class="text-gray-900 title-font font-medium" style="font-family: Impact, fantasy"><a href="https://www.linkedin.com/in/suraj-kumar-7076a4194">Suraj Kumar</a></h2>
+            <p class="text-gray-500">Digital Intern</p>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</section>
 
 
         <!-- ======= Footer ======= -->
