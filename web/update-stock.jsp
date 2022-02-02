@@ -95,7 +95,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
-                <a href="admin-dashboard.jsp" class="logo d-flex align-items-center">
+                <a  class="logo d-flex align-items-center">
                     <img src="assets/img/logo.png" alt="">
                     <span class="d-none d-lg-block">Exa-Trade</span>
                 </a>
@@ -122,7 +122,7 @@
                     <li class="nav-item dropdown pe-3">
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                            
                             <span class="d-none d-md-block dropdown-toggle ps-2"><s:property value="#session.name" /></span>
                         </a><!-- End Profile Iamge Icon -->
 
@@ -136,7 +136,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="user-profile.jsp">
+                                <a class="dropdown-item d-flex align-items-center" href="admin-profile.jsp">
                                     <i class="bi bi-person"></i>
                                     <span>My Profile</span>
                                 </a>
@@ -146,7 +146,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="user-profile.jsp">
+                                <a class="dropdown-item d-flex align-items-center" href="admin-profile.jsp">
                                     <i class="bi bi-gear"></i>
                                     <span>Account Settings</span>
                                 </a>
@@ -155,12 +155,7 @@
                                 <hr class="dropdown-divider">
                             </li>
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                    <i class="bi bi-question-circle"></i>
-                                    <span>Need Help?</span>
-                                </a>
-                            </li>
+                            
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -186,7 +181,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="admin-dashboard.jsp">
+                    <a class="nav-link collapsed" href="reportstock">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -195,20 +190,20 @@
                 <li class="nav-heading">Pages</li>
 
                 <li class="nav-item collapsed">
-                    <a class="nav-link collapsed" href="user-profile.jsp">
+                    <a class="nav-link collapsed" href="admin-profile.jsp">
                         <i class="bi bi-person"></i>
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
                  <li class="nav-item">
-                    <a class="nav-link" href="update-stock.jsp">
+                    <a class="nav-link" href="reportupdatestock"">
                         <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                         <span>Update Stock</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
                 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="userPromotion.jsp">
+                    <a class="nav-link collapsed" href="reportuser">
                         <i class="ri-user-3-line"></i>
                         <span>Promote a user to Admin</span>
                     </a>

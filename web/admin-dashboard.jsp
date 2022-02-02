@@ -118,7 +118,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="admin-dashboard.jsp">
+                    <a class="nav-link " href="reportstock">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -136,14 +136,14 @@
                 </li><!-- End Profile Page Nav -->
                 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="update-stock.jsp">
+                    <a class="nav-link collapsed" href="reportupdatestock">
                         <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                         <span>Update Stock</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="userPromotion.jsp">
+                    <a class="nav-link collapsed" href="reportuser">
                         <i class="ri-user-3-line"></i>
                         <span>Promote a user to Admin</span>
                     </a>
@@ -174,11 +174,15 @@
                     <!-- MAIN columns -->
 
                     <div class="row">
+                        
+                      
+                        <a href="reportinfo">   <button type="button" class="btn btn-outline-primary"> Update Information</button></a><br><br>
+                        <br><!-- comment -->
 
                         <!-- Sales Card -->
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card sales-card">
-
+                                
                                 <div class="card-body">
                                     <h5 class="card-title">Total Orders</h5>
 
@@ -187,7 +191,7 @@
                                             <i class="bi bi-cart"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>145</h6>
+                                            <h6><s:property value="#session.orders" /></h6>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +211,7 @@
                                             <i class="fa fa-inr"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6><i class="fa fa-inr"></i>3,2640000</h6>
+                                            <h6><i class="fa fa-inr"></i><s:property value="#session.revenue" /></h6>
                                         </div>
                                     </div>
                                 </div>
@@ -228,7 +232,7 @@
                                             <i class="bi bi-people"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>1244</h6>
+                                            <h6><s:property value="#session.buyers" /></h6>
 
                                         </div>
                                     </div>
@@ -236,7 +240,7 @@
                                 </div>
                             </div>
 
-                        </div><!-- End Customers Card -->
+                        </div>
 
                         <!-- Reports -->
                          <div class="col-12">

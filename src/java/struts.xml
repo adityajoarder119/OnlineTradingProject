@@ -42,6 +42,11 @@
             <result name="PROMOTEUSER">/success-user.jsp</result>
         </action>
         
+        <action name="reportinfo" class="com.trading.ot.actions.StockAction" method="StockInfo">
+             <result name="LOGOUT1">/logout.jsp</result>
+            <result name="REPORTINFO">/admin-dashboard.jsp</result>
+        </action>
+        
         <action name="reportstockindex" class="com.trading.ot.actions.StockAction" method="StockReportAction">
              <result name="LOGOUT1">/logout.jsp</result>
             <result name="REPORTSTOCK">/index.jsp</result>

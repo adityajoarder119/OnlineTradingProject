@@ -66,7 +66,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
-                <a href="admin-dashboard.html" class="logo d-flex align-items-center">
+                <a  class="logo d-flex align-items-center">
                     <img src="assets/img/logo.png" alt="">
                     <span class="d-none d-lg-block">Exa-Trade</span>
                 </a>
@@ -97,7 +97,7 @@
 
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon" href="viewCart.jsp">
+                        <a class="nav-link nav-icon" href="showwishlist">
                             <i class="bi bi-cart-plus"></i>
                             <span id="result" class="badge bg-primary badge-number"></span>
                         </a>
@@ -121,7 +121,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.jsp">
                                     <i class="bi bi-person"></i>
                                     <span>My Profile</span>
                                 </a>
@@ -130,22 +130,11 @@
                                 <hr class="dropdown-divider">
                             </li>
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                    <i class="bi bi-gear"></i>
-                                    <span>Account Settings</span>
-                                </a>
-                            </li>
+                            
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                    <i class="bi bi-question-circle"></i>
-                                    <span>Need Help?</span>
-                                </a>
-                            </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -173,7 +162,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="user-dashboard.jsp">
+                    <a class="nav-link collapsed" href="reportstockuser">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -189,20 +178,22 @@
                 </li><!-- End Components Nav -->
 
 
+                 <li class="nav-item">
+                    <a class="nav-link" href="reportviewstock">
+                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                        <span>Stock List</span>
+                    </a>
+                </li><!-- End Profile Page Nav -->
+
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="viewCart.jsp">
+                    <a class="nav-link collapsed" href="showwishlist">
                         <i class="bi bi-cart-check"></i>
                         <span>Wishlist</span>
                     </a>
                 </li><!-- End wishlist Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link " href="user-portfolio.jsp">
-                        <i class="bi bi-gift"></i>
-                        <span>Portfolio</span>
-                    </a>
-                </li><!-- End portfolio Page Nav -->
-
+                    <a class="nav-link collapsed" href="showorderlist">
             </ul>
 
         </aside><!-- End Sidebar-->
@@ -213,7 +204,7 @@
                 <h1>Your Stocks</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="user-dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="reportstockuser">Home</a></li>
                         <li class="breadcrumb-item active">Your Stocks</li>
                     </ol>
                 </nav>
@@ -224,18 +215,7 @@
 
                     <!-- Left side columns -->
                     <div class="col-lg-8">
-                        <!--                        <div class="row">
-                        <style type="text/css">
-                                                            .button-save {
-                                                                background-color: green;
-                                                                color: white;
-                                                            }
-                                                            .button-productshow {
-                                                                background-color: #000000;
-                                                                color: white;
-                                                                margin-left: 30%;
-                                                            }
-                                                        </style>-->
+                       
                         <a href="showorderlist.action?userId=<s:property value="#session.userId"/>"><button type="button" class="btn btn-outline-primary">Show updated stocks</button></a>
                         <span id="result"></span>
 

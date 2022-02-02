@@ -123,12 +123,20 @@ public class UserAction extends ActionSupport implements SessionAware {
                 }
                 if (status == 1) {
                     setMsg("Login successful");
+                    
                     getSessionMap().put("login", "true");
                     getSessionMap().put("name", name);
                     getSessionMap().put("address", address);
                     getSessionMap().put("emailId", emailId);
                     getSessionMap().put("phoneNumber", phoneNumber);
                     getSessionMap().put("dob", dob);
+                    Admin dao=new Admin();
+                    int j=dao.countPurchase();
+                    int i=dao.countBuyer();
+                    double r=dao.calRevenue();
+                    getSessionMap().put("orders", j);
+                    getSessionMap().put("buyers", i);
+                    getSessionMap().put("revenue", r);
                     return "ADMINUSER";
                 }
 

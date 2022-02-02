@@ -120,7 +120,7 @@
 
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="admin-dashboard.jsp">
+                    <a class="nav-link collapsed" href="reportstock">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -132,21 +132,21 @@
                 <li class="nav-heading">Pages</li>
 
                 <li class="nav-item">
-                    <a class="nav-link " href="user-profile.jsp">
+                    <a class="nav-link " href="admin-profile.jsp">
                         <i class="bi bi-person"></i>
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="update-stock.jsp">
+                    <a class="nav-link collapsed" href="reportupdatestock">
                         <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                         <span>Update Stock</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="userPromotion.jsp">
+                    <a class="nav-link collapsed" href="reportuser">
                         <i class="ri-user-3-line"></i>
                         <span>Promote a user to Admin</span>
                     </a>

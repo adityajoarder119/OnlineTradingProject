@@ -104,7 +104,6 @@ public class Admin {
         }
     }
 
-  
     public int updateStockDetails(int stockId, String stockName, double price, int availability) throws SQLException, Exception {
 
         Connection con = ConnectionManager.getConnection();
@@ -646,8 +645,8 @@ public class Admin {
         }
 
     }
-    
-     public List wishList(int userId) throws SQLException {
+
+    public List wishList(int userId) throws SQLException {
         Connection con = ConnectionManager.getConnection();
         ResultSet rs = null;
         List<wishlist> wishList = new ArrayList<>();
@@ -735,8 +734,8 @@ public class Admin {
         return orderList;
 
     }
-    
-     public List reportUser() throws SQLException, Exception {
+
+    public List reportUser() throws SQLException, Exception {
         ResultSet rs = null;
         Connection con = null;
         List<User> userList = new ArrayList<>();
@@ -764,8 +763,8 @@ public class Admin {
             }
         }
     }
-    
-     public int promoteUserDetails(int userId, String name, String emailId, String phoneNumber, String dob, String password, String address, int status) throws SQLException, Exception {
+
+    public int promoteUserDetails(int userId, String name, String emailId, String phoneNumber, String dob, String password, String address, int status) throws SQLException, Exception {
 
         Connection con = ConnectionManager.getConnection();
         int i = 0;
@@ -786,13 +785,83 @@ public class Admin {
             }
         }
     }
-     public static void main(String args[]){
-        final Logger logger=Logger.getLogger(Admin.class);
+
+    public static void main(String args[]) {
+        final Logger logger = Logger.getLogger(Admin.class);
         logger.debug("This is debug" + "parameter/exception object");
         logger.info("This is info" + "parameter/exception object");
         logger.warn("This is warn" + "parameter/exception object");
         logger.error("This is error" + "parameter/exception object");
         logger.fatal("This is fatal" + "parameter/exception object");
+    }
+
+    public int countBuyer() throws SQLException {
+        int i = 0;
+        ResultSet rs = null;
+        Connection con = ConnectionManager.getConnection();
+        try {
+            String sql = "SELECT DISTINCT userId FROM stockordered ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                i = i + 1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return i;
+
+    }
+
+    public int countPurchase() throws SQLException {
+        int j = 0;
+        ResultSet rs = null;
+        Connection con = ConnectionManager.getConnection();
+        try {
+            String sql = "SELECT * FROM stockordered ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                j = j + 1;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return j;
+
+    }
+
+    public double calRevenue() throws SQLException {
+        double r = 0;
+        ResultSet rs = null;
+        Connection con = ConnectionManager.getConnection();
+        try {
+            String sql = "SELECT * FROM stockordered ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                r = r + rs.getDouble("totalPrice");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        return r;
+
     }
 
 }

@@ -146,7 +146,28 @@ public class StockAction extends ActionSupport implements SessionAware{
 
         
     }
-
+public String StockInfo()
+    {
+        Admin dao = new Admin();
+        HttpSession session = ServletActionContext.getRequest().getSession(false);
+        if (session == null || session.getAttribute("login") == null) {
+            return "LOGOUT1";
+        } else 
+        {
+           try {
+            int j=dao.countPurchase();
+            int i=dao.countBuyer();
+            double r=dao.calRevenue();
+            session.setAttribute("orders", j);
+            session.setAttribute("buyers", i);
+            session.setAttribute("revenue", r);
+            } 
+           catch (Exception e) {
+            e.printStackTrace();
+          }
+        }
+        return "REPORTINFO";
+    }
     public String StockUpdateAction() {
         
         HttpSession session = ServletActionContext.getRequest().getSession(false);

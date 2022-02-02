@@ -31,26 +31,26 @@
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
 
-        
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-         <script>
-             
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+
             function buy(sid)
             {
                 console.log(sid);
-                var id=document.getElementById("oid").value;
-                var userId=document.getElementById("userId").value;
+                var id = document.getElementById("oid").value;
+                var userId = document.getElementById("userId").value;
                 var stockName = document.getElementById("stname_" + sid).value;
-                var quantity= document.getElementById("qty_" + sid).value;
-                var totalPrice=document.getElementById("tprice_" + sid).value;
-                var availability=document.getElementById("avail_" + sid).value;
+                var quantity = document.getElementById("qty_" + sid).value;
+                var totalPrice = document.getElementById("tprice_" + sid).value;
+                var availability = document.getElementById("avail_" + sid).value;
                 $.ajax({
                     url: 'buystock',
                     method: 'POST',
-                    data: {id:id,stockId: sid,stockName:stockName,availability:availability,quantity: quantity,userId:userId, totalPrice:totalPrice},
+                    data: {id: id, stockId: sid, stockName: stockName, availability: availability, quantity: quantity, userId: userId, totalPrice: totalPrice},
                     success: function (resultText) {
                         $('#result').html(resultText);
-                       
+
                     },
                     error: function (jqXHR, exception) {
                         console.log('Error occured!!');
@@ -59,25 +59,25 @@
             }
             function removecart()
             {
-               
-                var id=document.getElementById("oid").value;
-                 console.log(id);
-                 var userId=document.getElementById("userId").value;
-                 console.log(userId);
+
+                var id = document.getElementById("oid").value;
+                console.log(id);
+                var userId = document.getElementById("userId").value;
+                console.log(userId);
                 $.ajax({
                     url: 'removecart',
                     method: 'POST',
-                    data: {id:id,userId:userId},
+                    data: {id: id, userId: userId},
                     success: function (resultText) {
                         $('#result1').html(resultText);
-                        
+
                     },
                     error: function (jqXHR, exception) {
                         console.log('Error occured!!');
                     }
                 });
             }
-           </script>
+        </script>
     </head>
 
     <body>
@@ -86,7 +86,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
-                <a href="user-dashboard.html" class="logo d-flex align-items-center">
+                <a  class="logo d-flex align-items-center">
                     <img src="assets/img/logo.png" alt="">
                     <span class="d-none d-lg-block">Exa-Trade</span>
                 </a>
@@ -108,17 +108,17 @@
                             <i class="bi bi-search"></i>
                         </a>
                     </li><!-- End Search Icon-->
-                    
-                    
-                    
-                     <li class="nav-item dropdown">
+
+
+
+                    <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="user-portfolio.jsp">
                             <i class="bi bi-gift"></i>
                             <span id="result" class="badge bg-primary badge-number"></span>
                         </a>
                     </li>
 
-                  
+
 
                     <li class="nav-item dropdown">
 
@@ -150,7 +150,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.jsp">
                                     <i class="bi bi-person"></i>
                                     <span>My Profile</span>
                                 </a>
@@ -160,7 +160,7 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.jsp">
                                     <i class="bi bi-gear"></i>
                                     <span>Account Settings</span>
                                 </a>
@@ -169,12 +169,7 @@
                                 <hr class="dropdown-divider">
                             </li>
 
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                    <i class="bi bi-question-circle"></i>
-                                    <span>Need Help?</span>
-                                </a>
-                            </li>
+                            
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -202,7 +197,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="user-dashboard.jsp">
+                    <a class="nav-link collapsed" href="reportstockuser">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -212,25 +207,28 @@
                     <a class="nav-link collapsed" href="user-profile.jsp">
                         <i class="bi bi-person"></i><span>User Profile</span></i>
                     </a>
-                    
-                    
-                   
+
+
+
                 </li><!-- End Components Nav -->
-      
-                   
+
+
                 <li class="nav-item">
-                    <a class="nav-link" href="viewCart.jsp">
+                    <a class="nav-link" href="reportviewstock">
+                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                        <span>Stock List</span>
+                    </a>
+                </li><!-- End Profile Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="showwishlist">
                         <i class="bi bi-cart-check"></i>
                         <span>Wishlist</span>
                     </a>
                 </li><!-- End wishlist Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="user-portfolio.jsp">
-                        <i class="bi bi-gift"></i>
-                        <span>Portfolio</span>
-                    </a>
-                </li><!-- End portfolio Page Nav -->
+                    <a class="nav-link collapsed" href="showorderlist">
 
             </ul>
 
@@ -242,7 +240,7 @@
                 <h1>Shopping Cart</h1>
                 <nav>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="admin-dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href=reportstockuser>Home</a></li>
                         <li class="breadcrumb-item active">Shopping Cart</li>
                     </ol>
                 </nav>
@@ -254,54 +252,54 @@
                     <!-- Left side columns -->
                     <div class="col-lg-8">
                         <div class="row">
-<style type="text/css">
-                                    .button-save {
-                                        background-color: green;
-                                        color: white;
-                                    }
-                                    .button-productshow {
-                                        background-color: #000000;
-                                        color: white;
-                                        margin-left: 30%;
-                                    }
-                                </style>
-                                <a href="showwishlist.action?userId=<s:property value="#session.userId"/>"><button type="button" class="btn btn-outline-primary">Show Updated Cart</button></a>
-                                <span id="result"></span>
-                                 <span id="result1"></span>
-                                  
-                                <table id="cart_tab" class="table table-bordered table-striped table-hover">
-                                  <s:if test="noData==false">
-                                <tr>
-                                    <th>stock name</th>
-                                    <th>quantity</th>
-                                    <th>Availability</th>
-                                    <th> Total price</th>
-                                    
-                                    <th>Action           </th>
-                               </tr>
-                                <s:iterator value="wishList">
-                                    <tr id="cart_tr">
-                                        <td style="display:none"><input type="text" id='userId' value='<s:property value="#session.userId" />' readonly></td>
-                                        <td style="display:none"><input type="text" id='oid' value='<s:property value="id" />' readonly></td>
-                                        <td><input type="text" id='stname_<s:property value="stockId" />' value='<s:property value="stockName" />' readonly></td>
-                                        <td><input type="text" id='qty_<s:property value="stockId" />' value='<s:property value="quantity" />' readonly></td>
-                                      <td><input type="text" id='avail_<s:property value="stockId" />' value='<s:property value="availability" />' readonly></td>
-                                        <td><input type="text" id='tprice_<s:property value="stockId" />' value='<s:property value="totalPrice" />' readonly></td>
-                                  
-                                     <td style="display:inline-block"><button type="submit" onclick="buy(<s:property value="stockId" />)" class="btn btn-outline-primary">Buy</button>
-                                         <button type="submit" onclick="removecart()" class="btn btn-outline-primary">Remove</button>
-                                     </td>
-                                     <!-- comment -->
+                            <style type="text/css">
+                                .button-save {
+                                    background-color: green;
+                                    color: white;
+                                }
+                                .button-productshow {
+                                    background-color: #000000;
+                                    color: white;
+                                    margin-left: 30%;
+                                }
+                            </style>
+                            <a href="showwishlist.action?userId=<s:property value="#session.userId"/>"><button type="button" class="btn btn-outline-primary">Show Updated Cart</button></a>
+                            <span id="result"></span>
+                            <span id="result1"></span>
+
+                            <table id="cart_tab" class="table table-bordered table-striped table-hover">
+                                <s:if test="noData==false">
+                                    <tr>
+                                        <th>stock name</th>
+                                        <th>quantity</th>
+                                        <th>Availability</th>
+                                        <th> Total price</th>
+
+                                        <th>Action           </th>
                                     </tr>
-                                
+                                    <s:iterator value="wishList">
+                                        <tr id="cart_tr">
+                                            <td style="display:none"><input type="text" id='userId' value='<s:property value="#session.userId" />' readonly></td>
+                                            <td style="display:none"><input type="text" id='oid' value='<s:property value="id" />' readonly></td>
+                                            <td><input type="text" id='stname_<s:property value="stockId" />' value='<s:property value="stockName" />' readonly></td>
+                                            <td><input type="text" id='qty_<s:property value="stockId" />' value='<s:property value="quantity" />' readonly></td>
+                                            <td><input type="text" id='avail_<s:property value="stockId" />' value='<s:property value="availability" />' readonly></td>
+                                            <td><input type="text" id='tprice_<s:property value="stockId" />' value='<s:property value="totalPrice" />' readonly></td>
 
-                                  </s:iterator>
+                                            <td style="display:inline-block"><button type="submit" onclick="buy(<s:property value="stockId" />)" class="btn btn-outline-primary">Buy</button>
+                                                <button type="submit" onclick="removecart()" class="btn btn-outline-primary">Remove</button>
+                                            </td>
+                                            <!-- comment -->
+                                        </tr>
 
-                            </table>
-                                    </s:if>
-                                        <s:else>
-                                            <div style="color: red;">No Data Found.</div>
-                                        </s:else>
+
+                                    </s:iterator>
+
+                                </table>
+                            </s:if>
+                            <s:else>
+                                <div style="color: red;">No Data Found.</div>
+                            </s:else>
                         </div>
 
                     </div>
