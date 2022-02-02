@@ -38,6 +38,7 @@
             }
             #statistics{
                 border-radius: 45px;
+
             }
             #team{
                 border-radius: 45px;
@@ -49,6 +50,10 @@
                 border-radius : 30px;
             }
             #secr{
+                border-radius : 50px;
+                opacity: 100%;
+            }
+            .main-wrap{
                 border-radius : 50px;
             }
         </style>
@@ -207,7 +212,7 @@
 
 </section>
 
-<!--after content-->
+<!-- Security-->
 <section id="secr" class="text-gray-600 body-font overflow-hidden">
   <div class="container px-5 py-24 mx-auto" alt="No img" style="background-color: #EFF0F2;" >
     <div class="-my-8 divide-y-2 divide-gray-100">
@@ -226,13 +231,37 @@
   </div>
 </section>
 
+<!--newdesk Access-->
+<section id="secr" class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto" alt="No img" style="background-color: #EFF0F2;" >
+    <div class="-my-8 divide-y-2 divide-gray-100">
+      <div class="py-8 flex flex-wrap md:flex-nowrap">
+        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+          
+        </div>
+        <div class="md:flex-grow">
+          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2" style=" font-family: fantasy; color: #292B2C">Exclusive Newsdesk Access</h2>
+          <p class="leading-relaxed">Giving traders the opportunity to gain context and seek answers straight from the source. Available every trading day, users can instantly open a conversation with a reporter at Eax-Trade’s headquarters.</p>
+          
+        </div>
+      </div>
+     
+    </div>
+  </div>
+    
+    <p></p>
+        <p></p>
+    <p></p>
+
+</section>
+
 
 <!--Statistic of ExaTrade-->
 <section id="statistics" class="text-gray-600 body-font" style="background-color:#E5E7E9">
   <div class="container px-5 py-24 mx-auto flex flex-wrap">
     <div class="flex flex-wrap -mx-4 mt-auto mb-auto lg:w-1/2 sm:w-2/3 content-start sm:pr-10">
       <div class="w-full sm:p-4 px-4 mb-6">
-        <h1 class="title-font font-medium text-xl mb-2 text-gray-900" style="font-family: Fantasy; color:black " ><a href="pages-register.jsp" style="color:#292B2C">Open Free Tarding Account</a></h1>
+          <h1 class="title-font font-medium text-xl mb-2 text-gray-900" style="font-family: Fantasy; color:black " ><a href="pages-register.jsp" style="color:#292B2C"><u>Open Free Tarding Account</u></a></h1>
         <div class="leading-relaxed" style="font-family: cursive; color: black" s>Investments at your Fingertips with EXA-TRADE</div>
       </div>
         
@@ -250,6 +279,10 @@
       </div>
     </div>
   </div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
 </section>
 
 
@@ -259,7 +292,7 @@
 <section id="team" class="text-gray-600 body-font" style="background-color:#E5E7E9">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-col text-center w-full mb-20">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900" style="font-family:Blippo, fantasy ; color:#1B9D9D " >Our Team</h1>
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900" style="font-family:Blippo, fantasy ; color:black; font-size:50px " >Our Team</h1>
       <p class="lg:w-2/3 mx-auto leading-relaxed text-base" style="font-family: cursive;">The way a team plays as a whole determines its success. You may have the greatest 
           bunch of individual stars in the world, but if they don’t play together, the club won’t be worth a dime.</p>
     </div>
