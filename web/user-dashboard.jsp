@@ -165,7 +165,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="stocksforusers.jsp">
-                        <i class="bi bi-question-circle"></i>
+                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                         <span>Stocks List</span>
                     </a> 
                 </li><!--stock list-->

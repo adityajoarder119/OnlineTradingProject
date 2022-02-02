@@ -95,6 +95,13 @@
                 <ul class="d-flex align-items-center">
 
                     <li class="nav-item dropdown">
+                        <a class="nav-link nav-icon" href="user-portfolio.jsp">
+                            <i class="bi bi-gift"></i>
+                            <span id="result" class="badge bg-primary badge-number"></span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="viewCart.jsp">
                             <i class="bi bi-cart-plus"></i>
                             <span id="result" class="badge bg-primary badge-number"></span>
@@ -168,7 +175,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="user-dashboard.html">
+                    <a class="nav-link collapsed" href="user-dashboard.jsp">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -184,7 +191,7 @@
                 </li><!-- End Profile Page Nav -->
                 <li class="nav-item">
                     <a class="nav-link" href="stocksforusers.jsp">
-                        <i class="bi bi-person"></i>
+                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                         <span>Stock List</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
@@ -393,7 +400,7 @@
                                                         <td><input type="text" name="stockName" id='stname_<s:property value="stockId" />' value="<s:property value="stockName" />"></td>
                                                         <td><input type="text" name="price" id='price_<s:property value="stockId" />' value="<s:property value="price" />"></td>
                                                         <td><input type="text" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>
-                                                        <td><input type="text" name="quantity" id='quan_<s:property value="stockId" />' ></td>
+                                                        <td><input type="number" name="quantity" id='quan_<s:property value="stockId" />' ></td>
                                                         <td>
                                                             <button type="submit" onclick="addToCart(<s:property value="stockId" />)" name="submit" class="btn btn-outline-primary">Wishlist</button>
 

@@ -122,7 +122,7 @@
 
                     <li class="nav-item dropdown">
 
-                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link nav-icon" href="viewCart.jsp" data-bs-toggle="dropdown">
                             <i class="bi bi-cart-plus"></i>
                             <span class="badge bg-primary badge-number"></span>
                         </a><!-- End AddToCart Icon -->
@@ -202,7 +202,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="user-dashboard.jsp">
+                    <a class="nav-link collapsed" href="user-dashboard.jsp">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -219,7 +219,7 @@
       
                    
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="viewCart.jsp">
+                    <a class="nav-link" href="viewCart.jsp">
                         <i class="bi bi-cart-check"></i>
                         <span>Wishlist</span>
                     </a>
@@ -265,7 +265,7 @@
                                         margin-left: 30%;
                                     }
                                 </style>
-                                <a href="showwishlist.action?userId=<s:property value="#session.userId"/>"><button class="button-productshow" type="button">Show Updated Cart</button></a>
+                                <a href="showwishlist.action?userId=<s:property value="#session.userId"/>"><button type="button" class="btn btn-outline-primary">Show Updated Cart</button></a>
                                 <span id="result"></span>
                                  <span id="result1"></span>
                                   

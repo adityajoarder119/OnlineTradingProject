@@ -173,7 +173,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="user-dashboard.jsp">
+                    <a class="nav-link collapsed" href="user-dashboard.jsp">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -197,7 +197,7 @@
                 </li><!-- End wishlist Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="user-portfolio.jsp">
+                    <a class="nav-link " href="user-portfolio.jsp">
                         <i class="bi bi-gift"></i>
                         <span>Portfolio</span>
                     </a>
@@ -236,7 +236,7 @@
                                                                 margin-left: 30%;
                                                             }
                                                         </style>-->
-                        <a href="showorderlist.action?userId=<s:property value="#session.userId"/>"><button class="button-productshow" type="button">Show updated stocks</button></a>
+                        <a href="showorderlist.action?userId=<s:property value="#session.userId"/>"><button type="button" class="btn btn-outline-primary">Show updated stocks</button></a>
                         <span id="result"></span>
 
                         <table class="table table-borderless">
@@ -261,7 +261,7 @@
                                             <td><input type="text" id='qty_<s:property value="orderId" />' value='<s:property value="quantityOrdered" />' readonly></td>
                                             <td><input type="text" id='avail_<s:property value="orderId" />' value='<s:property value="orderDate" />' readonly></td>
                                             <td><input type="text" id='tprice_<s:property value="orderId" />' value='<s:property value="totalPrice" />' readonly></td>
-                                            <td><input type="text" id='sqty_<s:property value="orderId" />' value=''></td>
+                                            <td><input type="number" id='sqty_<s:property value="orderId" />' value=''></td>
 
 
                                             <td style="display:inline-block"><button type="submit" onclick="sell(<s:property value="orderId" />)" class="btn btn-outline-primary">Sell</button>

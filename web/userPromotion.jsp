@@ -156,13 +156,11 @@
                     </a>
                 </li><!-- End Dashboard Nav -->
                 
-                <li class="nav-item">
-                    <a class="nav-link " href="userPromotion.jsp">
-                        <i class="ri-user-3-line"></i>
-                        <span>Promote a user to Admin</span>
-                    </a>
-                </li>
+                
 
+                
+                
+                <li class="nav-heading">Pages</li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="user-profile.jsp">
                         <i class="bi bi-person"></i>
@@ -170,13 +168,20 @@
                     </a>
                 </li><!-- End Profile Page Nav -->
                 
-                <li class="nav-heading">Pages</li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="update-stock.jsp">
-                        <i class="bi bi-bar-chart"></i>
+                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                         <span>Update Stock</span>
                     </a>
-               
+                </li><!-- comment -->
+
+                <li class="nav-item">
+                    <a class="nav-link " href="userPromotion.jsp">
+                        <i class="ri-user-3-line"></i>
+                        <span>Promote a user to Admin</span>
+                    </a>
+                </li>
+                
             </ul>
 
         </aside><!-- End Sidebar-->

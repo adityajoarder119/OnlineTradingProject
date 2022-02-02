@@ -124,17 +124,20 @@
                     </a>
                 </li><!-- End Dashboard Nav -->
 
+                
+
+                <li class="nav-heading">Pages</li>
+                
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="admin-profile.jsp">
                         <i class="bi bi-person"></i>
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
-
-                <li class="nav-heading">Pages</li>
+                
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="update-stock.jsp">
-                        <i class="bi bi-person"></i>
+                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                         <span>Update Stock</span>
                     </a>
                 </li><!-- End Profile Page Nav -->

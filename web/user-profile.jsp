@@ -133,7 +133,7 @@
 
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link " href="user-dashboard.jsp">
+                    <a class="nav-link collapsed" href="user-dashboard.jsp">
                         <i class="bi bi-grid"></i>
                         <span>Dashboard</span>
                     </a>
@@ -150,6 +150,26 @@
                         <span>Profile</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="stocksforusers.jsp">
+                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
+                        <span>Stocks List</span>
+                    </a> 
+                </li><!--stock list-->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="viewCart.jsp">
+                        <i class="bi bi-cart-check"></i>
+                        <span>Wishlist</span>
+                    </a>
+                </li><!-- End wishlist Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="user-portfolio.jsp">
+                        <i class="bi bi-gift"></i>
+                        <span>Portfolio</span>
+                    </a>
+                </li><!-- End portfolio Page Nav -->
 
 
 

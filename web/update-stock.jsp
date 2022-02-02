@@ -202,10 +202,17 @@
                 </li><!-- End Profile Page Nav -->
                  <li class="nav-item">
                     <a class="nav-link" href="update-stock.jsp">
-                        <i class="bi bi-person"></i>
+                        <i class="bi bi-file-earmark-spreadsheet-fill"></i>
                         <span>Update Stock</span>
                     </a>
                 </li><!-- End Profile Page Nav -->
+                
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="userPromotion.jsp">
+                        <i class="ri-user-3-line"></i>
+                        <span>Promote a user to Admin</span>
+                    </a>
+                </li>
 
                
                
@@ -267,7 +274,7 @@
                                                             <td><s:property value="stockId" /></td>
                                                             <td><input type="text" name="stockName" id='stname_<s:property value="stockId" />' value="<s:property value="stockName" />"></td>
                                                             <td><input type="text" name="price" id='price_<s:property value="stockId" />' value="<s:property value="price" />"></td>
-                                                            <td><input type="text" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>
+                                                            <td><input type="number" name="availability" id='avail_<s:property value="stockId" />' value="<s:property value="availability" />"></td>
                                                           
                                                             <td>
                                                            
