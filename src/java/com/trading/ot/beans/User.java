@@ -7,7 +7,7 @@ package com.trading.ot.beans;
 
 /**
  *
- * @author Suraj Kumar
+ * @author adity
  */
 public class User {
 
@@ -20,6 +20,7 @@ public class User {
     private String address;
     private int status;
     private boolean validUser;
+    private String otp;
 
     /**
      * @return the userId
@@ -145,6 +146,20 @@ public class User {
      */
     public void setValidUser(boolean validUser) {
         this.validUser = validUser;
+    }
+
+    /**
+     * @return the otp
+     */
+    public String getOtp() {
+        return otp;
+    }
+
+    /**
+     * @param otp the otp to set
+     */
+    public void setOtp(String otp) {
+        this.otp = otp;
     }
 
     

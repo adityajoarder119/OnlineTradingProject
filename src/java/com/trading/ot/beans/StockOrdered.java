@@ -7,15 +7,60 @@ package com.trading.ot.beans;
 
 /**
  *
- * @author Suraj Kumar
- */
-public class StockOrdered {
+ * @author adity
+ */public class StockOrdered {
+
+    /**
+     * @return the sellQuantity
+     */
+    public int getSellQuantity() {
+        return sellQuantity;
+    }
+
+    /**
+     * @param sellQuantity the sellQuantity to set
+     */
+    public void setSellQuantity(int sellQuantity) {
+        this.sellQuantity = sellQuantity;
+    }
+
+    /**
+     * @return the stockName
+     */
+    public String getStockName() {
+        return stockName;
+    }
+
+    /**
+     * @param stockName the stockName to set
+     */
+    public void setStockName(String stockName) {
+        this.stockName = stockName;
+    }
+
+    /**
+     * @return the totalPrice
+     */
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    /**
+     * @param totalPrice the totalPrice to set
+     */
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
     
     
     private int orderId;
     private int userId;
     private int stockId;
     private String orderDate;
+    private int quantityOrdered;
+    private double totalPrice;
+    private String stockName;
+    private int sellQuantity;
 
     /**
      * @return the orderId
@@ -71,6 +116,22 @@ public class StockOrdered {
      */
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
+    }
+
+
+
+    /**
+     * @return the quantityOrdered
+     */
+    public int getQuantityOrdered() {
+        return quantityOrdered;
+    }
+
+    /**
+     * @param quantityOrdered the quantityOrdered to set
+     */
+    public void setQuantityOrdered(int quantityOrdered) {
+        this.quantityOrdered = quantityOrdered;
     }
 
    
