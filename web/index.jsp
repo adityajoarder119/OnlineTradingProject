@@ -16,7 +16,7 @@
         <div class="container"><img src="assets1/img/logo.png" style="height: 40px;"><a class="navbar-brand text-left logo" href="#" style="color: var(--indigo);font-size: 30px;"><b>Exa-Trade</b></a><button data-toggle="collapse" class="navbar-toggler bg-primary shadow-sm" data-target="#navbarNav" style="color: var(--indigo);background: var(--indigo);border-color: var(--blue);"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav" style="color: var(--indigo);">
                 <ul class="navbar-nav ml-auto" style="color: rgb(102, 16, 242);">
-                    <li class="nav-item"><a class="nav-link active" href="index.html" style="color: var(--indigo);">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.jsp" style="color: var(--indigo);">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages-register.jsp" style="color: var(--indigo);">Sign-up</a></li>
                     <li class="nav-item" style="color: var(--indigo);"><a class="nav-link" href="pages-login.jsp" style="color: var(--indigo);">Login</a></li>
                 
