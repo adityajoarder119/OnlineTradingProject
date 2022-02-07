@@ -19,7 +19,7 @@
                     <li class="nav-item"><a class="nav-link active" href="index.html" style="color: var(--indigo);">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="pages-register.jsp" style="color: var(--indigo);">Sign-up</a></li>
                     <li class="nav-item" style="color: var(--indigo);"><a class="nav-link" href="pages-login.jsp" style="color: var(--indigo);">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages-faq.jsp" style="color: var(--indigo);">FAQ</a></li>
+                
                     <li class="nav-item"><a class="nav-link" href="pages-contact.jsp" style="color: var(--indigo);">Contact</a></li>
                 </ul>
             </div>
